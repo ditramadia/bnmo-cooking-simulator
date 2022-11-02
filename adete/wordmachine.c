@@ -81,3 +81,27 @@ void CopyWord(){
           Jika panjang kata melebihi NMax, maka sisa kata "dipotong" */
 
 //#endif
+
+void displayWord(Word W){
+    int i;
+    for (i = 0; i < W.Length; i++){
+        printf("%c", W.TabWord[i]);
+    }
+    printf(" ");
+}
+
+void wordToInteger(int *X){
+    int i;
+    int cc = 1;
+    *X = 0;
+    for (i = 0; i < (int)currentWord.Length-1; i--){
+        *X = *X + (int)(currentWord.TabWord[i] - 48) * cc;
+        cc*= 10;
+    }
+}
+
+void wordToString(char y[currentWord.Length]) {
+    int i;
+    for (i = 0; i < currentWord.Length; i++){
+        y[i] = currentWord.TabWord[i];
+    }

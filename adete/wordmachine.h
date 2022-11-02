@@ -45,5 +45,10 @@ void CopyWord();
           currentChar = BLANK atau currentChar = MARK;
           currentChar adalah karakter sesudah karakter terakhir yang diakuisisi.
           Jika panjang kata melebihi NMax, maka sisa kata "dipotong" */
+void displayWord(Word W);
+
+void wordToInteger(int *X);
+
+void wordToString(char y[currentWord.Length]);
 
 #endif
