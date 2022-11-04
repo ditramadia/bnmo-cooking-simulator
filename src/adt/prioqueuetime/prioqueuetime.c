@@ -4,48 +4,48 @@
 /* Elemen queue terurut membesar berdasarkan elemen time */
 
 #include "prioqueuetime.h"
-#include "boolean.h"
+#include "../boolean/boolean.h"
 #include <stdio.h>
 
 /* ********* AKSES (Selektor) ********* */
 /* Jika e adalah infotype dan Q adalah PrioQueueTime, maka akses elemen : */
-#define Time(e)     (e).time
-#define Info(e)     (e).info
-#define Head(Q)     (Q).HEAD
-#define Tail(Q)     (Q).TAIL
+#define Time(e) (e).time
+#define Info(e) (e).info
+#define Head(Q) (Q).HEAD
+#define Tail(Q) (Q).TAIL
 #define InfoHead(Q) (Q).T[(Q).HEAD]
 #define InfoTail(Q) (Q).T[(Q).TAIL]
-#define MaxEl(Q)    (Q).MaxEl
-#define Elmt(Q,i)   (Q).T[(i)]
+#define MaxEl(Q) (Q).MaxEl
+#define Elmt(Q, i) (Q).T[(i)]
 
 /* ********* Prototype ********* */
-boolean IsEmpty (PrioQueueTime Q)
+boolean IsEmpty(PrioQueueTime Q)
 /* Mengirim true jika Q kosong: lihat definisi di atas */
 {
-    return (Head(Q)==Nil && Tail(Q)==Nil);
+    return (Head(Q) == Nil && Tail(Q) == Nil);
 }
 
-boolean IsFull (PrioQueueTime Q)
+boolean IsFull(PrioQueueTime Q)
 /* Mengirim true jika tabel penampung elemen Q sudah penuh */
 /* yaitu mengandung elemen sebanyak MaxEl */
 {
     return (NBElmt(Q) == MaxEl(Q));
 }
 
-int NBElmt (PrioQueueTime Q)
+int NBElmt(PrioQueueTime Q)
 /* Mengirimkan banyaknya elemen queue. Mengirimkan 0 jika Q kosong. */
 {
-    if (IsEmpty(Q)) 
+    if (IsEmpty(Q))
     {
         return 0;
-    } 
-    else 
+    }
+    else
     {
-        if (Tail(Q) >= Head(Q)) 
+        if (Tail(Q) >= Head(Q))
         {
             return (Tail(Q) - Head(Q) + 1);
-        } 
-        else 
+        }
+        else
         {
             return (MaxEl(Q) - (Head(Q) - Tail(Q) + 1));
         }
@@ -53,7 +53,7 @@ int NBElmt (PrioQueueTime Q)
 }
 
 /* *** Kreator *** */
-void MakeEmpty (PrioQueueTime * Q, int Max)
+void MakeEmpty(PrioQueueTime *Q, int Max)
 /* I.S. sembarang */
 /* F.S. Sebuah Q kosong terbentuk dan salah satu kondisi sbb: */
 /* Jika alokasi berhasil, Tabel memori dialokasi berukuran Max+1 */
@@ -61,11 +61,11 @@ void MakeEmpty (PrioQueueTime * Q, int Max)
 /* Proses : Melakukan alokasi, membuat sebuah Q kosong */
 {
     (*Q).T = (infotype *)malloc((Max) * sizeof(infotype));
-    if ((*Q).T == NULL) 
+    if ((*Q).T == NULL)
     {
         MaxEl(*Q) = 0;
     }
-    else 
+    else
     {
         Head(*Q) = Nil;
         Tail(*Q) = Nil;
@@ -74,7 +74,7 @@ void MakeEmpty (PrioQueueTime * Q, int Max)
 }
 
 /* *** Destruktor *** */
-void DeAlokasi(PrioQueueTime * Q)
+void DeAlokasi(PrioQueueTime *Q)
 /* Proses: Mengembalikan memori Q */
 /* I.S. Q pernah dialokasi */
 /* F.S. Q menjadi tidak terdefinisi lagi, MaxEl(Q) diset 0 */
@@ -85,7 +85,7 @@ void DeAlokasi(PrioQueueTime * Q)
     free((*Q).T);
 }
 /* *** Primitif Add/Delete *** */
-void Enqueue (PrioQueueTime * Q, infotype X)
+void Enqueue(PrioQueueTime *Q, infotype X)
 /* Proses: Menambahkan X pada Q dengan aturan priority queue, terurut membesar berdasarkan time */
 /* I.S. Q mungkin kosong, tabel penampung elemen Q TIDAK penuh */
 /* F.S. X disisipkan pada posisi yang tepat sesuai dengan prioritas,
@@ -96,19 +96,19 @@ void Enqueue (PrioQueueTime * Q, infotype X)
     int i, j;
     infotype temp;
 
-    if (IsEmpty(*Q)) 
+    if (IsEmpty(*Q))
     {
         Head(*Q) = 0;
         Tail(*Q) = 0;
         InfoTail(*Q) = X;
     }
-    else 
+    else
     {
         Tail(*Q) = Tail(*Q) == MaxEl(*Q) - 1 ? 0 : Tail(*Q) + 1;
         InfoTail(*Q) = X;
         i = Tail(*Q);
         j = i == 0 ? MaxEl(*Q) - 1 : i - 1;
-        while (i != Head(*Q) && Time(Elmt(*Q, i)) < (Time(Elmt(*Q, j)))) 
+        while (i != Head(*Q) && Time(Elmt(*Q, i)) < (Time(Elmt(*Q, j))))
         {
             temp = Elmt(*Q, i);
             Elmt(*Q, i) = Elmt(*Q, j);
@@ -119,19 +119,19 @@ void Enqueue (PrioQueueTime * Q, infotype X)
     }
 }
 
-void Dequeue (PrioQueueTime * Q, infotype * X)
+void Dequeue(PrioQueueTime *Q, infotype *X)
 /* Proses: Menghapus X pada Q dengan aturan FIFO */
 /* I.S. Q tidak mungkin kosong */
 /* F.S. X = nilai elemen HEAD pd I.S., HEAD "maju" dengan mekanisme circular buffer;
         Q mungkin kosong */
 {
-    if (NBElmt(*Q) == 1) 
+    if (NBElmt(*Q) == 1)
     {
         *X = InfoHead(*Q);
         Head(*Q) = Nil;
         Tail(*Q) = Nil;
     }
-    else 
+    else
     {
         *X = InfoHead(*Q);
         Head(*Q) = (Head(*Q) == MaxEl(*Q) - 1) ? 0 : Head(*Q) + 1;
@@ -139,7 +139,7 @@ void Dequeue (PrioQueueTime * Q, infotype * X)
 }
 
 /* Operasi Tambahan */
-void PrintPrioQueueTime (PrioQueueTime Q)
+void PrintPrioQueueTime(PrioQueueTime Q)
 /* Mencetak isi queue Q ke layar */
 /* I.S. Q terdefinisi, mungkin kosong */
 /* F.S. Q tercetak ke layar dengan format:
@@ -152,8 +152,10 @@ void PrintPrioQueueTime (PrioQueueTime Q)
     infotype val;
     PrioQueueTime temp;
     temp = Q;
-    if (!IsEmpty(Q)) {
-        while (!IsEmpty(temp)) {
+    if (!IsEmpty(Q))
+    {
+        while (!IsEmpty(temp))
+        {
             Dequeue(&temp, &val);
             printf("%d %c\n", Time(val), Info(val));
         }

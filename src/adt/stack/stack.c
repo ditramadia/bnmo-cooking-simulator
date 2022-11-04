@@ -3,16 +3,14 @@
 /* TOP adalah alamat elemen puncak */
 /* Implementasi dalam bahasa C dengan alokasi statik */
 
-
 #include "stack.h"
-#include "boolean.h"
+#include "../boolean/boolean.h"
 #include <stdio.h>
-
-
 
 /* ************ Prototype ************ */
 /* *** Konstruktor/Kreator *** */
-void CreateEmpty(Stack *S){
+void CreateEmpty(Stack *S)
+{
     Top(*S) = Nil;
 }
 /* I.S. sembarang; */
@@ -21,17 +19,20 @@ void CreateEmpty(Stack *S){
 /* Ciri stack kosong : TOP bernilai Nil */
 
 /* ************ Predikat Untuk test keadaan KOLEKSI ************ */
-boolean IsEmpty(Stack S){
+boolean IsEmpty(Stack S)
+{
     return (Top(S) == Nil);
 }
 /* Mengirim true jika Stack kosong: lihat definisi di atas */
-boolean IsFull(Stack S){
-    return (Top(S) == MaxEl-1);
-    }
+boolean IsFull(Stack S)
+{
+    return (Top(S) == MaxEl - 1);
+}
 /* Mengirim true jika tabel penampung nilai elemen stack penuh */
 
 /* ************ Menambahkan sebuah elemen ke Stack ************ */
-void Push(Stack * S, infotype X){
+void Push(Stack *S, infotype X)
+{
     Top(*S)++;
     InfoTop(*S) = X;
 }
@@ -40,8 +41,9 @@ void Push(Stack * S, infotype X){
 /* F.S. X menjadi TOP yang baru,TOP bertambah 1 */
 
 /* ************ Menghapus sebuah elemen Stack ************ */
-void Pop(Stack * S, infotype* X){
-    *X = InfoTop (*S);
+void Pop(Stack *S, infotype *X)
+{
+    *X = InfoTop(*S);
     Top(*S)--;
 }
 /* Menghapus X dari Stack S. */

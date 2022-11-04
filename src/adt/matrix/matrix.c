@@ -1,7 +1,7 @@
 /* ********** Definisi TYPE Matrix dengan Index dan elemen integer ********** */
 
-#include "boolean.h"
-#include "matrix.h"
+#include "../boolean/boolean.h"
+#include "../matrix/matrix.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>

@@ -6,7 +6,7 @@
 #ifndef LISTSTATIK_H
 #define LISTSTATIK_H
 
-#include "boolean.h"
+#include "../boolean/boolean.h"
 
 /*  Kamus Umum */
 #define CAPACITY 100
@@ -19,17 +19,18 @@
 /* Nilai elemen tak terdefinisi*/
 
 /* Definisi elemen dan koleksi objek */
-typedef int ElType;  /* type elemen List */
+typedef int ElType; /* type elemen List */
 typedef int IdxType;
-typedef struct {
+typedef struct
+{
    ElType contents[CAPACITY]; /* memori tempat penyimpan elemen (container) */
 } ListStatik;
 /* Indeks yang digunakan [0..CAPACITY-1] */
 /* Jika l adalah ListStatik, cara deklarasi dan akses: */
 /* Deklarasi : l : ListStatik */
-/* Maka cara akses: 
+/* Maka cara akses:
    ELMT(l,i) untuk mengakses elemen ke-i */
-/* Definisi : 
+/* Definisi :
    List kosong: semua elemen bernilai MARK
    Definisi elemen pertama: ELMT(l,i) dengan i=0 */
 
@@ -47,7 +48,7 @@ void CreateListStatik(ListStatik *l);
 /* *** Banyaknya elemen *** */
 int listLength(ListStatik l);
 /* Mengirimkan banyaknya elemen efektif List */
-/* Mengirimkan nol jika List kosong */  
+/* Mengirimkan nol jika List kosong */
 
 /* *** Selektor INDEKS *** */
 IdxType getFirstIdx(ListStatik l);
@@ -82,12 +83,12 @@ void readList(ListStatik *l);
 /* 1. Baca banyaknya elemen diakhiri enter, misalnya n */
 /*    Pembacaan diulangi sampai didapat n yang benar yaitu 0 <= n <= CAPACITY */
 /*    Jika n tidak valid, tidak diberikan pesan kesalahan */
-/* 2. Jika 0 < n <= CAPACITY; Lakukan n kali: 
+/* 2. Jika 0 < n <= CAPACITY; Lakukan n kali:
           Baca elemen mulai dari indeks 0 satu per satu diakhiri enter */
 /*    Jika n = 0; hanya terbentuk List kosong */
 void printList(ListStatik l);
-/* Proses : Menuliskan isi List dengan traversal, List ditulis di antara kurung 
-   siku; antara dua elemen dipisahkan dengan separator "koma", tanpa tambahan 
+/* Proses : Menuliskan isi List dengan traversal, List ditulis di antara kurung
+   siku; antara dua elemen dipisahkan dengan separator "koma", tanpa tambahan
    karakter di depan, di tengah, atau di belakang, termasuk spasi dan enter */
 /* I.S. l boleh kosong */
 /* F.S. Jika l tidak kosong: [e1,e2,...,en] */
@@ -98,15 +99,15 @@ void printList(ListStatik l);
 /* *** Aritmatika List : Penjumlahan, pengurangan, perkalian, ... *** */
 ListStatik plusMinusList(ListStatik l1, ListStatik l2, boolean plus);
 /* Prekondisi : l1 dan l2 berukuran sama dan tidak kosong */
-/* Jika plus = true, mengirimkan  l1+l2, yaitu setiap elemen l1 dan l2 pada 
+/* Jika plus = true, mengirimkan  l1+l2, yaitu setiap elemen l1 dan l2 pada
        indeks yang sama dijumlahkan */
-/* Jika plus = false, mengirimkan l1-l2, yaitu setiap elemen l1 dikurangi 
+/* Jika plus = false, mengirimkan l1-l2, yaitu setiap elemen l1 dikurangi
        elemen l2 pada indeks yang sama */
 
 /* ********** OPERATOR RELASIONAL ********** */
 /* *** Operasi pembandingan List: *** */
 boolean isListEqual(ListStatik l1, ListStatik l2);
-/* Mengirimkan true jika l1 sama dengan l2 yaitu jika ukuran l1 = l2 dan semua 
+/* Mengirimkan true jika l1 sama dengan l2 yaitu jika ukuran l1 = l2 dan semua
    elemennya sama */
 
 /* ********** SEARCHING ********** */

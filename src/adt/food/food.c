@@ -5,12 +5,13 @@
 /* ********* AKSES (Selektor) ********* */
 /* Jika e adalah infotype dan Q adalah PrioQueueTime, maka akses elemen : */
 
-void Createinventory (FoodList *I){
+void Createinventory(FoodList *I)
+{
     MakeEmpty(&I, INVENTORY_CAP);
 }
 
-
-void AddFood (FoodList *f, infotype I){
+void AddFood(FoodList *f, infotype I)
+{
     Enqueue(&f, I);
 }
 
@@ -36,9 +37,10 @@ void AddFood (FoodList *f, infotype I){
     NAME((*L).buffer[4])  = "Senter Pengecil";
     PRICE((*L).buffer[4]) = 800;
 }*/
-int main(){
+int main()
+{
     FoodList I;
     Createinventory(&I);
-    printf("%d",isInventoryEmpty(I));
+    printf("%d", isInventoryEmpty(I));
     return 0;
 }
