@@ -12,16 +12,13 @@
 #define INVENTORY_CAP 100
 #define IDX_UNDEF -999
 
-typedef struct{
-    int id;
-    char* name[50];
-    TIME Time;
-    char act;
-    TIME duration;
-} Food;
+typedef struct {
+    int time;  /* [1..100], waktu dengan nilai 1..100 (1 adalah waktu adalah terendah) */
+    char* info[50];  /* elemen karakter */
+} infotype;
 
 typedef struct{
-    Food buffer[INVENTORY_CAP];
+    infotype * I;   /* tabel penyimpan elemen */
 }FoodList;
 
 #define ID(f) (f).id
@@ -37,7 +34,7 @@ void Createinventory (FoodList *f);
 boolean isInventoryEmpty (FoodList f);
 /* Mengirim true jika inventory kosong */
 
-void AddFood (FoodList *f, infotype id);
+void AddFood (FoodList *f, infotype x);
 /* I.S. f terdefinisi */
 /* F.S. food ditambahkan ke inventory */
 
