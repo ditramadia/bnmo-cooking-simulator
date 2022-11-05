@@ -7,6 +7,7 @@
 #define LISTSTATIK_H
 
 #include "../boolean/boolean.h"
+#include "../tree/tree.h"
 
 /*  Kamus Umum */
 #define CAPACITY 100
@@ -23,7 +24,7 @@ typedef int ElType; /* type elemen List */
 typedef int IdxType;
 typedef struct
 {
-   ElType contents[CAPACITY]; /* memori tempat penyimpan elemen (container) */
+   List contents[CAPACITY]; /* memori tempat penyimpan elemen (container) */
 } ListStatik;
 /* Indeks yang digunakan [0..CAPACITY-1] */
 /* Jika l adalah ListStatik, cara deklarasi dan akses: */
