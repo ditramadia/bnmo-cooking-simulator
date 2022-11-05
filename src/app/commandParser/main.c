@@ -4,7 +4,7 @@
 #include "../../adt/liststatik/liststatik.c"
 #include "../../adt/string/string.c"
 
-int main()
+int command()
 {
     // Commands
     /// Simulator Movement
@@ -46,4 +46,6 @@ int main()
             isCommandValid = 0;
         }
     }
+
+    return 0;
 }

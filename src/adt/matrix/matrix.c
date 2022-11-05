@@ -1,16 +1,8 @@
-/* ********** Definisi TYPE Matrix dengan Index dan elemen integer ********** */
-
 #include "../boolean/boolean.h"
 #include "../matrix/matrix.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
-
-/* Ukuran maksimum baris dan kolom */
-
-/* rowEff >= 1 dan colEff >= 1 */
-/* Indeks matriks yang digunakan: [0..ROW_CAP-1][0..COL_CAP-1] */
-/* Memori matriks yang dipakai selalu di "ujung kiri atas" */
 
 /* ********** DEFINISI PROTOTIPE PRIMITIF ********** */
 /* *** Konstruktor membentuk Matrix *** */
