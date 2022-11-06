@@ -12,6 +12,9 @@ Address newNode(ElType val)
     }
     return p;
 }
+boolean isEmpty(List l){
+    return FIRST(l) == NULL;
+}
 void insertFirst(List *l, ElType val){
     Address p = newNode(val);
     if (p!= NULL){
@@ -20,15 +23,15 @@ void insertFirst(List *l, ElType val){
         FIRST(*l) = p;
     }
 }
-void createTree(List l){
-    FIRST(l) = NULL;
+void createTree(List *l){
+    FIRST(*l) = NULL;
 }
-List *tree(int arr[][],int idxTree){
+List *tree(int arr[][100],int idxTree){
     Address p1 = newNode(arr[idxTree][0]);
-    List l2[100];
+    static List l2[100];
     for(int i=2;i<arr[idxTree][1];i++){
         List l;
-        createTree(l);
+        createTree(&l);
         insertFirst(&l,arr[idxTree][i]);
         Address pNext = l;
         NEXT(pNext) = p1;
