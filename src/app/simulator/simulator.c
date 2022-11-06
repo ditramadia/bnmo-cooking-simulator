@@ -1,17 +1,25 @@
 #include <stdio.h>
 
-#include "../../adt/map/map.c"
 #include "../../adt/string/string.c"
 #include "../../adt/gameState/gameState.c"
+#include "../../adt/stackState/stackState.c"
+#include "../../adt/map/map.c"
+
+// Global State
+MatrixChar map;
+GameState currentGameState;
+StackState stateHistory;
 
 // Command Parser
-void simulatorCommandParser(char query[], GameState *currentGameState, MatrixChar *map)
+void simulatorCommandParser(char query[])
 {
     // Available commands
     char moveNCommand[] = "MOVE NORTH";
     char moveECommand[] = "MOVE EAST";
     char moveSCommand[] = "MOVE SOUTH";
     char moveWCommand[] = "MOVE WEST";
+    char undoCommand[] = "UNDO";
+    char redoCommand[] = "REDO";
     char buyCommand[] = "BUY";
     char chopCommand[] = "CHOP";
     char mixCommand[] = "MIX";
@@ -28,29 +36,43 @@ void simulatorCommandParser(char query[], GameState *currentGameState, MatrixCha
     {
         // Move north
         system("cls");
-        moveNorth(currentGameState, map);
-        simulator(currentGameState, map);
+        moveNorth(&stateHistory, &currentGameState, &map);
+        simulator();
     }
     else if (compareString(simCommand, moveECommand))
     {
         // Move east
         system("cls");
-        moveEast(currentGameState, map);
-        simulator(currentGameState, map);
+        moveEast(&stateHistory, &currentGameState, &map);
+        simulator();
     }
     else if (compareString(simCommand, moveSCommand))
     {
         // Move south
         system("cls");
-        moveSouth(currentGameState, map);
-        simulator(currentGameState, map);
+        moveSouth(&stateHistory, &currentGameState, &map);
+        simulator();
     }
     else if (compareString(simCommand, moveWCommand))
     {
         // Move west
         system("cls");
-        moveWest(currentGameState, map);
-        simulator(currentGameState, map);
+        moveWest(&stateHistory, &currentGameState, &map);
+        simulator();
+    }
+    else if (compareString(simCommand, undoCommand))
+    {
+        // Undo
+        system("cls");
+        undoState(&stateHistory, &currentGameState, &map);
+        simulator();
+    }
+    else if (compareString(simCommand, redoCommand))
+    {
+        // Redo
+        system("cls");
+        redoState(&stateHistory, &currentGameState, &map);
+        simulator();
     }
     else if (compareString(simCommand, buyCommand))
     {
@@ -90,36 +112,34 @@ void simulatorCommandParser(char query[], GameState *currentGameState, MatrixCha
     else
     {
         system("cls");
-        simulator(currentGameState, map);
+        simulator();
     }
 }
 
 int loadSimulator()
 {
     // Load Map
-    MatrixChar map;
     setMap(&map);
 
     // Set up gameState
-    GameState currentGameState;
     setGameState(&currentGameState, map);
+    createStackState(&stateHistory);
+    insertState(&stateHistory, currentGameState);
 
     // Simulator
     renderGameState(currentGameState);
-    printf("\n");
     renderMap(map);
-    simulatorCommandParser("Masukkan perintah", &currentGameState, &map);
+    simulatorCommandParser("Masukkan perintah");
 
     return 0;
 }
 
-int simulator(GameState *currentGameState, MatrixChar *map)
+int simulator()
 {
-    renderGameState(*currentGameState);
-    printf("\n");
-    renderMap(*map);
+    renderGameState(currentGameState);
+    renderMap(map);
 
-    simulatorCommandParser("Masukkan perintah", currentGameState, map);
+    simulatorCommandParser("Masukkan perintah");
 
     return 0;
 }
