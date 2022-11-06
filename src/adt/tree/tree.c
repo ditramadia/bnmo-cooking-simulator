@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include "tree.h"
 #include <stdlib.h>
-#include "../liststatik/liststatik.c"
 
 Address newNode(ElType val)
 {
@@ -13,23 +12,27 @@ Address newNode(ElType val)
     }
     return p;
 }
-void createTree(List l){
-    FIRST(*l) = NULL;
+void insertFirst(List *l, ElType val){
+    Address p = newNode(val);
+    if (p!= NULL){
+        if (!isEmpty(*l)) NEXT(p) = FIRST(*l);
+        else NEXT(p) = NULL;
+        FIRST(*l) = p;
+    }
 }
-ListStatik tree(int arr[][],int idxTree){
+void createTree(List l){
+    FIRST(l) = NULL;
+}
+List *tree(int arr[][],int idxTree){
     Address p1 = newNode(arr[idxTree][0]);
-    ListStatik l1;
-    CreateListStatik(&l1);
+    List l2[100];
     for(int i=2;i<arr[idxTree][1];i++){
-        Address p = newNode(arr[idxTree][i]);
         List l;
         createTree(l);
+        insertFirst(&l,arr[idxTree][i]);
         Address pNext = l;
-        ELMT(l1,i-2) = l;
+        NEXT(pNext) = p1;
+        l2[i-2] = l;
     }
-    return l1;
-}
-int main(){
-    printf("halooo");
-    return 0;
+    return l2;
 }

@@ -5,8 +5,7 @@
 #ifndef TUBES_ALSTRUKDAT_TREE_H
 #define TUBES_ALSTRUKDAT_TREE_H
 
-#include "boolean.h"
-#include "../liststatik/liststatik.h"
+#include "../boolean/boolean.h"
 
 typedef int ElType;
 typedef struct node* Address;
@@ -25,7 +24,8 @@ typedef Address List;
 
 Address newNode(ElType val);
 void createTree(List l);
-ListStatik tree(int arr[][],int idxTree);
+List *tree(int arr[][],int idxTree);
+void insertFirst(List *l, ElType val);
 
 
 
