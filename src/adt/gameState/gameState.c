@@ -1,7 +1,9 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 #include "gameState.h"
 #include "../point/point.c"
+#include "../time/time.c"
 
 // Find sPos
 Point setSimPos(MatrixChar map)
@@ -20,21 +22,35 @@ Point setSimPos(MatrixChar map)
     }
 }
 
+// Set time
+Time setTime(int hour, int minute)
+{
+    Time retTime;
+    createTime(&retTime, hour, minute);
+    return retTime;
+}
+
 // Constructor
 void setGameState(GameState *gs, MatrixChar map)
 {
     // Set sPos
     (*gs).simPos = setSimPos(map);
-    // Set notification
+    // Set time
+    (*gs).time = setTime(5, 0);
 }
 
 // Display
 void renderGameState(GameState gs)
 {
-    printf("DINNER DASH\n");
+    printf("BNMO Cooking Simulator\n");
     printf("\n");
+
     printf("Posisi Anda: (%d,%d)\n", gs.simPos.X, gs.simPos.Y);
-    printf("Waktu: \n");
+
+    printf("Waktu: ");
+    displayTime(gs.time);
+    printf("\n");
+
     printf("Notifikasi: -\n");
     printf("\n");
 }
@@ -54,4 +70,13 @@ void updateMap(GameState gs, MatrixChar *map)
         }
     }
     (*map).buffer[currentPos.Y + 1][currentPos.X + 1] = 'S';
+}
+
+// Update time
+void updateTime(GameState *gs, int hour, int minute)
+{
+    int minutes = timeToMinute((*gs).time);
+    int addedMinutes = (60 * hour) + minute;
+    int totalMinute = minutes + addedMinutes;
+    (*gs).time = minuteToTime(totalMinute);
 }

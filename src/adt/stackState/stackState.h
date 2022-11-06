@@ -1,4 +1,5 @@
 #include "../gameState/gameState.h"
+#include "../arrayChar/arrayChar.h"
 
 #ifndef STACKSTATE_H
 #define STACKSTATE_H
@@ -33,15 +34,24 @@ void undoState(StackState *stackState, GameState *currentGameState, MatrixChar *
 void redoState(StackState *stackState, GameState *currentGameState, MatrixChar *map);
 
 // Move north
-void moveNorth(StackState *stateHistory, GameState *gs, MatrixChar *map);
+void moveNorth(StackState *stateHistory, GameState *gs, MatrixChar *map, int *nMove);
 
 // Move east
-void moveEast(StackState *stateHistory, GameState *gs, MatrixChar *map);
+void moveEast(StackState *stateHistory, GameState *gs, MatrixChar *map, int *nMove);
 
 // Move south
-void moveSouth(StackState *stateHistory, GameState *gs, MatrixChar *map);
+void moveSouth(StackState *stateHistory, GameState *gs, MatrixChar *map, int *nMove);
 
 // Move west
-void moveWest(StackState *stateHistory, GameState *gs, MatrixChar *map);
+void moveWest(StackState *stateHistory, GameState *gs, MatrixChar *map, int *nMove);
+
+// Get Wait Hour
+int getWaitHour(char command[]);
+
+// Get Wait Hour
+int getWaitMinute(char command[]);
+
+// Wait
+void waitTime(StackState *stateHistory, GameState *gs, int hour, int minute);
 
 #endif

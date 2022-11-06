@@ -9,6 +9,7 @@
 MatrixChar map;
 GameState currentGameState;
 StackState stateHistory;
+int nMove;
 
 // Command Parser
 void simulatorCommandParser(char query[])
@@ -20,6 +21,7 @@ void simulatorCommandParser(char query[])
     char moveWCommand[] = "MOVE WEST";
     char undoCommand[] = "UNDO";
     char redoCommand[] = "REDO";
+    char waitCommand[] = "WAIT";
     char buyCommand[] = "BUY";
     char chopCommand[] = "CHOP";
     char mixCommand[] = "MIX";
@@ -36,28 +38,28 @@ void simulatorCommandParser(char query[])
     {
         // Move north
         system("cls");
-        moveNorth(&stateHistory, &currentGameState, &map);
+        moveNorth(&stateHistory, &currentGameState, &map, &nMove);
         simulator();
     }
     else if (compareString(simCommand, moveECommand))
     {
         // Move east
         system("cls");
-        moveEast(&stateHistory, &currentGameState, &map);
+        moveEast(&stateHistory, &currentGameState, &map, &nMove);
         simulator();
     }
     else if (compareString(simCommand, moveSCommand))
     {
         // Move south
         system("cls");
-        moveSouth(&stateHistory, &currentGameState, &map);
+        moveSouth(&stateHistory, &currentGameState, &map, &nMove);
         simulator();
     }
     else if (compareString(simCommand, moveWCommand))
     {
         // Move west
         system("cls");
-        moveWest(&stateHistory, &currentGameState, &map);
+        moveWest(&stateHistory, &currentGameState, &map, &nMove);
         simulator();
     }
     else if (compareString(simCommand, undoCommand))
@@ -72,6 +74,13 @@ void simulatorCommandParser(char query[])
         // Redo
         system("cls");
         redoState(&stateHistory, &currentGameState, &map);
+        simulator();
+    }
+    else if (containFirstWordString(simCommand, waitCommand))
+    {
+        // Wait
+        system("cls");
+        waitTime(&stateHistory, &currentGameState, getWaitHour(simCommand), getWaitMinute(simCommand));
         simulator();
     }
     else if (compareString(simCommand, buyCommand))
@@ -125,6 +134,7 @@ int loadSimulator()
     setGameState(&currentGameState, map);
     createStackState(&stateHistory);
     insertState(&stateHistory, currentGameState);
+    nMove = 0;
 
     // Simulator
     renderGameState(currentGameState);
