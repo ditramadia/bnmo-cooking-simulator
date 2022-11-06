@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "../../../config/config.h"
 
 #include "../wordmachine/wordmachine.c"
 #include "../matrixChar/matrixChar.c"
@@ -21,10 +22,10 @@ void setMapRow(MatrixChar *map, char rowContent[], int row)
 
 void setMapDimension(int *mapRow, int *mapCol)
 {
-    char directory[] = "../../../config/map.txt";
+    // char directory[] = "../../../config/map.txt";
     char rowStr[NMAX], colStr[NMAX];
 
-    startWord(directory);
+    startWord(mapConfig);
     wordToStr(currentWord, rowStr);
     advWord();
     wordToStr(currentWord, colStr);
@@ -35,8 +36,8 @@ void setMapDimension(int *mapRow, int *mapCol)
 
 void setMapMatrix(MatrixChar *map)
 {
-    char directory[] = "../../../config/map.txt";
-    startWord(directory);
+    // char directory[] = "../../../config/map.txt";
+    startWord(mapConfig);
     advWord();
 
     // Set top border

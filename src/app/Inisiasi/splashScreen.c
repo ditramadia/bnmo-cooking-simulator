@@ -1,15 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "../../../config/config.h"
 
 #include "../simulator/simulator.c"
 
 // Render splash screen
 void display_ascii()
 {
-  char *filename;
   FILE *fptr;
-  filename = "../../../config/welcome.txt";
-  fptr = fopen(filename, "r");
+  fptr = fopen(splashScreenConfig, "r");
 
   system("cls");
   char splash[128];
@@ -39,7 +38,7 @@ void mainMenuCommandParser(char query[])
     {
       // Call simulator app
       system("cls");
-      simulator();
+      loadSimulator();
       isMenuCommandValid = 1;
     }
     else if (compareString(command, exitCommand))
@@ -55,7 +54,7 @@ void mainMenuCommandParser(char query[])
 }
 
 // Main App
-int main()
+int mainMenu()
 {
   // Render splash screen
   display_ascii();
