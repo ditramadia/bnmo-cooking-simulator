@@ -80,7 +80,7 @@ void simulatorCommandParser(char query[])
     }
 }
 
-int main()
+int simulator()
 {
     // Loading Map
     MatrixChar map;
