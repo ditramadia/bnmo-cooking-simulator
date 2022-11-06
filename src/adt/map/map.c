@@ -1,88 +1,88 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "../wordmachine/wordmachine.c"
 #include "../matrixChar/matrixChar.c"
-#include "../point/point.c"
 
-// KONSTRUKTOR
-void setMap(Matrix *map)
+void setMapRow(MatrixChar *map, char rowContent[], int row)
 {
-    // 10 10
-    // S#########
-    // ####T##X##
-    // #M#####X##
-    // #######X##
-    // ####XXXX##
-    // #X########
-    // #X######C#
-    // #XXX##F###
-    // ##########
-    // ######B###
-    int height = 10 + 2, width = 10 + 2;
-
-    // hard coded map
-    createMatrix(height, width, map);
-    for (int i = 0; i < height; i++)
+    for (int j = 0; j < (*map).colEff; j++)
     {
-        for (int j = 0; j < width; j++)
+        if (j == 0 || j == (*map).colEff - 1)
         {
-            // Border
-            if (i == 0 || i == (height - 1) || j == 0 || j == (width - 1))
-            {
-                setMatrixElmt(i, j, '*', map);
-            }
-            // Sim
-            else if (i == 1 && j == 1)
-            {
-                setMatrixElmt(i, j, 'S', map);
-            }
-            // Telephone Area
-            else if (i == 2 && j == 5)
-            {
-                setMatrixElmt(i, j, 'T', map);
-            }
-            // Mixing Area
-            else if (i == 3 && j == 2)
-            {
-                setMatrixElmt(i, j, 'M', map);
-            }
-            // Chopping Area
-            else if (i == 7 && j == 9)
-            {
-                setMatrixElmt(i, j, 'C', map);
-            }
-            // Frying Area
-            else if (i == 8 && j == 7)
-            {
-                setMatrixElmt(i, j, 'F', map);
-            }
-            // Boiling Area
-            else if (i == 10 && j == 7)
-            {
-                setMatrixElmt(i, j, 'B', map);
-            }
-            // Wall
-            else if ((i == 2 && j == 8) || (i == 3 && j == 8) || (i == 4 && j == 8) || (i == 5 && j == 8) || (i == 5 && j == 7) || (i == 5 && j == 6) || (i == 5 && j == 5) || (i == 6 && j == 2) || (i == 7 && j == 2) || (i == 8 && j == 2) || (i == 8 && j == 3) || (i == 8 && j == 4))
-            {
-                setMatrixElmt(i, j, 'X', map);
-            }
-            else
-            {
-                setMatrixElmt(i, j, ' ', map);
-            }
+            (*map).buffer[row][j] = '*';
+        }
+        else
+        {
+            (*map).buffer[row][j] = rowContent[j - 1];
         }
     }
 }
 
-// DISPLAY
-void renderMap(Matrix map)
+void setMapDimension(int *mapRow, int *mapCol)
 {
-    for (int i = 0; i < ROW_EFF(map); i++)
+    char directory[] = "../../../config/map.txt";
+    char rowStr[NMAX], colStr[NMAX];
+
+    startWord(directory);
+    wordToStr(currentWord, rowStr);
+    advWord();
+    wordToStr(currentWord, colStr);
+
+    *mapRow = atoi(rowStr) + 2;
+    *mapCol = atoi(colStr) + 2;
+}
+
+void setMapMatrix(MatrixChar *map)
+{
+    char directory[] = "../../../config/map.txt";
+    startWord(directory);
+    advWord();
+
+    // Set top border
+    for (int j = 0; j < (*map).rowEff; j++)
     {
-        for (int j = 0; j < COL_EFF(map); j++)
+        (*map).buffer[0][j] = '*';
+    }
+
+    // Set bottom border
+    for (int j = 0; j < (*map).rowEff; j++)
+    {
+        (*map).buffer[(*map).rowEff - 1][j] = '*';
+    }
+
+    // Set map content
+    for (int i = 1; i < (*map).rowEff - 1; i++)
+    {
+        advWord();
+        char temp[NMAX];
+        wordToStr(currentWord, temp);
+        setMapRow(map, temp, i);
+    }
+}
+
+void setMap(MatrixChar *map)
+{
+    int mapRow, mapCol;
+    setMapDimension(&mapRow, &mapCol);
+    createMatrix(map, mapRow, mapCol);
+    setMapMatrix(map);
+}
+
+void renderMap(MatrixChar m)
+{
+    for (int i = 0; i < m.rowEff; i++)
+    {
+        for (int j = 0; j < m.colEff; j++)
         {
-            printf("%c", getMatrixElmt(i, j, map));
-            printf(" ");
+            if (m.buffer[i][j] == '#')
+            {
+                printf("  ", m.buffer[i][j]);
+            }
+            else
+            {
+                printf("%c ", m.buffer[i][j]);
+            }
         }
         printf("\n");
     }

@@ -1,42 +1,39 @@
-/* File: charmachine.c */
-/* Implementasi Mesin Karakter */
-
-#include "charmachine.h"
 #include <stdio.h>
 
-char currentChar;
-boolean EOP;
+#include "charmachine.h"
 
-static FILE *pita;
+// Definition
+char currentChar;
+int EOP;
+static FILE *file;
 static int retval;
 
-void START()
+// Start
+void startChar(char *directory)
 {
-       /* Mesin siap dioperasikan. Pita disiapkan untuk dibaca.
-          Karakter pertama yang ada pada pita posisinya adalah pada jendela.
-          I.S. : sembarang
-          F.S. : currentChar adalah karakter pertama pada pita. Jika currentChar != MARK maka EOP akan padam (false).
-                 Jika currentChar = MARK maka EOP akan menyala (true) */
-
-       /* Algoritma */
-       pita = stdin;
-       ADV();
+    file = fopen(directory, "r");
+    adv();
 }
 
-void ADV()
+// Advance
+void adv()
 {
-       /* Pita dimajukan satu karakter.
-          I.S. : Karakter pada jendela =
-                 currentChar, currentChar != MARK
-          F.S. : currentChar adalah karakter berikutnya dari currentChar yang lama,
-                 currentChar mungkin = MARK.
-                       Jika  currentChar = MARK maka EOP akan menyala (true) */
+    retval = fscanf(file, "%c", &currentChar);
+    EOP = (retval == CHARMARK);
+    if (EOP)
+    {
+        fclose(file);
+    }
+}
 
-       /* Algoritma */
-       retval = fscanf(pita, "%c", &currentChar);
-       EOP = (currentChar == MARK);
-       if (EOP)
-       {
-              fclose(pita);
-       }
+// Get Current Character
+char getCC()
+{
+    return currentChar;
+}
+
+// End of File
+int isEOP()
+{
+    return EOP;
 }

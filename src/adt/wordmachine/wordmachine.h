@@ -1,54 +1,39 @@
-/* File: wordmachine.h */
-/* Definisi Word Machine: Model Akuisisi Versi I */
+#include "../charmachine/charmachine.h"
 
-#ifndef __MESINKATA_H__
-#define __MESINKATA_H__
+#ifndef WORDMACHINE_H
+#define WORDMACHINE_H
 
-#include "boolean.h"
-#include "charmachine.h"
-
-#define NMax 50
+// Definition
+#define NMAX 50
 #define BLANK ' '
 
+// Declaration
 typedef struct
 {
-   char TabWord[NMax]; /* container penyimpan kata, indeks yang dipakai [0..NMax-1] */
-   int Length;
+    char buffer[NMAX];
+    int length;
 } Word;
 
-/* State Mesin Word */
-extern boolean EndWord;
+// State
+extern int endWord;
 extern Word currentWord;
 
-void IgnoreBlanks();
-/* Mengabaikan satu atau beberapa BLANK
-   I.S. : currentChar sembarang
-   F.S. : currentChar ≠ BLANK atau currentChar = MARK */
+// Ignore Blanks
+void ignoreBlanks();
 
-void STARTWORD();
-/* I.S. : currentChar sembarang
-   F.S. : EndWord = true, dan currentChar = MARK;
-          atau EndWord = false, currentWord adalah kata yang sudah diakuisisi,
-          currentChar karakter pertama sesudah karakter terakhir kata */
+// Start Word
+void startWord();
 
-void ADVWORD();
-/* I.S. : currentChar adalah karakter pertama kata yang akan diakuisisi
-   F.S. : currentWord adalah kata terakhir yang sudah diakuisisi,
-          currentChar adalah karakter pertama dari kata berikutnya, mungkin MARK
-          Jika currentChar = MARK, EndWord = true.
-   Proses : Akuisisi kata menggunakan procedure SalinWord */
+// Advance Word
+void advWord();
 
-void CopyWord();
-/* Mengakuisisi kata, menyimpan dalam currentWord
-   I.S. : currentChar adalah karakter pertama dari kata
-   F.S. : currentWord berisi kata yang sudah diakuisisi;
-          currentChar = BLANK atau currentChar = MARK;
-          currentChar adalah karakter sesudah karakter terakhir yang diakuisisi.
-          Jika panjang kata melebihi NMax, maka sisa kata "dipotong" */
-void displayWord(Word W);
+// Set Word
+void setWord();
 
-void wordToInteger(int *X);
+// End of Word
+int isEndWord();
 
-void wordToString(char y[currentWord.Length]);
+// Convert Word to String
+void wordToStr(Word w, char *str);
 
 #endif

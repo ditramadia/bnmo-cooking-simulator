@@ -1,23 +1,29 @@
 #include <stdio.h>
-#include <stdlib.h>
 
 #include "matrixChar.h"
 
-// Konstruktor
-void createMatrix(int nRows, int nCols, Matrix *m)
+// Constructor
+void createMatrix(MatrixChar *m, int nRows, int nCols)
 {
-    ROW_EFF(*m) = nRows;
-    COL_EFF(*m) = nCols;
+    (*m).rowEff = nRows;
+    (*m).colEff = nCols;
+    for (int i = 0; i < nRows; i++)
+    {
+        for (int j = 0; j < nCols; j++)
+        {
+            (*m).buffer[i][j] = MATRIXMARK;
+        }
+    }
 }
 
-// Selektor
-/// Setter
-void setMatrixElmt(int i, int j, char val, Matrix *m)
+void displayMatrix(MatrixChar m)
 {
-    ELMT(*m, i, j) = val;
-}
-/// Getter
-ElType getMatrixElmt(int i, int j, Matrix m)
-{
-    return ELMT(m, i, j);
+    for (int i = 0; i < m.rowEff; i++)
+    {
+        for (int j = 0; j < m.colEff; j++)
+        {
+            printf("%c ", m.buffer[i][j]);
+        }
+        printf("\n");
+    }
 }

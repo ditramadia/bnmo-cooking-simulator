@@ -1,5 +1,8 @@
 {
   "files.associations": {
-    "stdio.h": "c"
+    "stdio.h": "c",
+    "boolean.h": "c",
+    "wordmachine.h": "c",
+    "charmachine.h": "c"
   }
 }
