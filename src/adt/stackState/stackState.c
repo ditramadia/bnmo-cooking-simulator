@@ -74,9 +74,12 @@ void moveNorth(StackState *stateHistory, GameState *gs, MatrixChar *map, int *nM
         (*map).buffer[nextPos.Y + 1][nextPos.X + 1] = 'S';
         (*map).buffer[currentPos.Y + 1][currentPos.X + 1] = '#';
 
-        // Update game state
+        // Update game state SimPos
         (*gs).simPos.X = nextPos.X;
         (*gs).simPos.Y = nextPos.Y;
+
+        // Update game state action
+        updateAvailableAction(gs, *map);
 
         // Update time
         if (*nMove % 3 == 0)
@@ -103,9 +106,12 @@ void moveEast(StackState *stateHistory, GameState *gs, MatrixChar *map, int *nMo
         (*map).buffer[nextPos.Y + 1][nextPos.X + 1] = 'S';
         (*map).buffer[currentPos.Y + 1][currentPos.X + 1] = '#';
 
-        // Update game state
+        // Update game state simPos
         (*gs).simPos.X = nextPos.X;
         (*gs).simPos.Y = nextPos.Y;
+
+        // Update game state action
+        updateAvailableAction(gs, *map);
 
         // Update time
         if (*nMove % 3 == 0)
@@ -132,9 +138,12 @@ void moveSouth(StackState *stateHistory, GameState *gs, MatrixChar *map, int *nM
         (*map).buffer[nextPos.Y + 1][nextPos.X + 1] = 'S';
         (*map).buffer[currentPos.Y + 1][currentPos.X + 1] = '#';
 
-        // Update game state
+        // Update game state simPos
         (*gs).simPos.X = nextPos.X;
         (*gs).simPos.Y = nextPos.Y;
+
+        // Update game state action
+        updateAvailableAction(gs, *map);
 
         // Update time
         if (*nMove % 3 == 0)
@@ -161,9 +170,12 @@ void moveWest(StackState *stateHistory, GameState *gs, MatrixChar *map, int *nMo
         (*map).buffer[nextPos.Y + 1][nextPos.X + 1] = 'S';
         (*map).buffer[currentPos.Y + 1][currentPos.X + 1] = '#';
 
-        // Update game state
+        // Update game state simPos
         (*gs).simPos.X = nextPos.X;
         (*gs).simPos.Y = nextPos.Y;
+
+        // Update game state action
+        updateAvailableAction(gs, *map);
 
         // Update time
         if (*nMove % 3 == 0)

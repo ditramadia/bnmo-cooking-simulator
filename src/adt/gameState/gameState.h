@@ -10,6 +10,11 @@ typedef struct
 {
     Point simPos;
     Time time;
+    int isAbleBuy;
+    int isAbleMix;
+    int isAbleChop;
+    int isAbleFry;
+    int isAbleBoil
 } GameState;
 
 // State
@@ -32,5 +37,8 @@ void updateMap(GameState gs, MatrixChar *map);
 
 // Update time
 void updateTime(GameState *gs, int hour, int minute);
+
+// Update available action
+void updateAvailableAction(GameState *gs, MatrixChar map);
 
 #endif
