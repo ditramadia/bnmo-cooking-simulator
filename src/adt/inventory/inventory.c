@@ -1,4 +1,4 @@
-#include "food.h"
+#include "inventory.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -10,7 +10,7 @@ void Createinventory(FoodList *I)
     MakeEmpty(&I, INVENTORY_CAP);
 }
 
-void AddFood(FoodList *f, infotype I)
+void AddFood(FoodList *f, Food I)
 {
     Enqueue(&f, I);
 }
@@ -37,8 +37,7 @@ void AddFood(FoodList *f, infotype I)
     NAME((*L).buffer[4])  = "Senter Pengecil";
     PRICE((*L).buffer[4]) = 800;
 }*/
-int main()
-{
+int main(){
     FoodList I;
     Createinventory(&I);
     printf("%d", isInventoryEmpty(I));

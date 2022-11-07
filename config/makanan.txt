@@ -1,0 +1,30 @@
+1
+Ayam Mentah
+1 0 0
+0 0 15
+Buy
+2
+Ayam Potong
+0 2 0
+0 0 0
+Chop
+3
+Tepung
+0 1 0
+0 0 30
+Buy
+4
+Minyak Goreng
+0 1 30
+0 1 0
+Buy
+5
+Ayam Tepung
+0 0 30
+0 0 0
+Mix
+6
+Ayam Goreng
+0 0 15
+0 0 0
+Fry
