@@ -1,7 +1,7 @@
-#include "boolean.h"
-#include "charmachine.c"
+#include "../charmachineresep/charmachine.c"
 #include "wordmachine.h"
 #include <stdio.h>
+#include "../boolean/boolean.h"
 
 /* State Mesin Word */
 boolean EndWord;
