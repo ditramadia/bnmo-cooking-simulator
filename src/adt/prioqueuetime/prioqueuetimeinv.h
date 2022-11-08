@@ -8,6 +8,7 @@
 
 #include "../boolean/boolean.h"
 #include "../food/food.h"
+#include "../time/time.h"
 
 #define Nil -1
 /* Konstanta untuk mendefinisikan address tak terdefinisi */
@@ -23,7 +24,7 @@ typedef int address; /* indeks tabel */
 /* Versi I : tabel dinamik, Head dan Tail eksplisit, ukuran disimpan */
 typedef struct
 {
-    infotype *T;  /* tabel penyimpan elemen */
+    Food *T; /* tabel penyimpan elemen */
     address HEAD; /* alamat penghapusan */
     address TAIL; /* alamat penambahan */
     int MaxEl;    /* Max elemen queue */
@@ -71,7 +72,7 @@ void Enqueue(PrioQueueTime *Q, Food X);
 /* I.S. Q mungkin kosong, tabel penampung elemen Q TIDAK penuh */
 /* F.S. X disisipkan pada posisi yang tepat sesuai dengan prioritas,
         TAIL "maju" dengan mekanisme circular buffer; */
-void Dequeue(PrioQueueTime *Q, infotype *X);
+void Dequeue(PrioQueueTime *Q, Food *X);
 /* Proses: Menghapus X pada Q dengan aturan FIFO */
 /* I.S. Q tidak mungkin kosong */
 /* F.S. X = nilai elemen HEAD pd I.S., HEAD "maju" dengan mekanisme circular buffer;

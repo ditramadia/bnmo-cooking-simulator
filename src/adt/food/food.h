@@ -12,5 +12,13 @@ typedef struct {
     char *act;
 } Food;
 
+#define Id(f) (f).id
+#define Name(f) (f).name
+#define ExpTime(f) (f).exptime
+#define DelTime(f) (f).deltime
+#define Act(f) (f).act
+
 void displayFood(Food food);
+
+
 #endif

@@ -3,12 +3,12 @@
 /* Model Implementasi Versi III dengan circular buffer */
 /* Elemen queue terurut membesar berdasarkan elemen time */
 
-#include "prioqueuetime.h"
+#include "prioqueuetimeinv.h"
 #include "../boolean/boolean.h"
 #include <stdio.h>
 
 /* ********* AKSES (Selektor) ********* */
-/* Jika e adalah infotype dan Q adalah PrioQueueTime, maka akses elemen : */
+/* Jika e adalah Food dan Q adalah PrioQueueTime, maka akses elemen : */
 #define Time(e) (e).time
 #define Info(e) (e).info
 #define Head(Q) (Q).HEAD
@@ -60,7 +60,7 @@ void MakeEmpty(PrioQueueTime *Q, int Max)
 /* atau : jika alokasi gagal, Q kosong dg MaxEl=0 */
 /* Proses : Melakukan alokasi, membuat sebuah Q kosong */
 {
-    (*Q).T = (infotype *)malloc((Max) * sizeof(infotype));
+    (*Q).T = (Food *)malloc((Max) * sizeof(Food));
     if ((*Q).T == NULL)
     {
         MaxEl(*Q) = 0;
@@ -85,7 +85,7 @@ void DeAlokasi(PrioQueueTime *Q)
     free((*Q).T);
 }
 /* *** Primitif Add/Delete *** */
-void Enqueue(PrioQueueTime *Q, infotype X)
+void Enqueue(PrioQueueTime *Q, Food X)
 /* Proses: Menambahkan X pada Q dengan aturan priority queue, terurut membesar berdasarkan time */
 /* I.S. Q mungkin kosong, tabel penampung elemen Q TIDAK penuh */
 /* F.S. X disisipkan pada posisi yang tepat sesuai dengan prioritas,
@@ -94,8 +94,11 @@ void Enqueue(PrioQueueTime *Q, infotype X)
     boolean found;
     int idx;
     int i, j;
-    infotype temp;
-
+    Food temp;
+    int N = NBElmt(*Q);
+    for (int k =0; k<N;k++){
+        timeToMinute((*Q).T[k].exptime);
+    }
     if (IsEmpty(*Q))
     {
         Head(*Q) = 0;
@@ -108,7 +111,7 @@ void Enqueue(PrioQueueTime *Q, infotype X)
         InfoTail(*Q) = X;
         i = Tail(*Q);
         j = i == 0 ? MaxEl(*Q) - 1 : i - 1;
-        while (i != Head(*Q) && Time(Elmt(*Q, i)) < (Time(Elmt(*Q, j))))
+        while (i != Head(*Q) && minute(Elmt(*Q, i)) < (minute(Elmt(*Q, j))))
         {
             temp = Elmt(*Q, i);
             Elmt(*Q, i) = Elmt(*Q, j);
@@ -119,7 +122,7 @@ void Enqueue(PrioQueueTime *Q, infotype X)
     }
 }
 
-void Dequeue(PrioQueueTime *Q, infotype *X)
+void Dequeue(PrioQueueTime *Q, Food *X)
 /* Proses: Menghapus X pada Q dengan aturan FIFO */
 /* I.S. Q tidak mungkin kosong */
 /* F.S. X = nilai elemen HEAD pd I.S., HEAD "maju" dengan mekanisme circular buffer;
@@ -149,7 +152,7 @@ void PrintPrioQueueTime(PrioQueueTime Q)
 #
 */
 {
-    infotype val;
+    Food val;
     PrioQueueTime temp;
     temp = Q;
     if (!IsEmpty(Q))
@@ -157,7 +160,7 @@ void PrintPrioQueueTime(PrioQueueTime Q)
         while (!IsEmpty(temp))
         {
             Dequeue(&temp, &val);
-            printf("%d %c\n", Time(val), Info(val));
+            printf("%d %c\n", ExpTime(val), Name(val));
         }
     }
     printf("#\n");

@@ -1,10 +1,10 @@
 #include "../boolean/boolean.h"
 #include "../food/food.h"
-#include "prioqueuetimeinv.h"
+#include "prioqueuetimedel.h"
 #include <stdio.h>
 
 /* ********* AKSES (Selektor) ********* */
-/* Jika e adalah infotype dan Q adalah PrioQueueTime, maka akses elemen : */
+/* Jika e adalah infotypePrioQueueTimeDel dan Q adalah PrioQueueTime, maka akses elemen : */
 #define Time(e) (e).time
 #define Info(e) (e).info
 #define Head(Q) (Q).HEAD
@@ -24,7 +24,7 @@ void PrintPrioQueueTime(PrioQueueTime Q)
 #
 */
 {
-    infotype val;
+    infotypePrioQueueTimeDel val;
     PrioQueueTime temp;
     temp = Q;
     if (!IsEmpty(Q))
@@ -41,7 +41,7 @@ void PrintPrioQueueTime(PrioQueueTime Q)
 
 void displayDelivery(PrioQueueTime Q)
 {
-    infotype val;
+    infotypePrioQueueTimeDel val;
     PrioQueueTime temp;
     temp = Q;
     int i = 1;
@@ -52,7 +52,7 @@ void displayDelivery(PrioQueueTime Q)
     else
     {
         printf("List Makanan di Perjalanan\n");
-        printf("(Nama - Waktu Sisa Delivery)\n")
+        printf("(Nama - Waktu Sisa Delivery)\n");
         if (!IsEmpty(Q))
         {
             while (!IsEmpty(temp))

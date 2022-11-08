@@ -10,7 +10,7 @@ void Createinventory(FoodList *I)
     MakeEmpty(&I, INVENTORY_CAP);
 }
 
-void AddFood(FoodList *f, Food I)
+void AddInventory(FoodList *f, Food I)
 {
     Enqueue(&f, I);
 }
