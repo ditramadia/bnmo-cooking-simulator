@@ -23,10 +23,10 @@ Point setSimPos(MatrixChar map)
 }
 
 // Set time
-Time setTime(int hour, int minute)
+Time setTime(int day, int hour, int minute)
 {
     Time retTime;
-    createTime(&retTime, hour, minute);
+    createTime(&retTime, day, hour, minute);
     return retTime;
 }
 
@@ -36,7 +36,7 @@ void setGameState(GameState *gs, MatrixChar map)
     // Set sPos
     (*gs).simPos = setSimPos(map);
     // Set time
-    (*gs).time = setTime(5, 0);
+    (*gs).time = setTime(0, 5, 0);
     // Set action
     updateAvailableAction(gs, map);
 }

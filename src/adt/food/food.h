@@ -6,10 +6,10 @@
 
 typedef struct {
     int id;
-    char name[50];
+    char *name;
     Time exptime;
     Time deltime;
-    char act[10];
+    char *act;
 } Food;
 
 void displayFood(Food food);

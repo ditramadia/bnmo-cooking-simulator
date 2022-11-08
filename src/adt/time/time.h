@@ -4,12 +4,13 @@
 // Declaration
 typedef struct
 {
+   int day;
    int hour;
    int minute;
 } Time;
 
 // Constructor
-void createTime(Time *time, int hour, int minute);
+void createTime(Time *time, int day, int hour, int minute);
 
 // Display
 void displayTime(Time time);
@@ -18,6 +19,6 @@ void displayTime(Time time);
 int timeToMinute(Time time);
 
 // Convert seconds to Time
-Time secondToTime(int seconds);
+Time minuteToTime(int seconds);
 
 #endif
