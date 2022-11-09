@@ -1,5 +1,7 @@
 #include "../boolean/boolean.h"
 #include "../food/food.h"
+#include "../time/time.h"
+
 
 #ifndef __PRIOQUEUETIMEDEL_H__
 #define __PRIOQUEUETIMEDEL_H__
@@ -10,16 +12,18 @@
 /* Konstanta untuk mendefinisikan address tak terdefinisi */
 
 /* *** Definisi elemen dan address *** */
-typedef struct {
-    Food F;
-    int Time;
-} infotypePrioQueueTimeDel;
-/* infotypePrioQueueTimeDel adalah type elemen tabel */
-
-typedef int addressPrioQueueTimeDel;   /* indeks tabel */
+typedef int address; /* indeks tabel */
+/* Contoh deklarasi variabel bertype PrioQueueTime : */
+/* Versi I : tabel dinamik, Head dan Tail eksplisit, ukuran disimpan */
+typedef struct
+{
+    Food *T; /* tabel penyimpan elemen */
+    address HEAD; /* alamat penghapusan */
+    address TAIL; /* alamat penambahan */
+    int MaxEl;    /* Max elemen queue */
+} PrioQueueTime;  /* indeks tabel */
 /* Indeks yang digunakan [1..MaxElPrioQueueTimeDel] */
 /* Indeks 0 tidak dipakai */
-/* Jika T adalah PrioQueueTimeDel, cara deklarasi dan akses: */
 /* Deklarasi : T : PrioQueueTimeDel */
 /* Maka cara akses:
    T.NBElmt  untuk mengetahui banyaknya elemen

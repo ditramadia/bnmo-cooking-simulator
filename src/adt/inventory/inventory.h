@@ -34,4 +34,6 @@ void AddInventory(FoodList *f, Food I);
 /* I.S. f terdefinisi */
 /* F.S. food ditambahkan ke inventory */
 
+void DisplayInventory();
+
 #endif

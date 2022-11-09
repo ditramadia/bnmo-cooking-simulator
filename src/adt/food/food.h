@@ -18,6 +18,12 @@ typedef struct {
 #define DelTime(f) (f).deltime
 #define Act(f) (f).act
 
+void addID();
+void addName();
+void addExpTime();
+void addDelTime();
+void addAct();
+void addList();
 void displayFood(Food food);
 
 

@@ -8,5 +8,6 @@
 #define splashScreenConfig "./config/welcome.txt"
 #define mapConfig "./config/map.txt"
 #define resepConfig "./config/konfigResep.txt"
+#define foodConfig "./config/makanan.txt"
 
 #endif

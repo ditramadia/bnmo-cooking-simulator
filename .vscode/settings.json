@@ -3,6 +3,7 @@
     "stdio.h": "c",
     "boolean.h": "c",
     "wordmachine.h": "c",
-    "charmachine.h": "c"
+    "charmachine.h": "c",
+    "food.h": "c"
   }
 }

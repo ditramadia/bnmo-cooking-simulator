@@ -95,10 +95,6 @@ void Enqueue(PrioQueueTime *Q, Food X)
     int idx;
     int i, j;
     Food temp;
-    int N = NBElmt(*Q);
-    for (int k =0; k<N;k++){
-        timeToMinute((*Q).T[k].exptime);
-    }
     if (IsEmpty(*Q))
     {
         Head(*Q) = 0;
@@ -111,7 +107,7 @@ void Enqueue(PrioQueueTime *Q, Food X)
         InfoTail(*Q) = X;
         i = Tail(*Q);
         j = i == 0 ? MaxEl(*Q) - 1 : i - 1;
-        while (i != Head(*Q) && minute(Elmt(*Q, i)) < (minute(Elmt(*Q, j))))
+        while (i != Head(*Q) && timeToMinute((*Q).T[i].exptime) < timeToMinute((*Q).T[j].exptime))
         {
             temp = Elmt(*Q, i);
             Elmt(*Q, i) = Elmt(*Q, j);
