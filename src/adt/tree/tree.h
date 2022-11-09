@@ -24,7 +24,7 @@ typedef Address List;
 
 Address newNode(ElType val);
 void createTree(List *l);
-List *tree(int arr[][100],int idxTree);
+void tree(int arr[][100],List l[][100],int maxElmt);
 void insertFirst(List *l, ElType val);
 boolean isEmpty(List l);
 
