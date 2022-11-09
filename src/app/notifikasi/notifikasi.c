@@ -1,18 +1,19 @@
 #include <stdio.h>
-#include <../src/adt/prioqueuetime/prioqueuetime.c>
+#include "../../adt/prioqueuetime/prioqueuetimedel.c"
+#include "../../adt/prioqueuetime/prioqueuetimeinv.c"
 
 
 void notifikasiExp(PrioQueueTime q){
-    if(!isEmpty(q)) {
+    if(!IsEmpty(q)) {
         if (Time(q) == 0) {
-            printf("%s sudah kedaluwarsa\n", Info(Head(q)));
+            printf("%s sudah kedaluwarsa\n", Name(Head(q)));
         }
     }
 }
-void notifikasiExp(PrioQueueTime q){
-    if(!isEmpty(q)) {
+void notifikasiDel(PrioQueueTime q){
+    if(!IsEmpty(q)) {
         if (Time(q) == 0) {
-            printf("%s sudah masuk ke dalam inventory\n", Info(Head(q)));
+            printf("%s sudah masuk ke dalam inventory\n", Name(Head(q)));
         }
     }
 }
