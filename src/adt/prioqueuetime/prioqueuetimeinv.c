@@ -7,17 +7,6 @@
 #include "../boolean/boolean.h"
 #include <stdio.h>
 
-/* ********* AKSES (Selektor) ********* */
-/* Jika e adalah Food dan Q adalah PrioQueueTime, maka akses elemen : */
-#define Time(e) (e).time
-#define Info(e) (e).info
-#define Head(Q) (Q).HEAD
-#define Tail(Q) (Q).TAIL
-#define InfoHead(Q) (Q).T[(Q).HEAD]
-#define InfoTail(Q) (Q).T[(Q).TAIL]
-#define MaxEl(Q) (Q).MaxEl
-#define Elmt(Q, i) (Q).T[(i)]
-
 /* ********* Prototype ********* */
 boolean IsEmpty(PrioQueueTime Q)
 /* Mengirim true jika Q kosong: lihat definisi di atas */

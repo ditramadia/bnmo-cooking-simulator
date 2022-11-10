@@ -14,28 +14,22 @@
 /* Konstanta untuk mendefinisikan address tak terdefinisi */
 
 /* Definisi elemen dan address */
-// typedef struct
-// {
-//     int time;  /* [1..100], waktu dengan nilai 1..100 (1 adalah waktu adalah terendah) */
-//     char* info[50]; /* elemen karakter */
-// } infotype;
-typedef int address; /* indeks tabel */
+typedef int idx; /* indeks tabel */
 /* Contoh deklarasi variabel bertype PrioQueueTime : */
 /* Versi I : tabel dinamik, Head dan Tail eksplisit, ukuran disimpan */
 typedef struct
 {
     Food *T; /* tabel penyimpan elemen */
-    address HEAD; /* alamat penghapusan */
-    address TAIL; /* alamat penambahan */
+    idx HEAD; /* alamat penghapusan */
+    idx TAIL; /* alamat penambahan */
     int MaxEl;    /* Max elemen queue */
 } PrioQueueTime;
 /* Definisi PrioQueueTime kosong: HEAD=Nil; TAIL=Nil. */
-/* Catatan implementasi: T[0] tidak pernah dipakai */
 
 /* ********* AKSES (Selektor) ********* */
-/* Jika e adalah infotype dan Q adalah PrioQueueTime, maka akses elemen : */
-#define Time(e) (e).time
-#define Info(e) (e).info
+/* Jika t : Food dan Q : PrioQueueTime, maka akses elemen : */
+#define expTime(t) (t).exptime
+#define nama(t) (t).name
 #define Head(Q) (Q).HEAD
 #define Tail(Q) (Q).TAIL
 #define InfoHead(Q) (Q).T[(Q).HEAD]
@@ -53,7 +47,7 @@ int NBElmt(PrioQueueTime Q);
 /* Mengirimkan banyaknya elemen queue. Mengirimkan 0 jika Q kosong. */
 
 /* *** Kreator *** */
-void MakeEmpty(PrioQueueTime *Q, int Max);
+void createInv(PrioQueueTime *Q, int Max);
 /* I.S. sembarang */
 /* F.S. Sebuah Q kosong terbentuk dan salah satu kondisi sbb: */
 /* Jika alokasi berhasil, Tabel memori dialokasi berukuran Max+1 */
@@ -80,13 +74,7 @@ void Dequeue(PrioQueueTime *Q, Food *X);
 
 /* Operasi Tambahan */
 void PrintPrioQueueTime(PrioQueueTime Q);
-/* Mencetak isi queue Q ke layar */
-/* I.S. Q terdefinisi, mungkin kosong */
-/* F.S. Q tercetak ke layar dengan format:
-<time-1> <elemen-1>
-...
-<time-n> <elemen-n>
-#
-*/
+/* Mencetak isi Q ke layar dengan format:
+[(<nama>, <exp>), (<nama>, <exp>), ...] */
 
 #endif

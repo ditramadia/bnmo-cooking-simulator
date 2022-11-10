@@ -3,26 +3,76 @@
 #include "prioqueuetimedel.h"
 #include <stdio.h>
 
-/* ********* AKSES (Selektor) ********* */
-/* Jika e adalah infotypePrioQueueTimeDel dan Q adalah PrioQueueTime, maka akses elemen : */
-#define Time(e) (e).time
-#define Info(e) (e).info
-#define Head(Q) (Q).HEAD
-#define Tail(Q) (Q).TAIL
-#define InfoHead(Q) (Q).T[(Q).HEAD]
-#define InfoTail(Q) (Q).T[(Q).TAIL]
-#define MaxEl(Q) (Q).MaxEl
-#define Elmt(Q, i) (Q).T[(i)]
 
+/* ********* Prototype ********* */
+/* *** Konstruktor/Kreator *** */
+boolean IsEmpty(PrioQueueTime Q)
+/* Mengirim true jika Q kosong: Head(Q) = Tail(Q) = NIL */
+{
+    return (Head(Q) == Nil && Tail(Q) == Nil);
+}
+
+boolean IsFull(PrioQueueTime Q)
+/* Mengirim true jika tabel penampung elemen Q sudah penuh */
+/* yaitu mengandung elemen sebanyak MaxEl */
+{
+    return (length(Q) == MaxEl(Q));
+}
+
+int length(PrioQueueTime Q)
+/* Mengirimkan   banyaknya elemen queue. Mengirimkan 0 jika Q kosong. */
+{
+    if (IsEmpty(Q))
+    {
+        return 0;
+    }
+    else
+    {
+        if (Tail(Q) >= Head(Q))
+        {
+            return (Tail(Q) - Head(Q) + 1);
+        }
+        else
+        {
+            return (MaxEl(Q) - (Head(Q) - Tail(Q) + 1));
+        }
+    }
+}
+
+/* *** Kreator *** */
+void MakeEmpty(PrioQueueTime *Q, int Max)
+{
+    (*Q).T = (Food *)malloc((Max) * sizeof(Food));
+    if ((*Q).T == NULL)
+    {
+        MaxEl(*Q) = 0;
+    }
+    else
+    {
+        Head(*Q) = Nil;
+        Tail(*Q) = Nil;
+        MaxEl(*Q) = Max;
+    }
+}
+
+/* ********* Operator Dasar PrioQueueTime ********* */
+void enqueue(PrioQueueTime* Q, Food X);
+void dequeue(PrioQueueTime* Q, Food* X)
+{
+    *X = InfoHead(*Q);
+    if (length(*Q) == 1)
+    {
+        Head(*Q) = Nil;
+        Tail(*Q) = Nil;
+    }
+    else
+    {
+        Head(*Q) = (Head(*Q) == MaxEl(*Q) - 1) ? 0 : Head(*Q) + 1;
+    }
+}
+
+/* ********* Operator Tambahan ********* */
 void PrintPrioQueueTime(PrioQueueTime Q)
-/* Mencetak isi queue Q ke layar */
-/* I.S. Q terdefinisi, mungkin kosong */
-/* F.S. Q tercetak ke layar dengan format:
-<time-1> <elemen-1>
-...
-<time-n> <elemen-n>
-#
-*/
 {
     infotypePrioQueueTimeDel val;
     PrioQueueTime temp;
