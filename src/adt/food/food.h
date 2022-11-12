@@ -6,10 +6,10 @@
 
 typedef struct {
     int id;
-    char *name;
+    Word name;
     Time exptime;
     Time deltime;
-    char *act;
+    Word act;
 } Food;
 
 #define Id(f) (f).id

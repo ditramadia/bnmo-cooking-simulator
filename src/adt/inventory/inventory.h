@@ -1,5 +1,5 @@
 /* ADT Food */
-
+#include "../wordmachinefood/wordmachine.c"
 #include "../boolean/boolean.h"
 #include "../time/time.h"
 #include "../point/point.h"
@@ -12,10 +12,10 @@
 #define IDX_UNDEF -999
 
 
-typedef struct
-{
-    Food *I; /* tabel penyimpan elemen */
-} FoodList;
+// typedef struct
+// {
+//     Food *I; /* tabel penyimpan elemen */
+// } FoodList;
 
 #define ID(f) (f).id
 #define NAME(f) (f).name
@@ -23,14 +23,14 @@ typedef struct
 #define ACT(f) (f).act
 #define DURATION(f) (f).duration
 
-void Createinventory(FoodList *f);
+void Createinventory(PrioQueueTime *Q);
 /* I.S. f sembarang */
 /* F.S. Terbentuk inventory kosong */
 
 boolean isInventoryEmpty(FoodList f);
 /* Mengirim true jika inventory kosong */
 
-void AddInventory(FoodList *f, Food I);
+void AddInventory(PrioQueueTime *Q, Food I);
 /* I.S. f terdefinisi */
 /* F.S. food ditambahkan ke inventory */
 

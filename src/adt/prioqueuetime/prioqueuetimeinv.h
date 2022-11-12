@@ -9,6 +9,7 @@
 #include "../boolean/boolean.h"
 #include "../food/food.h"
 #include "../time/time.h"
+#include "../wordmachinefood/wordmachine.h"
 
 #define Nil -1
 /* Konstanta untuk mendefinisikan address tak terdefinisi */

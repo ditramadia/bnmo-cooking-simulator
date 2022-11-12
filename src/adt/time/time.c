@@ -14,7 +14,14 @@ void createTime(Time *time,int day, int hour, int minute)
 void displayTime(Time time)
 {
     // Display hour
-    
+    if (time.day < 10){
+        printf("0%d", time.day);
+    }
+    else
+    {
+        printf("%d", time.day);
+    }
+    printf(":");
     if (time.hour < 10){
         printf("0%d", time.hour);
     }

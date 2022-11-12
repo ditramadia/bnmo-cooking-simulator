@@ -14,7 +14,7 @@ void IgnoreBlanks(){
 
 void STARTWORD(){
     START();
-    IgnoreBlanks();
+    //IgnoreBlanks();
     if (currentChar == '\n'){
        EndWord = true;
     }
@@ -51,7 +51,7 @@ void displayWord(Word W){
     for (i = 0; i < W.Length; i++){
         printf("%c", W.TabWord[i]);
     }
-    printf(" ");
+    //printf(" ");
 }
 
 int wordToInteger(){

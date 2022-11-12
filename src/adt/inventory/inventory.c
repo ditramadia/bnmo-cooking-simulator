@@ -1,18 +1,23 @@
 #include "inventory.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include "../prioqueuetime/prioqueuetimeinv.h"
+#include "../foodlist/foodlist.h"
+#include "../food/food.h"
+#include "../boolean/boolean.h"
+#include "../wordmachinefood/wordmachine.h"
 
 /* ********* AKSES (Selektor) ********* */
 /* Jika e adalah infotype dan Q adalah PrioQueueTime, maka akses elemen : */
 
-void Createinventory(FoodList *I)
+void Createinventory(PrioQueueTime *Q)
 {
-    MakeEmpty(&I, INVENTORY_CAP);
+    MakeEmpty(&Q, INVENTORY_CAP);
 }
 
-void AddInventory(FoodList *f, Food I)
+void AddInventory(PrioQueueTime *Q, Food I)
 {
-    Enqueue(&f, I);
+    Enqueue(&Q, I);
 }
 
 /*void gadgetInfo(FoodList *L){
@@ -37,9 +42,7 @@ void AddInventory(FoodList *f, Food I)
     NAME((*L).buffer[4])  = "Senter Pengecil";
     PRICE((*L).buffer[4]) = 800;
 }*/
-int main(){
-    FoodList I;
-    Createinventory(&I);
-    printf("%d", isInventoryEmpty(I));
-    return 0;
-}
+// int main(){
+//     FoodList I;
+    
+// }
