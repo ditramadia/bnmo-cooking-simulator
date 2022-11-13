@@ -14,7 +14,7 @@ typedef struct
     int isAbleMix;
     int isAbleChop;
     int isAbleFry;
-    int isAbleBoil
+    int isAbleBoil;
 } GameState;
 
 // State
@@ -24,7 +24,7 @@ extern GameState currentGameState;
 Point setSimPos(MatrixChar map);
 
 // Set time
-Time setTime(int hour, int minute);
+Time setTime(int day, int hour, int minute);
 
 // Constructor
 void setGameState(GameState *gs, MatrixChar map);

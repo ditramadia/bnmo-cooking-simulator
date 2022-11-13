@@ -41,13 +41,13 @@ void setMapMatrix(MatrixChar *map)
     advWord();
 
     // Set top border
-    for (int j = 0; j < (*map).rowEff; j++)
+    for (int j = 0; j < (*map).colEff; j++)
     {
         (*map).buffer[0][j] = '*';
     }
 
     // Set bottom border
-    for (int j = 0; j < (*map).rowEff; j++)
+    for (int j = 0; j < (*map).colEff; j++)
     {
         (*map).buffer[(*map).rowEff - 1][j] = '*';
     }
