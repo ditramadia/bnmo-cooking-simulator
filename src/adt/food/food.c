@@ -1,11 +1,12 @@
 #include<stdio.h>
 #include "../charmachinefood/charmachine.c"
 #include "../wordmachinefood/wordmachine.c"
-#include "../foodlist/foodlist.h"
+#include "../food/food.h"
 #include "../time/time.c"
 #include <stdlib.h>
 #include "../boolean/boolean.h"
-    Foodlist f;
+Foodlist f;
+
 void addID(int i){
     int temp;
     temp = wordToInteger();
