@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "../food/food.h"
+#include "../food/food.c"
 
 #ifndef FOODLIST_H
 #define FOODLIST_H
