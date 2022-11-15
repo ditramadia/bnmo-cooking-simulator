@@ -67,6 +67,7 @@ void enqueue(PrioQueueTime* Q, Food X);
 void dequeue(PrioQueueTime* Q, Food* X);
 /* Menghapus X pada Q dengan aturan FIFO */
 
+
 /* ********* Operator Tambahan ********* */
 void PrioQueueTimePrint (PrioQueueTime Q);
 /* Mencetak isi Q ke layar dengan format:

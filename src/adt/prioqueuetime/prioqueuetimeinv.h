@@ -73,6 +73,8 @@ void Dequeue(PrioQueueTime *Q, Food *X);
 /* F.S. X = nilai elemen HEAD pd I.S., HEAD "maju" dengan mekanisme circular buffer;
         Q mungkin kosong */
 
+void DequeueAt(PrioQueueTime *Q, Food *X, int idx);
+
 /* Operasi Tambahan */
 void PrintPrioQueueTime(PrioQueueTime Q);
 /* Mencetak isi Q ke layar dengan format:

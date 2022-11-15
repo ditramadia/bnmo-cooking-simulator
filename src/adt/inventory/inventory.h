@@ -38,4 +38,6 @@ void DisplayInventory();
 
 void deleteInventory(PrioQueueTime *Q, Food *I);
 
+void deleteInventoryAt(PrioQueueTime *Q, Food *I, int idx);
+
 #endif

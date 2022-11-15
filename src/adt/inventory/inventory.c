@@ -23,6 +23,11 @@ void  deleteInventory(PrioQueueTime *Q, Food *I)
     Dequeue(Q, I);
 }
 
+void deleteInventoryAt(PrioQueueTime *Q, Food *I, int idx)
+{
+    DequeueAt(Q, I, idx);
+}
+
 /*void gadgetInfo(FoodList *L){
     createInventory(L);
     ID((*L).buffer[0]) = 0;
