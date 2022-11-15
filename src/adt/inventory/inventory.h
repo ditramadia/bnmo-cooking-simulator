@@ -1,5 +1,5 @@
 /* ADT Food */
-#include "../wordmachinefood/wordmachine.c"
+#include "../wordmachinefood/wordmachine.h"
 #include "../boolean/boolean.h"
 #include "../time/time.h"
 #include "../point/point.h"
@@ -27,7 +27,7 @@ void Createinventory(PrioQueueTime *Q);
 /* I.S. f sembarang */
 /* F.S. Terbentuk inventory kosong */
 
-boolean isInventoryEmpty(FoodList f);
+//boolean isInventoryEmpty(FoodList f);
 /* Mengirim true jika inventory kosong */
 
 void AddInventory(PrioQueueTime *Q, Food I);
@@ -35,5 +35,7 @@ void AddInventory(PrioQueueTime *Q, Food I);
 /* F.S. food ditambahkan ke inventory */
 
 void DisplayInventory();
+
+void deleteInventory(PrioQueueTime *Q, Food *I);
 
 #endif

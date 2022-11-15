@@ -137,16 +137,28 @@ void PrintPrioQueueTime(PrioQueueTime Q)
 #
 */
 {
-    Food val;
+    Food F;
     PrioQueueTime temp;
-    temp = Q;
-    if (!IsEmpty(Q))
+    MakeEmpty(&temp, MaxEl(Q));
+    while (!IsEmpty(Q))
     {
+        Dequeue(&Q, &F);
+        Enqueue(&temp, F);
+    }
+    if (!IsEmpty(temp))
+    {
+        printf("#\n");
         while (!IsEmpty(temp))
         {
-            Dequeue(&temp, &val);
-            printf("%d %c\n", ExpTime(val), Name(val));
+            Dequeue(&temp, &F);
+            Enqueue(&Q, F);
+            displayWord(F.name);
+            printf("\n");
+            displayTime(F.exptime);
+            printf("\n");
+            // printf("%d %c\n", ExpTime(F), Name(F));
         }
     }
     printf("#\n");
 }
+

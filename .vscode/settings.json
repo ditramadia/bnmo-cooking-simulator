@@ -4,7 +4,8 @@
     "boolean.h": "c",
     "wordmachine.h": "c",
     "charmachine.h": "c",
-    "food.h": "c"
+    "food.h": "c",
+    "prioqueuetimeinv.h": "c"
   },
-  "C_Cpp.errorSquiggles": "Disabled"
+  "C_Cpp.errorSquiggles": "Enabled"
 }

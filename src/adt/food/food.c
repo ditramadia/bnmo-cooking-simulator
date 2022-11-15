@@ -1,29 +1,28 @@
 #include<stdio.h>
 #include "../charmachinefood/charmachine.c"
 #include "../wordmachinefood/wordmachine.c"
-#include "../food/food.h"
 #include "../time/time.c"
 #include <stdlib.h>
 #include "../boolean/boolean.h"
-Foodlist f;
+#include "food.h"
 
-void addID(int i){
+void addID(Foodlist *f,int i){
     int temp;
     temp = wordToInteger();
-    f.F[i].id = temp;
+    (*f).F[i].id = temp;
     ADVWORD();
 }
 
-void addName(int i){
+void addName(Foodlist *f,int i){
     // char* y[50];
     // wordToString(y); 
     // f.F[i].name = y;
-    f.F[i].name = currentWord;
+    (*f).F[i].name = currentWord;
     //displayWord(f.F[i].name);
     ADVWORD();
 }
 
-void addExpTime(int i){
+void addExpTime(Foodlist *f,int i){
     char y[50], ds[5],hs[5], ms[5];
     int d,h,m;
     wordToString(y);
@@ -53,11 +52,11 @@ void addExpTime(int i){
     m = atoi(ms);
     Time exptime;
     createTime(&exptime,d,h,m);
-    f.F[i].exptime = exptime;
+    (*f).F[i].exptime = exptime;
     ADVWORD();
 }
 
-void addDelTime(int i){
+void addDelTime(Foodlist *f,int i){
     char y[50], ds[5],hs[5], ms[5];
     int d,h,m;
     wordToString(y);
@@ -86,19 +85,19 @@ void addDelTime(int i){
     m = atoi(ms);
     Time deltime;
     createTime(&deltime,d,h,m);
-    f.F[i].deltime = deltime;
+    (*f).F[i].deltime = deltime;
     ADVWORD();
 }
 
-void addAct(int i){
+void addAct(Foodlist *f,int i){
     // char* y[50];
     // wordToString(y);
     // f.F[i].act = y;
-    f.F[i].act = currentWord;
+    (*f).F[i].act = currentWord;
     ADVWORD();
 }
 
-void addList(){
+void addList(Foodlist *f){
     STARTWORD();
     // ADVWORD();
     // displayWord(currentWord);
@@ -114,28 +113,29 @@ void addList(){
     ADVWORD();
     
     for (i=1;i<=N;i++){
-        addID(i);
-        addName(i);
-        addExpTime(i);
-        addDelTime(i);
-        addAct(i);
+        addID(f,i);
+        addName(f,i);
+        addExpTime(f,i);
+        addDelTime(f,i);
+        addAct(f,i);
     }
     // printf("ceklur\n");
     printf("ceklur\n");
     for(int temp=1; temp<=6; temp++){
-        printf("%d\n",f.F[temp].id);
-        displayWord(f.F[temp].name);
+        printf("%d\n",(*f).F[temp].id);
+        displayWord((*f).F[temp].name);
         printf("\n");
-        displayTime(f.F[temp].exptime);
+        displayTime((*f).F[temp].exptime);
         printf("\n");
-        displayTime(f.F[temp].deltime);
+        displayTime((*f).F[temp].deltime);
         printf("\n");
-        displayWord(f.F[temp].act);
+        displayWord((*f).F[temp].act);
         printf("\n");
 }
 }
 // int main(){
 //     addList();
+// }
 //     // printf("ceklur\n");
 //     // for(int temp=1; temp<=6; temp++){
 //     //     printf("%d\n",f.F[temp].id);
