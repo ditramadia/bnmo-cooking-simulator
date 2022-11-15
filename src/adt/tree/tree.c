@@ -2,6 +2,8 @@
 #include "tree.h"
 #include <stdlib.h>
 
+List treeResep[100][100];
+
 Address newNode(ElType val)
 {
     Address p;
@@ -40,7 +42,7 @@ void tree(int arr[][100],List l[][100],int maxElmt){
     }
 }
 
-void makeTree(List treeResep[10][100]){
+void makeTree(){
     STARTWORD();
     int length;
     length = wordToInteger();
@@ -48,8 +50,10 @@ void makeTree(List treeResep[10][100]){
     // ADVWORD();
     // x = wordToInteger();
     // printf("%d\n",x);
+    // printf("fdsfdsfsf");
     int arr[length+5][100];
-    
+    // printf("%s",currentChar);
+    // displayWord(currentWord);
     ADVWORD();
     int mode = 0, x = 0;
     while(retval != EOF){
@@ -85,8 +89,7 @@ void makeTree(List treeResep[10][100]){
 }
 
 int main(){
-    List treeResep[10][100];
-    createTree(&treeResep);
-    makeTree(treeResep[100][100]);
-    printf("%d", INFO(NEXT(FIRST(treeResep[1][0]))));
+    // createTree(&treeResep);
+    makeTree();
+    printf("%d", INFO(NEXT(FIRST(treeResep[2][1]))));
 }

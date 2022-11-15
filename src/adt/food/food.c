@@ -1,9 +1,5 @@
 #include<stdio.h>
-#include "../charmachinefood/charmachine.c"
-#include "../wordmachinefood/wordmachine.c"
-#include "../time/time.c"
 #include <stdlib.h>
-#include "../boolean/boolean.h"
 #include "food.h"
 
 void addID(Foodlist *f,int i){
