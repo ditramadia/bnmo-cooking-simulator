@@ -72,6 +72,6 @@ void dequeue(PrioQueueTime* Q, Food* X);
 void PrioQueueTimePrint (PrioQueueTime Q);
 /* Mencetak isi Q ke layar dengan format:
 [(<nama>, <waktu>), (<nama>, <waktu>), ...] */
-void displayDelivery(PrioQueueTime Q)
+void displayDelivery(PrioQueueTime Q);
 
 #endif

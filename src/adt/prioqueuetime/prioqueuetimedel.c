@@ -1,9 +1,6 @@
 #include "../boolean/boolean.h"
 #include "../food/food.h"
 #include "prioqueuetimedel.h"
-#include <stdio.h>
-
-
 /* ********* Prototype ********* */
 /* *** Konstruktor/Kreator *** */
 boolean IsEmpty(PrioQueueTime Q)
@@ -56,7 +53,34 @@ void MakeEmpty(PrioQueueTime *Q, int Max)
 }
 
 /* ********* Operator Dasar PrioQueueTime ********* */
-void enqueue(PrioQueueTime* Q, Food X);
+void enqueue(PrioQueueTime* Q, Food X)
+{
+    boolean found;
+    int idx;
+    int i, j;
+    Food temp;
+    if (IsEmpty(*Q))
+    {
+        Head(*Q) = 0;
+        Tail(*Q) = 0;
+        InfoTail(*Q) = X;
+    }
+    else
+    {
+        Tail(*Q) = Tail(*Q) == MaxEl(*Q) - 1 ? 0 : Tail(*Q) + 1;
+        InfoTail(*Q) = X;
+        i = Tail(*Q);
+        j = i == 0 ? MaxEl(*Q) - 1 : i - 1;
+        while (i != Head(*Q) && timeToMinute((*Q).T[i].deltime) < timeToMinute((*Q).T[j].deltime))
+        {
+            temp = Elmt(*Q, i);
+            Elmt(*Q, i) = Elmt(*Q, j);
+            Elmt(*Q, j) = temp;
+            i = j;
+            j = i == 0 ? MaxEl(*Q) - 1 : i - 1;
+        }
+    }
+}
 void dequeue(PrioQueueTime* Q, Food* X)
 {
     *X = InfoHead(*Q);
@@ -74,42 +98,53 @@ void dequeue(PrioQueueTime* Q, Food* X)
 /* ********* Operator Tambahan ********* */
 void PrintPrioQueueTime(PrioQueueTime Q)
 {
-    infotypePrioQueueTimeDel val;
+    Food F;
     PrioQueueTime temp;
-    temp = Q;
-    if (!IsEmpty(Q))
+    MakeEmpty(&temp, MaxEl(Q));
+    while (!IsEmpty(Q))
     {
+        Dequeue(&Q, &F);
+        Enqueue(&temp, F);
+    }
+    if (!IsEmpty(temp))
+    {
+        printf("#\n");
         while (!IsEmpty(temp))
         {
-            Dequeue(&temp, &val);
-            printf("%d %c\n", Time(val), Info(val));
+            Dequeue(&temp, &F);
+            Enqueue(&Q, F);
+            displayWord(F.name);
+            printf("\n");
+            displayTime(F.deltime);
+            printf("\n");
+            // printf("%d %c\n", ExpTime(F), Name(F));
         }
     }
     printf("#\n");
 }
 
 
-void displayDelivery(PrioQueueTime Q)
-{
-    infotypePrioQueueTimeDel val;
-    PrioQueueTime temp;
-    temp = Q;
-    int i = 1;
-    if (IsEmpty(Q))
-    {
-        printf("Tidak ada makanan di perjalanan\n");
-    }
-    else
-    {
-        printf("List Makanan di Perjalanan\n");
-        printf("(Nama - Waktu Sisa Delivery)\n");
-        if (!IsEmpty(Q))
-        {
-            while (!IsEmpty(temp))
-            {
-                Dequeue(&temp, &val);
-                printf("%i. %d %c\n", i, Time(val), Info(val));
-            }
-        }
-    }
-}
+// void displayDelivery(PrioQueueTime Q)
+// {
+//     infotypePrioQueueTimeDel val;
+//     PrioQueueTime temp;
+//     temp = Q;
+//     int i = 1;
+//     if (IsEmpty(Q))
+//     {
+//         printf("Tidak ada makanan di perjalanan\n");
+//     }
+//     else
+//     {
+//         printf("List Makanan di Perjalanan\n");
+//         printf("(Nama - Waktu Sisa Delivery)\n");
+//         if (!IsEmpty(Q))
+//         {
+//             while (!IsEmpty(temp))
+//             {
+//                 Dequeue(&temp, &val);
+//                 printf("%i. %d %c\n", i, Time(val), Info(val));
+//             }
+//         }
+//     }
+// }
