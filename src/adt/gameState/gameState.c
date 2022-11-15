@@ -5,6 +5,9 @@
 #include "../point/point.c"
 #include "../time/time.c"
 
+// Sim Name
+char simName[50];
+
 // Find sPos
 Point setSimPos(MatrixChar map)
 {
@@ -47,7 +50,7 @@ void renderGameState(GameState gs)
     printf("BNMO COOKING SIMULATOR\n");
     printf("\n");
 
-    printf("Posisi Anda: (%d,%d)\n", gs.simPos.X, gs.simPos.Y);
+    printf("Posisi %s: (%d,%d)\n", simName, gs.simPos.X, gs.simPos.Y);
 
     printf("Waktu: ");
     displayTime(gs.time);

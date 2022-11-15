@@ -37,6 +37,9 @@ void mainMenuCommandParser(char query[])
     if (compareString(command, startCommand))
     {
       // Call simulator app
+      fflush(stdin);
+      printf("Masukkan nama Anda: ");
+      scanf("%s", &simName);
       system("cls");
       loadSimulator();
       isMenuCommandValid = 1;
