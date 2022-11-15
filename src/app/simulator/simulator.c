@@ -87,31 +87,91 @@ void simulatorCommandParser(char query[])
     {
         // Call buy app
         system("cls");
-        printf("Call Buy Function.\n");
+        if (currentGameState.isAbleBuy)
+        {
+            printf("Call Buy Function.\n");
+            system("cls");
+            simulator();
+        }
+        else
+        {
+            printf("==============================================================\n");
+            printf("|    Anda harus berada di lokasi 'T' untuk melakukan BUY.    |\n");
+            printf("==============================================================\n");
+            simulator();
+        }
     }
     else if (compareString(simCommand, chopCommand))
     {
         // Call chop app
         system("cls");
-        printf("Call Chop Function.\n");
+        if (currentGameState.isAbleChop)
+        {
+            printf("Call Chop Function.\n");
+            system("cls");
+            simulator();
+        }
+        else
+        {
+            printf("==============================================================\n");
+            printf("|    Anda harus berada di lokasi 'C' untuk melakukan CHOP.   |\n");
+            printf("==============================================================\n");
+            simulator();
+        }
     }
     else if (compareString(simCommand, mixCommand))
     {
         // Call mix app
         system("cls");
-        printf("Call Mix Function.\n");
+        if (currentGameState.isAbleMix)
+        {
+            printf("Call Mix Function.\n");
+            system("cls");
+            simulator();
+        }
+        else
+        {
+            printf("==============================================================\n");
+            printf("|    Anda harus berada di lokasi 'M' untuk melakukan MIX.    |\n");
+            printf("==============================================================\n");
+            simulator();
+        }
     }
     else if (compareString(simCommand, boilCommand))
     {
         // Call boil app
         system("cls");
-        printf("Call Boil Function.\n");
+        if (currentGameState.isAbleBoil)
+        {
+            printf("Call Boil Function.\n");
+            system("cls");
+            simulator();
+        }
+        else
+        {
+            printf("==============================================================\n");
+            printf("|    Anda harus berada di lokasi 'B' untuk melakukan BOIL.   |\n");
+            printf("==============================================================\n");
+            simulator();
+        }
     }
     else if (compareString(simCommand, fryCommand))
     {
         // Call chop app
         system("cls");
-        printf("Call Fry Function.\n");
+        if (currentGameState.isAbleFry)
+        {
+            printf("Call Fry Function.\n");
+            system("cls");
+            simulator();
+        }
+        else
+        {
+            printf("==============================================================\n");
+            printf("|    Anda harus berada di lokasi 'F' untuk melakukan FRY.    |\n");
+            printf("==============================================================\n");
+            simulator();
+        }
     }
     else if (compareString(simCommand, exitCommand))
     {
