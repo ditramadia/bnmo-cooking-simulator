@@ -5,6 +5,7 @@
 #include "../../adt/stackState/stackState.c"
 #include "../../adt/map/map.c"
 #include "../../adt/inventory/inventory.c"
+#include "../chop/chop.c"
 
 // Global State
 MatrixChar map;
@@ -29,7 +30,7 @@ void simulatorCommandParser(char query[])
     char boilCommand[] = "BOIL";
     char fryCommand[] = "FRY";
     char exitCommand[] = "EXIT";
-    char invenCommand[] = "INVENTORY"
+    char invenCommand[] = "INVENTORY";
 
     char simCommand[50];
     printf("%s: ", query);
@@ -109,7 +110,7 @@ void simulatorCommandParser(char query[])
         system("cls");
         if (currentGameState.isAbleChop)
         {
-            printf("Call Chop Function.\n");
+            chop();
             system("cls");
             simulator();
         }

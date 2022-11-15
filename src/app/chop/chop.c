@@ -5,7 +5,7 @@ void chop(){
     // anggep panjang foodlist n
 
     
-    print("list yang bisa di chop :\n")
+    print("list yang bisa di chop :\n");
     int a = 0;
     char *listfood[696];
 
@@ -13,7 +13,7 @@ void chop(){
         Word w = chop;
         if((f).F[i].act == w){
             displayWord((f).F[i].nama);
-            listfood[a] = wordtostr((f).F[i].nama)
+            listfood[a] = wordtostr((f).F[i].nama);
             a++;
             print("\n");
         }
@@ -31,12 +31,7 @@ void chop(){
         }
     }
     else{
-    /* cek di inventory apakah ada sesuai dengan c
-        jika ada, maka search loop foodlist apakah ada yg info(next(first)) nya sesuai
-        dengan yang kita cari, jika ada maka dihapus di inventory childnya dan diganti dengan
-        yang baru
-        jika tidak ada, gagal melakukan operasi "CHOP"
-    */
+
     }
 
 }
