@@ -40,7 +40,7 @@ void tree(int arr[][100],List l[][100],int maxElmt){
     }
 }
 
-void makeTree(){
+void makeTree(List treeResep[10][100]){
     STARTWORD();
     int length;
     length = wordToInteger();
@@ -79,17 +79,14 @@ void makeTree(){
         }
         x++;
     }
-    List treeResep[length][100];
-    createTree(&treeResep);
+    // List treeResep[length][100];
+    // createTree(&treeResep);
     tree(arr,treeResep,length);
 }
 
-// int main(){
-//     int arr[2][10] = {{1,2,3,4},{2,3,4,5,6}};
-//     List l =  *tree(arr,5);
-//     printf("awkwkwkwk");
-//     printf("%d",INFO(FIRST(l)));
-//     printf("awkwkwkwk");
-
-//     return 0;
-// }
+int main(){
+    List treeResep[10][100];
+    createTree(&treeResep);
+    makeTree(treeResep[100][100]);
+    printf("%d", INFO(NEXT(FIRST(treeResep[1][0]))));
+}

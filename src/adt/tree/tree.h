@@ -2,6 +2,7 @@
 #define TUBES_ALSTRUKDAT_TREE_H
 
 #include "../boolean/boolean.h"
+#include "../wordmachineresep/wordmachine.c"
 
 typedef int ElType;
 typedef struct node* Address;

@@ -5,7 +5,6 @@
 #define __MESINKATA_H__
 
 #include "../boolean/boolean.h"
-#include "charmachine.h"
 #include "../charmachineresep/charmachine.c"
 
 #define NMax 50
