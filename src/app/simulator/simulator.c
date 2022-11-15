@@ -4,6 +4,7 @@
 #include "../../adt/gameState/gameState.c"
 #include "../../adt/stackState/stackState.c"
 #include "../../adt/map/map.c"
+#include "../../adt/inventory/inventory.c"
 
 // Global State
 MatrixChar map;
@@ -28,6 +29,7 @@ void simulatorCommandParser(char query[])
     char boilCommand[] = "BOIL";
     char fryCommand[] = "FRY";
     char exitCommand[] = "EXIT";
+    char invenCommand[] = "INVENTORY"
 
     char simCommand[50];
     printf("%s: ", query);
@@ -178,6 +180,11 @@ void simulatorCommandParser(char query[])
         // Call exit app
         exit(0);
     }
+    // else if (compareString(simCommand, invenCommand))
+    // {
+        
+    //     exit(0);
+    // }
     else
     {
         system("cls");
