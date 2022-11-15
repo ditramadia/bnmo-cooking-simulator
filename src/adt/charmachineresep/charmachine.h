@@ -6,6 +6,7 @@
 
 #include "../boolean/boolean.h"
 
+
 #define MARK '.'
 /* State Mesin */
 extern char currentChar;

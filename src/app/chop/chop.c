@@ -1,4 +1,5 @@
 #include<stdio.h>
+#include "../../adt/prioqueuetime/prioqueuetimeinv.c"
 
 void chop(){
     // anggep panjang foodlist n
@@ -30,7 +31,6 @@ void chop(){
         }
     }
     else{
-
+        
     }
-
 }

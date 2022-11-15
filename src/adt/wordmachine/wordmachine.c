@@ -1,7 +1,6 @@
 #include <stdio.h>
-
 #include "wordmachine.h"
-#include "../charmachine/charmachine.c"
+
 
 int endWord;
 Word currentWord;

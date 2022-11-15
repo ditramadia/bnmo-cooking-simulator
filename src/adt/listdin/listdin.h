@@ -7,7 +7,7 @@
 #ifndef LISTDIN_H
 #define LISTDIN_H
 
-#include "boolean.h"
+#include "../boolean/boolean.h"
 
 /*  Kamus Umum */
 #define IDX_MIN 0

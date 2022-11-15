@@ -4,7 +4,6 @@
 /* Elemen queue terurut membesar berdasarkan elemen time */
 
 #include "prioqueuetimeinv.h"
-#include "../boolean/boolean.h"
 #include <stdio.h>
 
 /* ********* Prototype ********* */

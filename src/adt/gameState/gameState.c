@@ -1,9 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-
 #include "gameState.h"
-#include "../point/point.c"
-#include "../time/time.c"
+
 
 // Sim Name
 char simName[50];

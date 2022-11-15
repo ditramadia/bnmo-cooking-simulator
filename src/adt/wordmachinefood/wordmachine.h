@@ -5,7 +5,7 @@
 #define __MESINKATA_H__
 
 #include "../boolean/boolean.h"
-#include "../charmachinefood/charmachine.h"
+#include "../charmachinefood/charmachine.c"
 
 #define NMax 50
 #define BLANK ' '

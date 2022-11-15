@@ -1,9 +1,6 @@
 #include "inventory.h"
 #include<stdio.h>
 #include<stdlib.h>
-#include "../food/food.c"
-#include "../point/point.c"
-#include "../prioqueuetime/prioqueuetimeinv.c"
 
 /* ********* AKSES (Selektor) ********* */
 /* Jika e adalah infotype dan Q adalah PrioQueueTime, maka akses elemen : */

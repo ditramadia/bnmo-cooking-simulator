@@ -1,6 +1,5 @@
 #include <stdio.h>
-#include "../charmachinefood/charmachine.h"
-#include "../../../config/config.h"
+#include "charmachine.h"
 
 char currentChar;
 boolean EOP;

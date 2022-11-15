@@ -1,9 +1,10 @@
 /* ADT Food */
-#include "../wordmachinefood/wordmachine.h"
+#include "../wordmachinefood/wordmachine.c"
 #include "../boolean/boolean.h"
-#include "../time/time.h"
-#include "../point/point.h"
-#include "../prioqueuetime/prioqueuetimeinv.h"
+#include "../time/time.c"
+#include "../food/food.c"
+#include "../point/point.c"
+#include "../prioqueuetime/prioqueuetimeinv.c"
 
 #ifndef INVENTORY_H
 #define INVENTORY_H

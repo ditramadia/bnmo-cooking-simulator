@@ -4,7 +4,6 @@
 /* Implementasi dalam bahasa C dengan alokasi statik */
 
 #include "stack.h"
-#include "../boolean/boolean.h"
 #include <stdio.h>
 
 /* ************ Prototype ************ */

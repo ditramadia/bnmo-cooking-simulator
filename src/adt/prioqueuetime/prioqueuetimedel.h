@@ -1,6 +1,6 @@
 #include "../boolean/boolean.h"
-#include "../food/food.h"
-#include "../time/time.h"
+#include "../food/food.c"
+#include "../time/time.c"
 
 
 #ifndef PRIOQUEUETIMEDEL_H

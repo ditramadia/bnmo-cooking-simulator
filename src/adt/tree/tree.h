@@ -1,7 +1,3 @@
-//
-// Created by Asus on 04/11/2022.
-//
-
 #ifndef TUBES_ALSTRUKDAT_TREE_H
 #define TUBES_ALSTRUKDAT_TREE_H
 

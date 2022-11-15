@@ -1,4 +1,4 @@
-#include "../charmachine/charmachine.h"
+#include "../charmachine/charmachine.c"
 
 #ifndef WORDMACHINE_H
 #define WORDMACHINE_H

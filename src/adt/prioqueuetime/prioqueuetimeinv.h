@@ -7,9 +7,9 @@
 #define prioqueuetimeinv_H
 
 #include "../boolean/boolean.h"
-#include "../food/food.h"
-#include "../time/time.h"
-#include "../wordmachinefood/wordmachine.h"
+#include "../food/food.c"
+#include "../time/time.c"
+#include "../wordmachinefood/wordmachine.c"
 
 #define Nil -1
 /* Konstanta untuk mendefinisikan address tak terdefinisi */

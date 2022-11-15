@@ -7,7 +7,9 @@
     "food.h": "c",
     "prioqueuetimeinv.h": "c",
     "typeinfo": "c",
-    "foodlist.h": "c"
+    "foodlist.h": "c",
+    "stdlib.h": "c",
+    "config.h": "c"
   },
   "C_Cpp.errorSquiggles": "Enabled"
 }

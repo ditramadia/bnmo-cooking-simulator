@@ -1,6 +1,5 @@
-#include "../boolean/boolean.h"
-#include "../food/food.h"
 #include "prioqueuetimedel.h"
+
 /* ********* Prototype ********* */
 /* *** Konstruktor/Kreator *** */
 boolean IsEmpty(PrioQueueTime Q)
