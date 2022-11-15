@@ -17,6 +17,7 @@ StackState stateHistory;
 Foodlist listFood;
 PrioQueueTime inventory;
 int nMove;
+int foodListLen;
 
 // Command Parser
 void simulatorCommandParser(char query[])
@@ -115,7 +116,7 @@ void simulatorCommandParser(char query[])
         system("cls");
         if (currentGameState.isAbleChop)
         {
-            chop(&inventory);
+            chop();
             system("cls");
             simulator();
         }
@@ -208,7 +209,7 @@ int loadSimulator()
     createStackState(&stateHistory);
     insertState(&stateHistory, currentGameState);
     nMove = 0;
-    addList(&listFood);
+    addList(&listFood,&foodListLen);
     Createinventory(&inventory);
 
     // Simulator
