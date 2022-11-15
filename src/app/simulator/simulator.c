@@ -6,11 +6,16 @@
 #include "../../adt/map/map.c"
 #include "../../adt/inventory/inventory.c"
 #include "../chop/chop.c"
+#include "../src/adt/food/food.c"
+#include "../src/adt/inventory/inventory.c"
+
 
 // Global State
 MatrixChar map;
 GameState currentGameState;
 StackState stateHistory;
+Foodlist listFood;
+PrioQueueTime inventory;
 int nMove;
 
 // Command Parser
@@ -110,7 +115,7 @@ void simulatorCommandParser(char query[])
         system("cls");
         if (currentGameState.isAbleChop)
         {
-            chop();
+            chop(&inventory);
             system("cls");
             simulator();
         }
@@ -203,6 +208,8 @@ int loadSimulator()
     createStackState(&stateHistory);
     insertState(&stateHistory, currentGameState);
     nMove = 0;
+    addList(&listFood);
+    Createinventory(&inventory);
 
     // Simulator
     renderGameState(currentGameState);

@@ -97,7 +97,7 @@ void addAct(Foodlist *f,int i){
     ADVWORD();
 }
 
-void addList(Foodlist *f){
+void addList(Foodlist *f, int foodListLen){
     STARTWORD();
     // ADVWORD();
     // displayWord(currentWord);
@@ -110,6 +110,7 @@ void addList(Foodlist *f){
     //     printf("\n");
     int N,i;
     N = wordToInteger();
+    foodListLen = N;
     ADVWORD();
     
     for (i=1;i<=N;i++){

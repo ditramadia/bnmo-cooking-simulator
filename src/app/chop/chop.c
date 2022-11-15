@@ -1,17 +1,16 @@
 #include<stdio.h>
 
-void chop(){
+void chop(PrioQueueTime inventory){
     // anggep foodlist itu f di global
     // anggep panjang foodlist n
 
     
-    print("list yang bisa di chop :\n");
+    printf("list yang bisa di chop :\n");
     int a = 0;
     char *listfood[696];
 
     for(int i=0; i<n;i++){
-        Word w = chop;
-        if((f).F[i].act == w){
+        if(compareString(wordToStr((F).F[i].act), "Chop")){
             displayWord((f).F[i].nama);
             listfood[a] = wordtostr((f).F[i].nama);
             a++;
