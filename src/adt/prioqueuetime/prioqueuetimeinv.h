@@ -7,9 +7,9 @@
 #define prioqueuetimeinv_H
 
 #include "../boolean/boolean.h"
-#include "../food/food.c"
-#include "../time/time.c"
-#include "../wordmachinefood/wordmachine.c"
+#include "../food/food.h"
+#include "../time/time.h"
+#include "../wordmachinefood/wordmachine.h"
 
 #define Nil -1
 /* Konstanta untuk mendefinisikan address tak terdefinisi */
@@ -72,8 +72,6 @@ void Dequeue(PrioQueueTime *Q, Food *X);
 /* I.S. Q tidak mungkin kosong */
 /* F.S. X = nilai elemen HEAD pd I.S., HEAD "maju" dengan mekanisme circular buffer;
         Q mungkin kosong */
-
-void DequeueAt(PrioQueueTime *Q, Food *X, int idx);
 
 /* Operasi Tambahan */
 void PrintPrioQueueTime(PrioQueueTime Q);

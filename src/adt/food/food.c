@@ -1,5 +1,9 @@
 #include<stdio.h>
+#include "../charmachinefood/charmachine.h"
+#include "../wordmachinefood/wordmachine.c"
+#include "../time/time.c"
 #include <stdlib.h>
+#include "../boolean/boolean.h"
 #include "food.h"
 
 void addID(Foodlist *f,int i){
@@ -93,7 +97,7 @@ void addAct(Foodlist *f,int i){
     ADVWORD();
 }
 
-void addList(Foodlist *f, int foodListLen){
+void addList(Foodlist *f){
     STARTWORD();
     // ADVWORD();
     // displayWord(currentWord);
@@ -106,7 +110,6 @@ void addList(Foodlist *f, int foodListLen){
     //     printf("\n");
     int N,i;
     N = wordToInteger();
-    foodListLen = N;
     ADVWORD();
     
     for (i=1;i<=N;i++){
@@ -117,18 +120,18 @@ void addList(Foodlist *f, int foodListLen){
         addAct(f,i);
     }
     // printf("ceklur\n");
-    printf("ceklur\n");
-    for(int temp=1; temp<=6; temp++){
-        printf("%d\n",(*f).F[temp].id);
-        displayWord((*f).F[temp].name);
-        printf("\n");
-        displayTime((*f).F[temp].exptime);
-        printf("\n");
-        displayTime((*f).F[temp].deltime);
-        printf("\n");
-        displayWord((*f).F[temp].act);
-        printf("\n");
-}
+//     printf("ceklur\n");
+//     for(int temp=1; temp<=6; temp++){
+//         printf("%d\n",(*f).F[temp].id);
+//         displayWord((*f).F[temp].name);
+//         printf("\n");
+//         displayTime((*f).F[temp].exptime);
+//         printf("\n");
+//         displayTime((*f).F[temp].deltime);
+//         printf("\n");
+//         displayWord((*f).F[temp].act);
+//         printf("\n");
+// }
 }
 // int main(){
 //     addList();

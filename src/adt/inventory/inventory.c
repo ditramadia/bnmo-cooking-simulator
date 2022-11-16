@@ -1,29 +1,24 @@
 #include "inventory.h"
 #include<stdio.h>
 #include<stdlib.h>
+#include "../food/food.c"
+#include "../point/point.c"
+// #include "../prioqueuetime/prioqueuetimeinv.c"
+#include "../queuelinked/queuelinked.c"
 
 /* ********* AKSES (Selektor) ********* */
 /* Jika e adalah infotype dan Q adalah PrioQueueTime, maka akses elemen : */
 
-void Createinventory(PrioQueueTime *Q)
+void Createinventory(Queue *Q)
 {
-    MakeEmpty(Q, INVENTORY_CAP);
+    CreateQueue(Q);
 }
 
-void AddInventory(PrioQueueTime *Q, Food I)
+void AddInventory(Queue *Q, Food I)
 {
-    Enqueue(Q, I);
+    insertprio(Q, I);
 }
 
-void  deleteInventory(PrioQueueTime *Q, Food *I)
-{
-    Dequeue(Q, I);
-}
-
-void deleteInventoryAt(PrioQueueTime *Q, Food *I, int idx)
-{
-    DequeueAt(Q, I, idx);
-}
 
 /*void gadgetInfo(FoodList *L){
     createInventory(L);

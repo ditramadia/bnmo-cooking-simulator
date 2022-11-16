@@ -1,6 +1,6 @@
 #include "../boolean/boolean.h"
-#include "../food/food.c"
-#include "../time/time.c"
+#include "../food/food.h"
+#include "../time/time.h"
 
 
 #ifndef PRIOQUEUETIMEDEL_H
@@ -67,11 +67,10 @@ void enqueue(PrioQueueTime* Q, Food X);
 void dequeue(PrioQueueTime* Q, Food* X);
 /* Menghapus X pada Q dengan aturan FIFO */
 
-
 /* ********* Operator Tambahan ********* */
 void PrioQueueTimePrint (PrioQueueTime Q);
 /* Mencetak isi Q ke layar dengan format:
 [(<nama>, <waktu>), (<nama>, <waktu>), ...] */
-void displayDelivery(PrioQueueTime Q);
+void displayDelivery(PrioQueueTime Q)
 
 #endif

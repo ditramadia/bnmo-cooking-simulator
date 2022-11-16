@@ -4,6 +4,7 @@
 /* Elemen queue terurut membesar berdasarkan elemen time */
 
 #include "prioqueuetime.h"
+#include "../boolean/boolean.h"
 #include <stdio.h>
 
 /* ********* AKSES (Selektor) ********* */

@@ -1,10 +1,10 @@
 /* ADT Food */
-#include "../wordmachinefood/wordmachine.c"
+#include "../wordmachinefood/wordmachine.h"
 #include "../boolean/boolean.h"
-#include "../time/time.c"
-#include "../food/food.c"
-#include "../point/point.c"
-#include "../prioqueuetime/prioqueuetimeinv.c"
+#include "../time/time.h"
+#include "../point/point.h"
+// #include "../prioqueuetime/prioqueuetimeinv.h"
+#include "../queuelinked/queuelinked.h"
 
 #ifndef INVENTORY_H
 #define INVENTORY_H
@@ -24,21 +24,17 @@
 #define ACT(f) (f).act
 #define DURATION(f) (f).duration
 
-void Createinventory(PrioQueueTime *Q);
+void Createinventory(Queue *Q);
 /* I.S. f sembarang */
 /* F.S. Terbentuk inventory kosong */
 
 //boolean isInventoryEmpty(FoodList f);
 /* Mengirim true jika inventory kosong */
 
-void AddInventory(PrioQueueTime *Q, Food I);
+void AddInventory(Queue *Q, Food I);
 /* I.S. f terdefinisi */
 /* F.S. food ditambahkan ke inventory */
 
 void DisplayInventory();
-
-void deleteInventory(PrioQueueTime *Q, Food *I);
-
-void deleteInventoryAt(PrioQueueTime *Q, Food *I, int idx);
 
 #endif

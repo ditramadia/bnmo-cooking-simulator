@@ -2,10 +2,8 @@
 #define FOOD_H
 
 #include <stdio.h>
-#include "../boolean/boolean.h"
-#include "../charmachinefood/charmachine.c"
-#include "../wordmachinefood/wordmachine.c"
-#include "../time/time.c"
+#include "../time/time.h"
+#include "../wordmachinefood/wordmachine.h"
 
 typedef struct {
     int id;

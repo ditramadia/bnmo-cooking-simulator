@@ -4,6 +4,7 @@
 /* Elemen queue terurut membesar berdasarkan elemen time */
 
 #include "prioqueuetimeinv.h"
+#include "../boolean/boolean.h"
 #include <stdio.h>
 
 /* ********* Prototype ********* */
@@ -125,29 +126,6 @@ void Dequeue(PrioQueueTime *Q, Food *X)
     }
 }
 
-void DequeueAt(PrioQueueTime *Q, Food *X, int idx){
-    int i;
-    if (idx == Head(*Q)){
-        Dequeue(Q, X);
-    }
-    else if (idx == Tail(*Q)){
-        *X = InfoTail(*Q);
-        Tail(*Q) = (Tail(*Q) == 0) ? MaxEl(*Q) - 1 : Tail(*Q) - 1;
-    }
-    else if (idx < Tail(*Q)){
-        for (i = idx; i < Tail(*Q); i++){
-            Elmt(*Q, i) = Elmt(*Q, i + 1);
-        }
-        Tail(*Q) = (Tail(*Q) == 0) ? MaxEl(*Q) - 1 : Tail(*Q) - 1;
-    }
-    else{
-        for (i = idx; i > Head(*Q); i--){
-            Elmt(*Q, i) = Elmt(*Q, i - 1);
-        }
-        Head(*Q) = (Head(*Q) == MaxEl(*Q) - 1) ? 0 : Head(*Q) + 1;
-    }
-}
-
 /* Operasi Tambahan */
 void PrintPrioQueueTime(PrioQueueTime Q)
 /* Mencetak isi queue Q ke layar */
@@ -175,7 +153,7 @@ void PrintPrioQueueTime(PrioQueueTime Q)
             Dequeue(&temp, &F);
             Enqueue(&Q, F);
             displayWord(F.name);
-            printf("   ");
+            printf("\n");
             displayTime(F.exptime);
             printf("\n");
             // printf("%d %c\n", ExpTime(F), Name(F));
