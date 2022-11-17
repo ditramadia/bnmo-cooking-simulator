@@ -8,7 +8,7 @@ static FILE *pita;
 
 void STARTFOOD()
 {
-    pita = fopen("makanan.txt", "r");
+    pita = fopen(foodConfig, "r");
     ADVFOOD();
 }
 

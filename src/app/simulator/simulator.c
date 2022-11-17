@@ -106,7 +106,6 @@ void simulatorCommandParser(char query[])
         if (currentGameState.isAbleBuy)
         {
             buy(delivery, listShop);
-            system("cls");
             simulator();
         }
         else

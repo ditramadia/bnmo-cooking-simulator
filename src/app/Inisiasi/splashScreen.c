@@ -37,6 +37,7 @@ void mainMenuCommandParser(char query[])
     if (compareString(command, startCommand))
     {
       // Call simulator app
+      system("cls");
       fflush(stdin);
       printf("Masukkan nama Anda: ");
       scanf("%s", &simName);
