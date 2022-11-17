@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "../../adt/delivery/delivery.c"
 
-void buy(Queue q, Foodlist listshop)
+void buy(Queue *q, Foodlist listshop)
 {
     int n;
     n = listlength(listshop);
@@ -30,7 +30,7 @@ void buy(Queue q, Foodlist listshop)
     scanf("%d", &x);
     if (x == 0)
     {
-        system("cls");
+        system(CLEAR);
         return;
     }
     while (x > n || x < 0)
@@ -39,11 +39,12 @@ void buy(Queue q, Foodlist listshop)
         scanf("%d", &x);
         if (x == 0)
         {
-            system("cls");
+            system(CLEAR);
             return;
         }
     }
-    addDelivery(&q, listshop.F[x]);
+    // addDelivery(&q, listshop.F[x]);
+    AddInventory(q, listshop.F[x]);
     system("cls");
     printf("==============================================================\n");
     printf("|                 Makanan berhasil dipesan!                  |\n");

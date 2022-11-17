@@ -38,12 +38,12 @@ void simulatorCommandParser(char query[])
     char redoCommand[] = "REDO";
     char waitCommand[] = "WAIT";
     char buyCommand[] = "BUY";
+    char invenCommand[] = "INVENTORY";
     char chopCommand[] = "CHOP";
     char mixCommand[] = "MIX";
     char boilCommand[] = "BOIL";
     char fryCommand[] = "FRY";
     char exitCommand[] = "EXIT";
-    char invenCommand[] = "INVENTORY";
 
     char simCommand[50];
     printf("%s: ", query);
@@ -105,7 +105,8 @@ void simulatorCommandParser(char query[])
         system(CLEAR);
         if (currentGameState.isAbleBuy)
         {
-            buy(delivery, listShop);
+            // buy(delivery, listShop);
+            buy(&inventory, listShop);
             simulator();
         }
         else
@@ -116,9 +117,12 @@ void simulatorCommandParser(char query[])
             simulator();
         }
     }
-    else if (compareString(simCommand, chopCommand))
+    else if (compareString(simCommand, invenCommand))
     {
-        // Call Delivery App
+        // Call Inventory App
+        system(CLEAR);
+        DisplayInventory(inventory);
+        simulator();
     }
     else if (compareString(simCommand, chopCommand))
     {
@@ -162,7 +166,7 @@ void simulatorCommandParser(char query[])
         system(CLEAR);
         if (currentGameState.isAbleBoil)
         {
-            buy(delivery, listShop);
+            // buy(delivery, listShop);
             system(CLEAR);
             simulator();
         }
@@ -197,11 +201,6 @@ void simulatorCommandParser(char query[])
         // Call exit app
         exit(0);
     }
-    // else if (compareString(simCommand, invenCommand))
-    // {
-
-    //     exit(0);
-    // }
     else
     {
         system(CLEAR);

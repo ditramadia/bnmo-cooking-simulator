@@ -1,7 +1,6 @@
 #include "inventory.h"
-#include<stdio.h>
-#include<stdlib.h>
-
+#include <stdio.h>
+#include <stdlib.h>
 
 /* ********* AKSES (Selektor) ********* */
 /* Jika e adalah infotype dan Q adalah PrioQueueTime, maka akses elemen : */
@@ -24,19 +23,50 @@ void delInventory(Queue *Q, Food *I)
 void DisplayInventory(Queue Q)
 {
     address p = ADDR_HEAD(Q);
-    int i=1;
-    while (p != NULL) {
-        // displayWordFood(INFO(p).name);
-        printf("%d. ", i);
-        displayWordFood(INFO(p).name);
-        printf ("         ");
-        displayTime(INFO(p).exptime);
-        p = NEXT(p);
-        if (p != NULL) {
-            printf("\n");
-        }
-        i++;
+    char bin;
+    int i = 1;
+
+    if (length(Q) == 0)
+    {
+        printf("==============================================================\n");
+        printf("|                         INVENTORY                          |\n");
+        printf("==============================================================\n");
+        printf("|  Inventory-mu masih kosong\n");
+        printf("|\n");
+        printf("==============================================================\n");
+        printf("\n");
     }
+    else
+    {
+        printf("==============================================================\n");
+        printf("|                         INVENTORY                          |\n");
+        printf("==============================================================\n");
+        printf("|  No. Nama ----- Waktu Kadaluarsa\n");
+        printf("|\n");
+
+        while (p != NULL)
+        {
+            // displayWordFood(INFO(p).name);
+            printf("|  %d. ", i);
+            displayWordFood(INFO(p).name);
+            printf(" ----- ");
+            displayTime(INFO(p).exptime);
+            p = NEXT(p);
+            if (p != NULL)
+            {
+                printf("\n");
+            }
+            i++;
+        }
+        printf("\n");
+        printf("|\n");
+        printf("==============================================================\n");
+        printf("\n");
+    }
+
+    printf("Tekan enter menutup inventory\n");
+    scanf("%c", &bin);
+    return;
 }
 /*void gadgetInfo(FoodList *L){
     createInventory(L);
@@ -62,5 +92,5 @@ void DisplayInventory(Queue Q)
 }*/
 // int main(){
 //     FoodList I;
-    
+
 // }
