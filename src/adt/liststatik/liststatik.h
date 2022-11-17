@@ -7,7 +7,7 @@
 #define LISTSTATIK_H
 
 #include "../boolean/boolean.h"
-#include "../tree/tree.h"
+#include "../tree/tree.c"
 
 /*  Kamus Umum */
 #define CAPACITY 100

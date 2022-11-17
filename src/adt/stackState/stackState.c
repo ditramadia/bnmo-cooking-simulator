@@ -1,8 +1,5 @@
 #include <stdio.h>
-
 #include "stackState.h"
-
-#include "../arrayChar/arrayChar.c"
 
 void createStackState(StackState *stackState)
 {

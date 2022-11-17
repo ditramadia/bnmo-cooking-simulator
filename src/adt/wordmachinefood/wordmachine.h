@@ -1,11 +1,11 @@
 /* File: wordmachine.h */
-/* Definisi Word Machine: Model Akuisisi Versi I */
+/* Definisi word Machine: Model Akuisisi Versi I */
 
 #ifndef __MESINKATA_H__
 #define __MESINKATA_H__
 
 #include "../boolean/boolean.h"
-#include "../charmachinefood/charmachine.h"
+#include "../charmachinefood/charmachine.c"
 
 #define NMax 50
 #define BLANK ' '
@@ -14,36 +14,38 @@ typedef struct
 {
    char TabWord[NMax]; /* container penyimpan kata, indeks yang dipakai [0..NMax-1] */
    int Length;
-} Word;
+} word;
 
-/* State Mesin Word */
-extern boolean EndWord;
-extern Word currentWord;
+/* State Mesin word */
+extern boolean Endword;
+extern word Currentword;
 
 void IgnoreBlanks();
 /* Mengabaikan satu atau beberapa BLANK
    I.S. : currentChar sembarang
    F.S. : currentChar ≠ BLANK atau currentChar = MARK */
 
-void STARTWORD();
+void STARTword();
 /* I.S. : currentChar sembarang
-   F.S. : EndWord = true, dan currentChar = MARK;
-          atau EndWord = false, currentWord adalah kata yang sudah diakuisisi,
+   F.S. : Endword = true, dan currentChar = MARK;
+          atau Endword = false, Currentword adalah kata yang sudah diakuisisi,
           currentChar karakter pertama sesudah karakter terakhir kata */
 
-void ADVWORD();
+void ADVword();
 /* I.S. : currentChar adalah karakter pertama kata yang akan diakuisisi
-   F.S. : currentWord adalah kata terakhir yang sudah diakuisisi,
+   F.S. : Currentword adalah kata terakhir yang sudah diakuisisi,
           currentChar adalah karakter pertama dari kata berikutnya, mungkin MARK
-          Jika currentChar = MARK, EndWord = true.
-   Proses : Akuisisi kata menggunakan procedure SalinWord */
+          Jika currentChar = MARK, Endword = true.
+   Proses : Akuisisi kata menggunakan procedure Salinword */
 
 void CopyWord();
-/* Mengakuisisi kata, menyimpan dalam currentWord
+/* Mengakuisisi kata, menyimpan dalam Currentword
    I.S. : currentChar adalah karakter pertama dari kata
-   F.S. : currentWord berisi kata yang sudah diakuisisi;
+   F.S. : Currentword berisi kata yang sudah diakuisisi;
           currentChar = BLANK atau currentChar = MARK;
           currentChar adalah karakter sesudah karakter terakhir yang diakuisisi.
           Jika panjang kata melebihi NMax, maka sisa kata "dipotong" */
+void displayWord(word W);
+
 
 #endif

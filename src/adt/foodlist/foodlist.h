@@ -1,4 +1,3 @@
-
 #ifndef FOODLIST_H
 #define FOODLIST_H
 #include <stdio.h>
@@ -7,6 +6,7 @@
 typedef struct
 {
     Food F[100];
+    int listLength;
 } Foodlist;
 
 #endif

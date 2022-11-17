@@ -1,5 +1,5 @@
 #include "../gameState/gameState.h"
-#include "../arrayChar/arrayChar.h"
+#include "../arrayChar/arrayChar.c"
 
 #ifndef STACKSTATE_H
 #define STACKSTATE_H

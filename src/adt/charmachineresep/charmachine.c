@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include "charmachine.h"
-#include "../boolean/boolean.h"
+
 
 char currentChar;
 boolean EOP;

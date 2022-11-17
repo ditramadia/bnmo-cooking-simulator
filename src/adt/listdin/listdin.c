@@ -3,8 +3,6 @@
 /* Penempatan elemen selalu rapat kiri */
 /* Versi II : dengan banyaknya elemen didefinisikan secara eksplisit,
    memori list dinamik */
-
-#include "../boolean/boolean.h"
 #include "listdin.h"
 #include <stdio.h>
 #include <stdlib.h>

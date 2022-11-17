@@ -1,18 +1,19 @@
 #ifndef FOOD_H
 #define FOOD_H
 
-#include <stdio.h>
+#include "../wordmachinefood/wordmachine.h"
 #include "../time/time.h"
-#include "../charmachinefood/charmachine.c"
-#include "../wordmachinefood/wordmachine.c"
+#include "../boolean/boolean.h"
+#include "../string/string.h"
+#include "../foodlist/foodlist.h"
 
 typedef struct
 {
     int id;
-    Word name;
+    word name;
     Time exptime;
     Time deltime;
-    Word act;
+    word act;
 } Food;
 
 #define Id(f) (f).id
@@ -27,6 +28,12 @@ void addExpTime(Foodlist *f, int i);
 void addDelTime(Foodlist *f, int i);
 void addAct(Foodlist *f, int i);
 void addList();
-void displayFood(Food food);
+// void displayFood(Food food);
+void listshop(Foodlist *s, Foodlist f, int listlength);
+void listchop(Foodlist *f);
+void listmix(Foodlist *f);
+void listfry(Foodlist *s, Foodlist f, int listlength);
+void listboil(Foodlist *f);
+int listslength(Foodlist f);
 
 #endif

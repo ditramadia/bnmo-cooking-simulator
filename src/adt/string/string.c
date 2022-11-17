@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include "string.h"
 
 // Compare 2 strings
 int compareString(char str1[], char str2[])

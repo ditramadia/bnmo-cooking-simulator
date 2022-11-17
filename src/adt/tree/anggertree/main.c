@@ -46,5 +46,5 @@ int main(){
     createTree(&treeResep);
     tree(arr,treeResep,length);
 
-    // printf("%d",INFO(NEXT(FIRST(treeResep[1][0]))));
+    printf("%d",INFO(NEXT(FIRST(treeResep[1][0]))));
 }

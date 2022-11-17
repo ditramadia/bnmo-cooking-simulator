@@ -1,9 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "../../../config/config.h"
-
-#include "../wordmachine/wordmachine.c"
-#include "../matrixChar/matrixChar.c"
+#include "map.h"
 
 void setMapRow(MatrixChar *map, char rowContent[], int row)
 {

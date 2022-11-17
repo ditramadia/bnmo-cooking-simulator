@@ -1,5 +1,4 @@
-#include "../boolean/boolean.h"
-#include "../matrix/matrix.h"
+#include "matrix.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>

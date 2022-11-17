@@ -1,15 +1,27 @@
 #include <stdio.h>
 
 #include "../../adt/string/string.c"
+#include "../../adt/time/time.c"
 #include "../../adt/gameState/gameState.c"
 #include "../../adt/stackState/stackState.c"
 #include "../../adt/map/map.c"
+#include "../../adt/inventory/inventory.c"
+#include "../../adt/point/point.c"
+#include "../../adt/wordmachinefood/wordmachine.c"
+#include "../../adt/matrixChar/matrixChar.c"
+// #include "../chop/chop.c"
+#include "../fry/fry.c"
+#include "../../adt/food/food.c"
+
 
 // Global State
 MatrixChar map;
 GameState currentGameState;
 StackState stateHistory;
+Foodlist listFood, listFry;
+Queue inventory;
 int nMove;
+int foodListLen;
 
 // Command Parser
 void simulatorCommandParser(char query[])
@@ -28,6 +40,7 @@ void simulatorCommandParser(char query[])
     char boilCommand[] = "BOIL";
     char fryCommand[] = "FRY";
     char exitCommand[] = "EXIT";
+    char invenCommand[] = "INVENTORY";
 
     char simCommand[50];
     printf("%s: ", query);
@@ -107,7 +120,7 @@ void simulatorCommandParser(char query[])
         system("cls");
         if (currentGameState.isAbleChop)
         {
-            printf("Call Chop Function.\n");
+            // chop();
             system("cls");
             simulator();
         }
@@ -161,7 +174,7 @@ void simulatorCommandParser(char query[])
         system("cls");
         if (currentGameState.isAbleFry)
         {
-            printf("Call Fry Function.\n");
+            fry(listFood,inventory,foodListLen, listFry);
             system("cls");
             simulator();
         }
@@ -178,6 +191,11 @@ void simulatorCommandParser(char query[])
         // Call exit app
         exit(0);
     }
+    // else if (compareString(simCommand, invenCommand))
+    // {
+        
+    //     exit(0);
+    // }
     else
     {
         system("cls");
@@ -195,6 +213,9 @@ int loadSimulator()
     createStackState(&stateHistory);
     insertState(&stateHistory, currentGameState);
     nMove = 0;
+    addList(&listFood, foodListLen);
+    Createinventory(&inventory);
+    listfry(&listFry,listFood,foodListLen);
 
     // Simulator
     renderGameState(currentGameState);
