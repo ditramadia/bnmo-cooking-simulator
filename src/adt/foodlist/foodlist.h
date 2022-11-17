@@ -4,7 +4,8 @@
 #include <stdio.h>
 #include "../food/food.h"
 
-typedef struct{
+typedef struct
+{
     Food F[100];
 } Foodlist;
 
