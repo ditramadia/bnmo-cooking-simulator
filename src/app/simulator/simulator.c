@@ -16,6 +16,7 @@ MatrixChar map;
 GameState currentGameState;
 StackState stateHistory;
 Foodlist listFood;
+Foodlist listFry;
 PrioQueueTime inventory;
 int nMove;
 int foodListLen;
@@ -212,6 +213,7 @@ int loadSimulator()
     nMove = 0;
     addList(&listFood, foodListLen);
     Createinventory(&inventory);
+    listfry(&listFry,listFood,foodListLen);
 
     // Simulator
     renderGameState(currentGameState);

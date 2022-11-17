@@ -145,40 +145,21 @@ void listshop(Foodlist *s,Foodlist f, int listlength){
         wordToStri((f).F[i].act,y);
         if(compareString(y,"Buy")){
             (*s).F[j] = f.F[i];
-            printf("%d\n",(*s).F[j].id);
+            // printf("%d\n",(*s).F[j].id);
             j++;
         }
     }
 }
 
-void listshop(Foodlist *s,Foodlist f, int listlength){
-    // Foodlist s;
-    // addList(f, listlength);
+void listfry(Foodlist *s,Foodlist f, int listlength){
     int i,j=0;
     for (i=1;i<=listlength;i++){
         char y[50];
         wordToStri((f).F[i].act,y);
-        if(compareString(y,"Buy")){
+        if(compareString(y,"Fry")){
             (*s).F[j] = f.F[i];
-            printf("%d\n",(*s).F[j].id);
+            // printf("%d\n",(*s).F[j].id);
             j++;
         }
-        // currentWord = (f).F[i].act;
-        // displayWord(currentWord);
-        // wordToStri(&y);
-        // printf("%s\n",y);
-
-        // if (compareString(wordToStr(),"Buy")){
-        //     (*s).F[i] = (f).F[i];
-        // }
-        //  printf("%d\n",(f).F[i].id);
-        // displayWord((f).F[i].name);
-        // printf("\n");
-        // displayTime((f).F[i].exptime);
-        // printf("\n");
-        // displayTime((f).F[i].deltime);
-        // printf("\n");
-        // displayWord((f).F[i].act);
-        // printf("\n");
     }
 }

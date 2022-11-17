@@ -24,5 +24,5 @@ int main(){
     // // printf("%d\n", IsEmpty(Q));
     // DisplayQueue(Q);
 
-    listshop(&s,f, 6);
+    listfry(&s,f, 6);
 }

@@ -33,8 +33,9 @@ void displayFood(Food food);
 void listshop(Foodlist *s,Foodlist f, int listlength);
 void listchop(Foodlist *f);
 void listmix(Foodlist *f);
-void listfry(Foodlist *f);
+void listfry(Foodlist *s,Foodlist f, int listlength);
 void listboil(Foodlist *f);
+int length(Foodlist f);
 
 
 #endif
