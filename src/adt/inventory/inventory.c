@@ -16,7 +16,28 @@ void AddInventory(Queue *Q, Food I)
     insertprio(Q, I);
 }
 
+void delInventory(Queue *Q, Food *I)
+{
+    dequeue(Q, I);
+}
 
+void DisplayInventory(Queue Q)
+{
+    address p = ADDR_HEAD(Q);
+    int i=1;
+    while (p != NULL) {
+        // displayWord(INFO(p).name);
+        printf("%d. ", i);
+        displayWord(INFO(p).name);
+        printf ("         ");
+        displayTime(INFO(p).exptime);
+        p = NEXT(p);
+        if (p != NULL) {
+            printf("\n");
+        }
+        i++;
+    }
+}
 /*void gadgetInfo(FoodList *L){
     createInventory(L);
     ID((*L).buffer[0]) = 0;

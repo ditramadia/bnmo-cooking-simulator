@@ -122,6 +122,7 @@ void addList(Foodlist *f, int listlength)
     }
 }
 
+<<<<<<< HEAD
 void listshop(Foodlist *s, Foodlist f, int listlength)
 {
     // Foodlist s;
@@ -129,6 +130,15 @@ void listshop(Foodlist *s, Foodlist f, int listlength)
     int i, j = 0;
     for (i = 1; i <= listlength; i++)
     {
+=======
+void listshop(Foodlist *s,Foodlist f){
+    // Foodlist s;
+    // addList(f, listlength);
+    int n;
+    int i,j=1;
+    n = listslength(f);
+    for (i=1;i<=n;i++){
+>>>>>>> 3a44773939b4accb24f025422bd2587db0914c42
         char y[50];
         wordToStri((f).F[i].act, y);
         if (compareString(y, "Buy"))
@@ -140,11 +150,19 @@ void listshop(Foodlist *s, Foodlist f, int listlength)
     }
 }
 
+<<<<<<< HEAD
 void listfry(Foodlist *s, Foodlist f, int listlength)
 {
     int i, j = 0;
     for (i = 1; i <= listlength; i++)
     {
+=======
+void listfry(Foodlist *s,Foodlist f, int listlength){
+    int n;
+    int i,j=1;
+    n = listslength(f);
+    for (i=1;i<=n;i++){
+>>>>>>> 3a44773939b4accb24f025422bd2587db0914c42
         char y[50];
         wordToStri((f).F[i].act, y);
         if (compareString(y, "Fry"))
@@ -155,3 +173,59 @@ void listfry(Foodlist *s, Foodlist f, int listlength)
         }
     }
 }
+<<<<<<< HEAD
+=======
+
+void listboil(Foodlist *s,Foodlist f){
+    int n;
+    int i,j=1;
+    n = listslength(f);
+    for (i=1;i<=n;i++){
+        char y[50];
+        wordToStri((f).F[i].act,y);
+        if(compareString(y,"Boil")){
+            (*s).F[j] = f.F[i];
+            // printf("%d\n",(*s).F[j].id);
+            j++;
+        }
+    }
+}
+
+void listchop(Foodlist *s,Foodlist f){
+    int n;
+    int i,j=1;
+    n = listslength(f);
+    for (i=1;i<=n;i++){
+        char y[50];
+        wordToStri((f).F[i].act,y);
+        if(compareString(y,"Chop")){
+            (*s).F[j] = f.F[i];
+            // printf("%d\n",(*s).F[j].id);
+            j++;
+        }
+    }
+}
+
+void listmix(Foodlist *s,Foodlist f){
+    int n;
+    int i,j=1;
+    n = listslength(f);
+    for (i=1;i<=n;i++){
+        char y[50];
+        wordToStri((f).F[i].act,y);
+        if(compareString(y,"Mix")){
+            (*s).F[j] = f.F[i];
+            // printf("%d\n",(*s).F[j].id);
+            j++;
+        }
+    }
+}
+
+int listlength(Foodlist f){
+    int i=1;
+    while(f.F[i].id != 0){
+        i++;
+    }
+    return i;
+}
+>>>>>>> 3a44773939b4accb24f025422bd2587db0914c42
