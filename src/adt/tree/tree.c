@@ -87,9 +87,3 @@ void makeTree(){
     // createTree(&treeResep);
     tree(arr,treeResep,length);
 }
-
-int main(){
-    // createTree(&treeResep);
-    makeTree();
-    printf("%d", INFO(NEXT(FIRST(treeResep[2][1]))));
-}
