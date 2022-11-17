@@ -30,6 +30,11 @@ void addDelTime(Foodlist *f,int i);
 void addAct(Foodlist *f,int i);
 void addList();
 void displayFood(Food food);
+void listshop(Foodlist *s,Foodlist f, int listlength);
+void listchop(Foodlist *f);
+void listmix(Foodlist *f);
+void listfry(Foodlist *f);
+void listboil(Foodlist *f);
 
 
 #endif

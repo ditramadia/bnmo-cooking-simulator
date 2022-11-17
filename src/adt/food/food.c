@@ -97,7 +97,7 @@ void addAct(Foodlist *f,int i){
     ADVWORD();
 }
 
-void addList(Foodlist *f){
+void addList(Foodlist *f, int listlength){
     STARTWORD();
     // ADVWORD();
     // displayWord(currentWord);
@@ -110,6 +110,7 @@ void addList(Foodlist *f){
     //     printf("\n");
     int N,i;
     N = wordToInteger();
+    listlength = N;
     ADVWORD();
     
     for (i=1;i<=N;i++){
@@ -132,6 +133,23 @@ void addList(Foodlist *f){
 //         displayWord((*f).F[temp].act);
 //         printf("\n");
 // }
+}
+
+void listshop(Foodlist *s,Foodlist f, int listlength){
+    // Foodlist s;
+    // addList(f, listlength);
+    int i;
+    for (i=1;i<=listlength;i++){
+        char y;
+        currentWord = (f).F[i].act;
+        // displayWord(currentWord);
+        // wordToString(&y);
+        // printf("%s\n",y);
+        if (currentWord.TabWord == "Buy"){
+            (*s).F[i] = (f).F[i];
+        }
+        printf("%d\n",(*s).F[i].id);
+    }
 }
 // int main(){
 //     addList();
