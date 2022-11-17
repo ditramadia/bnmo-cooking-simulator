@@ -6,8 +6,8 @@
 address newnode(Food val) {
     address p = (address) malloc(sizeof(NodE));
     if (p != NULL) {
-        INFO(p) = val;
-        NEXT(p) = NULL;
+        Info(p) = val;
+        Next(p) = NULL;
     }
     return p;
 }
@@ -20,7 +20,7 @@ int length(Queue q){
     address P = ADDR_HEAD(q);
     int i = 0;
     while (P != NULL){
-        P = NEXT(P);
+        P = Next(P);
         i++;
     }
     return i;
@@ -36,12 +36,12 @@ void DisplayQueue(Queue q){
     printf("");
     int i=1;
     while (p != NULL) {
-        // displayWordFood(INFO(p).name);
+        // displayWordFood(Info(p).name);
         printf("%d. ", i);
-        displayWordFood(INFO(p).name);
+        displayWordFood(Info(p).name);
         printf ("     ");
-        displayTime(INFO(p).exptime);
-        p = NEXT(p);
+        displayTime(Info(p).exptime);
+        p = Next(p);
         if (p != NULL) {
             printf("\n");
         }
@@ -57,7 +57,7 @@ void enqueue(Queue *q, Food x){
             ADDR_HEAD(*q) = p;
             ADDR_TAIL(*q) = p;
         } else {
-            NEXT(ADDR_TAIL(*q)) = p;
+            Next(ADDR_TAIL(*q)) = p;
             ADDR_TAIL(*q) = p;
         }
     }
@@ -66,8 +66,8 @@ void enqueue(Queue *q, Food x){
 void dequeue(Queue *q, Food *x){
     if (!isempty(*q)) {
         address p = ADDR_HEAD(*q);
-        *x = INFO(p);
-        ADDR_HEAD(*q) = NEXT(p);
+        *x = Info(p);
+        ADDR_HEAD(*q) = Next(p);
         free(p);
         if (ADDR_HEAD(*q) == NULL) {
             ADDR_TAIL(*q) = NULL;
@@ -83,30 +83,30 @@ void dequeue(Queue *q, Food *x){
 //             ADDR_TAIL(*q) = p;
 //         } else {
 //             address point = ADDR_HEAD(*q);
-//             // printf("yg diinsert: %d\n", timeToMinute(INFO(p).exptime));
-//             // printf("yg udh ada: %d\n", timeToMinute(INFO(point).exptime));
-//             if(NEXT(point) == NULL)
+//             // printf("yg diinsert: %d\n", timeToMinute(Info(p).exptime));
+//             // printf("yg udh ada: %d\n", timeToMinute(Info(point).exptime));
+//             if(Next(point) == NULL)
 //             {
-//                 if(timeToMinute(INFO(point).exptime) < timeToMinute(INFO(p).exptime))
+//                 if(timeToMinute(Info(point).exptime) < timeToMinute(Info(p).exptime))
 //                 {
-//                     NEXT(point) = p;
+//                     Next(point) = p;
 //                     ADDR_TAIL(*q) = p;
 //                 }
 //                 else
 //                 {
-//                     NEXT(p) = point;
+//                     Next(p) = point;
 //                     ADDR_HEAD(*q) = p;
 //                     ADDR_TAIL(*q) = point;
 //                 }
 //             }
 //             else
 //             {
-//             while (NEXT(point) != NULL && timeToMinute(NEXT(point)->info.exptime) < timeToMinute(x.exptime)) {
-//                 point = NEXT(point);
+//             while (Next(point) != NULL && timeToMinute(Next(point)->Info.exptime) < timeToMinute(x.exptime)) {
+//                 point = Next(point);
 //             }
 //             }
-//             NEXT(p) = NEXT(point);
-//             NEXT(point) = p;
+//             Next(p) = Next(point);
+//             Next(point) = p;
 //             }
 //         }
 //     }
@@ -125,18 +125,18 @@ void insertprio(Queue *q, Food x)
     {
         address p = ADDR_HEAD(*q);
         
-        if(timeToMinute(INFO(p).exptime) > timeToMinute(INFO(newElmt).exptime))
+        if(timeToMinute(Info(p).exptime) > timeToMinute(Info(newElmt).exptime))
         {
-            NEXT(newElmt) = ADDR_HEAD(*q);
+            Next(newElmt) = ADDR_HEAD(*q);
             ADDR_HEAD(*q) = newElmt;
         }
         else
         {
-            while (NEXT(p) != NULL && timeToMinute(NEXT(p)->info.exptime) < timeToMinute(x.exptime)) {
-                p = NEXT(p);
+            while (Next(p) != NULL && timeToMinute(Next(p)->info.exptime) < timeToMinute(x.exptime)) {
+                p = Next(p);
             }
-            NEXT(newElmt) = NEXT(p);
-            NEXT(p) = newElmt;
+            Next(newElmt) = Next(p);
+            Next(p) = newElmt;
         }
     }
 }
@@ -144,23 +144,23 @@ void insertprio(Queue *q, Food x)
 void dequeueAt(Queue *q, Food *x, int id){
     if (!isempty(*q)) {
         address p = ADDR_HEAD(*q);
-        if (INFO(p).id == id) {
-            *x = INFO(p);
-            ADDR_HEAD(*q) = NEXT(p);
+        if (Info(p).id == id) {
+            *x = Info(p);
+            ADDR_HEAD(*q) = Next(p);
             free(p);
             if (ADDR_HEAD(*q) == NULL) {
                 ADDR_TAIL(*q) = NULL;
             }
         } else {
-            while (NEXT(p) != NULL && NEXT(p)->info.id != id) {
-                p = NEXT(p);
+            while (Next(p) != NULL && Next(p)->info.id != id) {
+                p = Next(p);
             }
-            if (NEXT(p) != NULL) {
-                address point = NEXT(p);
-                *x = INFO(point);
-                NEXT(p) = NEXT(point);
+            if (Next(p) != NULL) {
+                address point = Next(p);
+                *x = Info(point);
+                Next(p) = Next(point);
                 free(point);
-                if (NEXT(p) == NULL) {
+                if (Next(p) == NULL) {
                     ADDR_TAIL(*q) = p;
                 }
             }
@@ -171,10 +171,10 @@ void dequeueAt(Queue *q, Food *x, int id){
 boolean isExist(Queue q, int id){
     address p = ADDR_HEAD(q);
     while (p != NULL) {
-        if (INFO(p).id == id) {
+        if (Info(p).id == id) {
             return true;
         }
-        p = NEXT(p);
+        p = Next(p);
     }
     return false;
 }

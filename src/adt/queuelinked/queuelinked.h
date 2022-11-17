@@ -22,8 +22,8 @@ typedef struct {
 } Queue;
 
 /* Selektor */
-#define NEXT(p) (p)->next
-#define INFO(p) (p)->info
+#define Next(p) (p)->next
+#define Info(p) (p)->info
 
 #define ADDR_HEAD(q) (q).addrHead
 #define ADDR_TAIL(q) (q).addrTail

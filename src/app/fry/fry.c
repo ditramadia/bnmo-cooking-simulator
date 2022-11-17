@@ -4,6 +4,7 @@
 #include "../../adt/food/food.h"
 #include "../../adt/queuelinked/queuelinked.h"
 #include "../../adt/wordmachinefood/wordmachine.h"
+#include "../../adt/tree/tree.h"
 
 void fry(Foodlist l,Queue q,Foodlist listFry,List treeList[100][100]){
     int n = listlength(listFry);
