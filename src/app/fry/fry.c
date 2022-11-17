@@ -89,7 +89,7 @@ void fry(Foodlist l,Queue q,Foodlist listFry,List treeList[100][100]){
             for(int j=0;j<NBElmt(q);j++){
             if(INFO(FIRST(l[idx][i]))==Elmt(q,j)){
                     Head(q)=Elmt(q,j);
-                    int val;
+                    Food val;
                     dequeue(&q,&val);
                 }
             }
