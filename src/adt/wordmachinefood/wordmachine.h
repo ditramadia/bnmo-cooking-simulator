@@ -20,12 +20,12 @@ typedef struct
 extern boolean Endword;
 extern word Currentword;
 
-void IgnoreBlanks();
+void IgnoreBlanksFood();
 /* Mengabaikan satu atau beberapa BLANK
    I.S. : currentChar sembarang
    F.S. : currentChar ≠ BLANK atau currentChar = MARK */
 
-void STARTword();
+void STARTwordFood();
 /* I.S. : currentChar sembarang
    F.S. : Endword = true, dan currentChar = MARK;
           atau Endword = false, Currentword adalah kata yang sudah diakuisisi,
@@ -46,6 +46,5 @@ void CopyWord();
           currentChar adalah karakter sesudah karakter terakhir yang diakuisisi.
           Jika panjang kata melebihi NMax, maka sisa kata "dipotong" */
 void displayWord(word W);
-
 
 #endif

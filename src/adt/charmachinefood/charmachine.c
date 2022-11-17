@@ -6,16 +6,18 @@ boolean EoP;
 
 static FILE *pita;
 
-void START(){
+void STARTFOOD()
+{
     pita = fopen("makanan.txt", "r");
     ADV();
 }
 
-void ADV(){
+void ADVFOOD()
+{
     retval = fscanf(pita, "%c", &currentChar);
-       EoP = (retval == EOF);
-       if (EoP){
-              fclose(pita);
-       }
-       
+    EoP = (retval == EOF);
+    if (EoP)
+    {
+        fclose(pita);
+    }
 }

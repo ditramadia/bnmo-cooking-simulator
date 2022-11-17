@@ -14,7 +14,7 @@ extern boolean EoP;
 
 static int retval;
 
-void START();
+void STARTFOOD();
 /* Mesin siap dioperasikan. Pita disiapkan untuk dibaca.
    Karakter pertama yang ada pada pita posisinya adalah pada jendela.
    I.S. : sembarang
@@ -22,7 +22,7 @@ void START();
           Jika currentChar != MARK maka EoP akan padam (false)
           Jika currentChar = MARK maka EoP akan menyala (true) */
 
-void ADV();
+void ADVFOOD();
 /* Pita dimajukan satu karakter.
    I.S. : Karakter pada jendela = currentChar, currentChar != MARK
    F.S. : currentChar adalah karakter berikutnya dari currentChar yang lama,
