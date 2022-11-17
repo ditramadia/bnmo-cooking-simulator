@@ -1,6 +1,6 @@
 #include "../boolean/boolean.h"
 #include "../food/food.h"
-#include "../queuelinked/queuelinked.c"
+#include "../queuelinked/queuelinked.h"
 
 #ifndef DELIVERY_H
 #define DELIVERY_H

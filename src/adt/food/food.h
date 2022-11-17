@@ -15,6 +15,11 @@ typedef struct
     word act;
 } Food;
 
+typedef struct
+{
+    Food F[100];
+} Foodlist;
+
 #define Id(f) (f).id
 #define Name(f) (f).name
 #define ExpTime(f) (f).exptime
@@ -29,10 +34,10 @@ void addAct(Foodlist *f, int i);
 void addList();
 // void displayFood(Food food);
 void listshop(Foodlist *s, Foodlist f);
-void listchop(Foodlist *f);
-void listmix(Foodlist *f);
+void listchop(Foodlist *s, Foodlist f);
+void listmix(Foodlist *s, Foodlist f);
 void listfry(Foodlist *s, Foodlist f);
-void listboil(Foodlist *f);
-int listslength(Foodlist f);
+void listboil(Foodlist *s, Foodlist f);
+int listlength(Foodlist f);
 
 #endif
