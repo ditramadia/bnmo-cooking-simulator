@@ -10,15 +10,15 @@
 /* Deklarasi infotype */
 // typedef int Food;
 /* Queue dengan representasi berkait dengan pointer */
-typedef struct node* Address;
-typedef struct node { 
+typedef struct nOde* address;
+typedef struct nOde { 
     Food info;
-    Address next; 
-} Node; 
+    address next; 
+} NodE; 
 /* Type queue dengan ciri HEAD dan TAIL: */
 typedef struct {
-    Address addrHead; /* alamat penghapusan */
-    Address addrTail; /* alamat penambahan */
+    address addrHead; /* alamat penghapusan */
+    address addrTail; /* alamat penambahan */
 } Queue;
 
 /* Selektor */
@@ -30,10 +30,10 @@ typedef struct {
 #define      HEAD(q) (q).addrHead->info
 
 /* Prototype manajemen memori */
-Address newNode(Food x);
+address newnode(Food x);
 /* Mengembalikan alamat sebuah Node hasil alokasi dengan info = x, 
    atau NIL jika alokasi gagal */
-boolean isEmpty(Queue q);
+boolean isempty(Queue q);
 /* Mengirim true jika q kosong: ADDR_HEAD(q)=NULL and ADDR_TAIL(q)=NULL */
 int length(Queue q);
 /* Mengirimkan banyaknya elemen queue. Mengirimkan 0 jika q kosong */

@@ -1,23 +1,25 @@
 #include <stdio.h>
 
 #include "../../adt/string/string.c"
+#include "../../adt/time/time.c"
 #include "../../adt/gameState/gameState.c"
 #include "../../adt/stackState/stackState.c"
 #include "../../adt/map/map.c"
 #include "../../adt/inventory/inventory.c"
-#include "../chop/chop.c"
+#include "../../adt/point/point.c"
+#include "../../adt/wordmachinefood/wordmachine.c"
+#include "../../adt/matrixChar/matrixChar.c"
+// #include "../chop/chop.c"
 #include "../fry/fry.c"
-#include "../src/adt/food/food.c"
-#include "../src/adt/inventory/inventory.c"
+#include "../../adt/food/food.c"
 
 
 // Global State
 MatrixChar map;
 GameState currentGameState;
 StackState stateHistory;
-Foodlist listFood;
-Foodlist listFry;
-PrioQueueTime inventory;
+Foodlist listFood, listFry;
+Queue inventory;
 int nMove;
 int foodListLen;
 
@@ -118,7 +120,7 @@ void simulatorCommandParser(char query[])
         system("cls");
         if (currentGameState.isAbleChop)
         {
-            chop();
+            // chop();
             system("cls");
             simulator();
         }
@@ -172,7 +174,7 @@ void simulatorCommandParser(char query[])
         system("cls");
         if (currentGameState.isAbleFry)
         {
-            fry(listFood,inventory,foodListLen);
+            fry(listFood,inventory,foodListLen, listFry);
             system("cls");
             simulator();
         }

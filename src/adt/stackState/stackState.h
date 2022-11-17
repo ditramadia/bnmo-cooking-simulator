@@ -1,4 +1,4 @@
-#include "../gameState/gameState.c"
+#include "../gameState/gameState.h"
 #include "../arrayChar/arrayChar.c"
 
 #ifndef STACKSTATE_H

@@ -1,5 +1,5 @@
 #include<stdio.h>
-#include "../../adt/prioqueuetime/prioqueuetimeinv.c"
+#include "../../adt/food/food.h"
 
 void chop(){
     // anggep panjang foodlist n

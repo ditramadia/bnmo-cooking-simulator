@@ -1,16 +1,13 @@
 /* ADT Food */
-#include "../wordmachinefood/wordmachine.h"
+
 #include "../boolean/boolean.h"
-#include "../time/time.h"
-#include "../point/point.h"
-// #include "../prioqueuetime/prioqueuetimeinv.h"
-#include "../queuelinked/queuelinked.h"
+#include "../food/food.h"
+#include "../queuelinked/queuelinked.c"
 
 #ifndef INVENTORY_H
 #define INVENTORY_H
 
 #define INVENTORY_CAP 100
-#define IDX_UNDEF -999
 
 
 // typedef struct

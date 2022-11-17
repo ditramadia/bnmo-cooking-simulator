@@ -3,7 +3,7 @@
 
 #include "../../../config/config.h"
 #include "../wordmachine/wordmachine.c"
-#include "../matrixChar/matrixChar.c"
+#include "../matrixChar/matrixChar.h"
 
 void setMapRow(MatrixChar *map, char rowContent[], int row);
 

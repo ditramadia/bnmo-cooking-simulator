@@ -7,10 +7,10 @@
 #include "../boolean/boolean.h"
 #include "../../../config/config.h"
 
-#define MARK '.'
+// #define MARK '.'
 /* State Mesin */
 extern char currentChar;
-extern boolean EOP;
+extern boolean EoP;
 
 static int retval;
 
@@ -19,14 +19,14 @@ void START();
    Karakter pertama yang ada pada pita posisinya adalah pada jendela.
    I.S. : sembarang
    F.S. : currentChar adalah karakter pertama pada pita
-          Jika currentChar != MARK maka EOP akan padam (false)
-          Jika currentChar = MARK maka EOP akan menyala (true) */
+          Jika currentChar != MARK maka EoP akan padam (false)
+          Jika currentChar = MARK maka EoP akan menyala (true) */
 
 void ADV();
 /* Pita dimajukan satu karakter.
    I.S. : Karakter pada jendela = currentChar, currentChar != MARK
    F.S. : currentChar adalah karakter berikutnya dari currentChar yang lama,
           currentChar mungkin = MARK
-          Jika  currentChar = MARK maka EOP akan menyala (true) */
+          Jika  currentChar = MARK maka EoP akan menyala (true) */
 
 #endif

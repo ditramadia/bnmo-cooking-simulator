@@ -1,11 +1,6 @@
 #include<stdio.h>
-#include "../charmachinefood/charmachine.h"
-#include "../wordmachinefood/wordmachine.c"
-#include "../time/time.c"
-#include <stdlib.h>
-#include "../boolean/boolean.h"
+#include<stdlib.h>
 #include "food.h"
-#include "../string/string.c"
 
 void addID(Foodlist *f,int i){
     int temp;
@@ -16,9 +11,9 @@ void addID(Foodlist *f,int i){
 
 void addName(Foodlist *f,int i){
     // char* y[50];
-    // currentWts(y); 
+    // CurrentWts(y); 
     // f.F[i].name = y;
-    (*f).F[i].name = currentWord;
+    (*f).F[i].name = Currentword;
     //displayWord(f.F[i].name);
     ADVWORD();
 }
@@ -92,23 +87,14 @@ void addDelTime(Foodlist *f,int i){
 
 void addAct(Foodlist *f,int i){
     // char* y[50];
-    // currentWts(y);
+    // CurrentWts(y);
     // f.F[i].act = y;
-    (*f).F[i].act = currentWord;
+    (*f).F[i].act = Currentword;
     ADVWORD();
 }
 
 void addList(Foodlist *f, int listlength){
     STARTWORD();
-    // ADVWORD();
-    // displayWord(currentWord);
-    // printf("\n");
-    // ADVWORD();
-    // displayWord(currentWord);
-    //     printf("\n");
-    // ADVWORD();
-    // displayWord(currentWord);
-    //     printf("\n");
     int N,i;
     N = wordToInteger();
     listlength = N;
@@ -121,19 +107,6 @@ void addList(Foodlist *f, int listlength){
         addDelTime(f,i);
         addAct(f,i);
     }
-    // printf("ceklur\n");
-//     printf("ceklur\n");
-//     for(int temp=1; temp<=6; temp++){
-//         printf("%d\n",(*f).F[temp].id);
-//         displayWord((*f).F[temp].name);
-//         printf("\n");
-//         displayTime((*f).F[temp].exptime);
-//         printf("\n");
-//         displayTime((*f).F[temp].deltime);
-//         printf("\n");
-//         displayWord((*f).F[temp].act);
-//         printf("\n");
-// }
 }
 
 void listshop(Foodlist *s,Foodlist f, int listlength){

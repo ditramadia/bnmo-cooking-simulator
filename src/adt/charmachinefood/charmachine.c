@@ -2,7 +2,7 @@
 #include "charmachine.h"
 
 char currentChar;
-boolean EOP;
+boolean EoP;
 
 static FILE *pita;
 
@@ -13,8 +13,8 @@ void START(){
 
 void ADV(){
     retval = fscanf(pita, "%c", &currentChar);
-       EOP = (retval == EOF);
-       if (EOP){
+       EoP = (retval == EOF);
+       if (EoP){
               fclose(pita);
        }
        

@@ -1,6 +1,6 @@
-#include "../point/point.c"
-#include "../matrixChar/matrixChar.c"
-#include "../time/time.c"
+#include "../point/point.h"
+#include "../matrixChar/matrixChar.h"
+#include "../time/time.h"
 
 #ifndef GAMESTATE_H
 #define GAMESTATE_H
