@@ -36,7 +36,7 @@ void listchop(Foodlist *f);
 void listmix(Foodlist *f);
 void listfry(Foodlist *s,Foodlist f);
 void listboil(Foodlist *f);
-int listslength(Foodlist f);
+int listlength(Foodlist f);
 
 
 #endif

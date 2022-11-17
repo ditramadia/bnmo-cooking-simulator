@@ -3,7 +3,7 @@
 
 void buy(Queue q, Foodlist listshop){
     int n;
-    n = listslength(listshop);
+    n = listlength(listshop);
 
     printf("List barang yang bisa dibeli:\n");
     for (int i = 1; i <= n; i++)

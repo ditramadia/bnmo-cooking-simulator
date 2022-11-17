@@ -7,7 +7,7 @@
 void fry(Foodlist l,Queue q,int foodListLen,Foodlist listFry){
     int n; //kita perlu bikin panjang l[][100]
     // anggep panjang foodlist n
-    n = listslength(listFry);
+    n = listlength(listFry);
     printf("list yang bisa di fry :\n");
     for(int i=0; i<1;i++){
         // char y[50];
