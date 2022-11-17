@@ -9,6 +9,7 @@
 #include "../../adt/point/point.c"
 #include "../../adt/wordmachinefood/wordmachine.c"
 #include "../../adt/matrixChar/matrixChar.c"
+#include "../../adt/queuelinked/queuelinked.c"
 // #include "../chop/chop.c"
 #include "../fry/fry.c"
 #include "../../adt/food/food.c"
@@ -215,7 +216,7 @@ int loadSimulator()
     nMove = 0;
     addList(&listFood, foodListLen);
     Createinventory(&inventory);
-    listfry(&listFry,listFood,foodListLen);
+    listfry(&listFry,listFood);
 
     // Simulator
     renderGameState(currentGameState);

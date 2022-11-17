@@ -114,7 +114,7 @@ void listshop(Foodlist *s,Foodlist f){
     // addList(f, listlength);
     int n;
     int i,j=1;
-    n = listslength(f);
+    n = listlength(f);
     for (i=1;i<=n;i++){
         char y[50];
         wordToStri((f).F[i].act,y);
@@ -126,10 +126,10 @@ void listshop(Foodlist *s,Foodlist f){
     }
 }
 
-void listfry(Foodlist *s,Foodlist f, int listlength){
+void listfry(Foodlist *s,Foodlist f){
     int n;
     int i,j=1;
-    n = listslength(f);
+    n = listlength(f);
     for (i=1;i<=n;i++){
         char y[50];
         wordToStri((f).F[i].act,y);
@@ -144,7 +144,7 @@ void listfry(Foodlist *s,Foodlist f, int listlength){
 void listboil(Foodlist *s,Foodlist f){
     int n;
     int i,j=1;
-    n = listslength(f);
+    n = listlength(f);
     for (i=1;i<=n;i++){
         char y[50];
         wordToStri((f).F[i].act,y);
@@ -159,7 +159,7 @@ void listboil(Foodlist *s,Foodlist f){
 void listchop(Foodlist *s,Foodlist f){
     int n;
     int i,j=1;
-    n = listslength(f);
+    n = listlength(f);
     for (i=1;i<=n;i++){
         char y[50];
         wordToStri((f).F[i].act,y);
@@ -174,7 +174,7 @@ void listchop(Foodlist *s,Foodlist f){
 void listmix(Foodlist *s,Foodlist f){
     int n;
     int i,j=1;
-    n = listslength(f);
+    n = listlength(f);
     for (i=1;i<=n;i++){
         char y[50];
         wordToStri((f).F[i].act,y);
