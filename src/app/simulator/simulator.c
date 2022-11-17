@@ -209,7 +209,7 @@ int loadSimulator()
     createStackState(&stateHistory);
     insertState(&stateHistory, currentGameState);
     nMove = 0;
-    addList(&listFood);
+    addList(&listFood, foodListLen);
     Createinventory(&inventory);
 
     // Simulator
