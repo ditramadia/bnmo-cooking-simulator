@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include "../boolean/boolean.h"
 #include "food.h"
+#include "../string/string.c"
 
 void addID(Foodlist *f,int i){
     int temp;
@@ -15,7 +16,7 @@ void addID(Foodlist *f,int i){
 
 void addName(Foodlist *f,int i){
     // char* y[50];
-    // wordToString(y); 
+    // currentWts(y); 
     // f.F[i].name = y;
     (*f).F[i].name = currentWord;
     //displayWord(f.F[i].name);
@@ -25,7 +26,7 @@ void addName(Foodlist *f,int i){
 void addExpTime(Foodlist *f,int i){
     char y[50], ds[5],hs[5], ms[5];
     int d,h,m;
-    wordToString(y);
+    currentWts(y);
     int k=0,j=0;
     while(y[k] != ' '){
         ds[j] = y[k];
@@ -59,7 +60,7 @@ void addExpTime(Foodlist *f,int i){
 void addDelTime(Foodlist *f,int i){
     char y[50], ds[5],hs[5], ms[5];
     int d,h,m;
-    wordToString(y);
+    currentWts(y);
     int k=0,j=0;
     while(y[k] != ' '){
         ds[j] = y[k];
@@ -91,7 +92,7 @@ void addDelTime(Foodlist *f,int i){
 
 void addAct(Foodlist *f,int i){
     // char* y[50];
-    // wordToString(y);
+    // currentWts(y);
     // f.F[i].act = y;
     (*f).F[i].act = currentWord;
     ADVWORD();
@@ -138,17 +139,32 @@ void addList(Foodlist *f, int listlength){
 void listshop(Foodlist *s,Foodlist f, int listlength){
     // Foodlist s;
     // addList(f, listlength);
-    int i;
+    int i,j=0;
     for (i=1;i<=listlength;i++){
-        char y;
-        currentWord = (f).F[i].act;
-        // displayWord(currentWord);
-        // wordToString(&y);
-        // printf("%s\n",y);
-        if (currentWord.TabWord == "Buy"){
-            (*s).F[i] = (f).F[i];
+        char y[50];
+        wordToStri((f).F[i].act,y);
+        if(compareString(y,"Buy")){
+            (*s).F[j] = f.F[i];
+            printf("%d\n",(*s).F[j].id);
+            j++;
         }
-        printf("%d\n",(*s).F[i].id);
+        // currentWord = (f).F[i].act;
+        // displayWord(currentWord);
+        // wordToStri(&y);
+        // printf("%s\n",y);
+
+        // if (compareString(wordToStr(),"Buy")){
+        //     (*s).F[i] = (f).F[i];
+        // }
+        //  printf("%d\n",(f).F[i].id);
+        // displayWord((f).F[i].name);
+        // printf("\n");
+        // displayTime((f).F[i].exptime);
+        // printf("\n");
+        // displayTime((f).F[i].deltime);
+        // printf("\n");
+        // displayWord((f).F[i].act);
+        // printf("\n");
     }
 }
 // int main(){
@@ -178,7 +194,7 @@ void listshop(Foodlist *s,Foodlist f, int listlength){
 //     //         mode = 2;
 //     //         // printf("temp = %d\n",temp);
 //     //         char y[50];
-//     //         wordToString(y);
+//     //         wordToStri(y);
 //     //         f.F[temp].name = y;
 //     //         printf("aaa %s\n",f.F[1].name);
 //     //         ADVWORD();
@@ -187,7 +203,7 @@ void listshop(Foodlist *s,Foodlist f, int listlength){
 //     //         mode = 3;
 //     //         char y[50], ds[5],hs[5], ms[5];
 //     //         int d,h,m;
-//     //         wordToString(y);
+//     //         wordToStri(y);
 //     //         int k=0,j=0;
 //     //         while(y[k] != ' '){
 //     //             ds[j] = y[k];
@@ -223,7 +239,7 @@ void listshop(Foodlist *s,Foodlist f, int listlength){
 //     //         mode = 4;
 //     //         char y[50], ds[5],hs[5], ms[5];
 //     //         int d,h,m;
-//     //         wordToString(y);
+//     //         wordToStri(y);
 //     //         int k=0,j=0;
 //     //         while(y[k] != ' '){
 //     //             ds[j] = y[k];
@@ -257,7 +273,7 @@ void listshop(Foodlist *s,Foodlist f, int listlength){
 //     //     else if(mode == 4){
 //     //         mode = 0;
 //     //         char y[50];
-//     //         wordToString(y);
+//     //         wordToStri(y);
 //     //         f.F[temp].act = y;
 //     //         ADVWORD();
 //     //     }

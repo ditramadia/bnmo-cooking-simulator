@@ -171,7 +171,7 @@ void simulatorCommandParser(char query[])
         system("cls");
         if (currentGameState.isAbleFry)
         {
-            fry(,inventory,foodListLen);
+            fry(listFood,inventory,foodListLen);
             system("cls");
             simulator();
         }

@@ -67,17 +67,22 @@ int wordToInteger(){
     return X;
 }
 
-void wordToString(char *y) {
-    int i=0;
-    // for (i = 0; i < currentWord.Length; i++){
-    //     y[i] = currentWord.TabWord[i];
-    //     // printf("panjang : %d\n", currentWord.Length);
-    //     // printf("%c\n",currentWord.TabWord[i]);
-    // }
-    while (i < currentWord.Length)
+void wordToStri(Word w, char *str)
+{
+    int i = 0;
+    while (i < w.Length)
     {
-        y[i] = currentWord.TabWord[i];
+    // printf("masuk kh");
+        str[i] = w.TabWord[i];
+        // printf("%c",str[i]);
         i++;
     }
-    y[i] = '\0';
+    str[i] = '\0';
+}
+
+void currentWts(char *y) {
+    int i;
+    for (i = 0; i < currentWord.Length; i++){
+        y[i] = currentWord.TabWord[i];
+    }
 }

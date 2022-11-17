@@ -2,17 +2,18 @@
 #include "../../adt/prioqueuetime/prioqueuetimeinv.c"
 #include "../../adt/tree/tree.c"
 
-void fry(List l[][100],PrioQueueTime q,int foodListLen){
+void fry(Foodlist l,PrioQueueTime q,int foodListLen){
     int n; //kita perlu bikin panjang l[][100]
     // anggep panjang foodlist n
 
     
     printf("list yang bisa di fry :\n");
     int a = 0;
-    char *listfood[696];
+    // char *listfood[696];
 
     for(int i=0; i<foodListLen;i++){
-        if(compareString(wordToStr((listFood).F[i].act), "Fry")){
+        char *actfood = wordToStr((l).F[i].act);
+        if(compareString(actfood, "Fry")){
             displayWord((listFood).F[i].name);
             listfood[a] = wordtostr((listFood).F[i].name);
             a++;
