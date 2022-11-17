@@ -10,6 +10,7 @@
 #include "../../adt/wordmachinefood/wordmachine.c"
 #include "../../adt/matrixChar/matrixChar.c"
 #include "../../adt/queuelinked/queuelinked.c"
+#include "../../adt/wordmachineresep/wordmachine.c"
 #include "../buy/buy.c"
 // #include "../chop/chop.c"
 #include "../fry/fry.c"

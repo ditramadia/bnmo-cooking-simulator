@@ -3,7 +3,7 @@
 
 
 char currentChar;
-boolean EOP;
+boolean Eop;
 
 static FILE *pita;
 static int retval;
@@ -15,8 +15,8 @@ void START(){
 
 void ADV(){
     retval = fscanf(pita, "%c", &currentChar);
-       EOP = (retval == EOF);
-       if (EOP){
+       Eop = (retval == EOF);
+       if (Eop){
               fclose(pita);
        }
 }

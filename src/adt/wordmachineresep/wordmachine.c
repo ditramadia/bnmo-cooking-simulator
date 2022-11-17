@@ -3,7 +3,7 @@
 
 /* State Mesin Word */
 boolean EndWord;
-Word currentWord;
+WorD CurrentWord;
 
 void IgnoreBlanks(){
     while (currentChar == BLANK || currentChar == '\n'){
@@ -25,7 +25,7 @@ void STARTWORD(){
 
 void ADVWORD(){
     IgnoreBlanks();
-   if (currentChar == MARK || currentChar == '\n'){
+   if (currentChar == '\n'){
       EndWord = true;
    }
    else{
@@ -36,19 +36,19 @@ void ADVWORD(){
 
 void CopyWord(){
     // IgnoreBlanks();
-    currentWord.Length = 0;
-    while (currentChar != BLANK && currentChar != MARK && currentWord.Length < NMax && currentChar != '\n' && retval != EOF){
+    CurrentWord.Lengths = 0;
+    while (currentChar != BLANK && CurrentWord.Lengths < NMax && currentChar != '\n' && retval != EOF){
         // printf("masuk gk\n");
-        currentWord.TabWord[currentWord.Length] = currentChar;
-        currentWord.Length++;
+        CurrentWord.TabWords[CurrentWord.Lengths] = currentChar;
+        CurrentWord.Lengths++;
         ADV();
    }
 }
 
-void displayWord(Word W){
+void displayWord(WorD W){
     int i;
-    for (i = 0; i < W.Length; i++){
-        printf("%c", W.TabWord[i]);
+    for (i = 0; i < W.Lengths; i++){
+        printf("%c", W.TabWords[i]);
     }
     printf(" ");
 }
@@ -57,18 +57,18 @@ int wordToInteger(){
     int i;
     int cc = 1;
     int X = 0;
-    for (i = 0; i < currentWord.Length; i++){
-        // printf("pertama %c\n", currentWord.TabWord[0]);
-        // printf("panjang %d\n", currentWord.Length);
-        X = X*cc + (int)(currentWord.TabWord[i] - 48);
+    for (i = 0; i < CurrentWord.Lengths; i++){
+        // printf("pertama %c\n", currentWord.TabWords[0]);
+        // printf("panjang %d\n", currentWord.Lengths);
+        X = X*cc + (int)(CurrentWord.TabWords[i] - 48);
         cc*= 10;
     }
     return X;
 }
 
-void wordToString(char y[currentWord.Length]) {
+void wordToString(char y[CurrentWord.Lengths]) {
     int i;
-    for (i = 0; i < currentWord.Length; i++){
-        y[i] = currentWord.TabWord[i];
+    for (i = 0; i < CurrentWord.Lengths; i++){
+        y[i] = CurrentWord.TabWords[i];
     }
 }

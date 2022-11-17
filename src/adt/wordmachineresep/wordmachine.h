@@ -1,8 +1,8 @@
 /* File: wordmachine.h */
 /* Definisi Word Machine: Model Akuisisi Versi I */
 
-#ifndef __MESINKATA_H__
-#define __MESINKATA_H__
+#ifndef __MESINKATA_H
+#define __MESINKATA_H
 
 #include "../boolean/boolean.h"
 #include "../charmachineresep/charmachine.c"
@@ -12,15 +12,15 @@
 
 typedef struct
 {
-   char TabWord[NMax]; /* container penyimpan kata, indeks yang dipakai [0..NMax-1] */
-   int Length;
-} Word;
+   char TabWords[NMax]; /* container penyimpan kata, indeks yang dipakai [0..NMax-1] */
+   int Lengths;
+} WorD;
 
 /* State Mesin Word */
 extern boolean EndWord;
-extern Word currentWord;
+extern WorD CurrentWord;
 
-void IgnoreBlanks();
+void Ignoreblanks();
 /* Mengabaikan satu atau beberapa BLANK
    I.S. : currentChar sembarang
    F.S. : currentChar ≠ BLANK atau currentChar = MARK */

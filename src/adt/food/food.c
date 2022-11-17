@@ -5,9 +5,9 @@
 void addID(Foodlist *f, int i)
 {
     int temp;
-    temp = wordToInteger();
+    temp = wordToIntegerFood();
     (*f).F[i].id = temp;
-    ADVWORD();
+    ADVWORDFOOD();
 }
 
 void addName(Foodlist *f, int i)
@@ -17,7 +17,7 @@ void addName(Foodlist *f, int i)
     // f.F[i].name = y;
     (*f).F[i].name = Currentword;
     // displayWord(f.F[i].name);
-    ADVWORD();
+    ADVWORDFOOD();
 }
 
 void addExpTime(Foodlist *f, int i)
@@ -55,7 +55,7 @@ void addExpTime(Foodlist *f, int i)
     Time exptime;
     createTime(&exptime, d, h, m);
     (*f).F[i].exptime = exptime;
-    ADVWORD();
+    ADVWORDFOOD();
 }
 
 void addDelTime(Foodlist *f, int i)
@@ -92,7 +92,7 @@ void addDelTime(Foodlist *f, int i)
     Time deltime;
     createTime(&deltime, d, h, m);
     (*f).F[i].deltime = deltime;
-    ADVWORD();
+    ADVWORDFOOD();
 }
 
 void addAct(Foodlist *f, int i)
@@ -101,16 +101,16 @@ void addAct(Foodlist *f, int i)
     // CurrentWts(y);
     // f.F[i].act = y;
     (*f).F[i].act = Currentword;
-    ADVWORD();
+    ADVWORDFOOD();
 }
 
 void addList(Foodlist *f, int listlength)
 {
-    STARTWORD();
+    STARTWORDFOOD();
     int N, i;
-    N = wordToInteger();
+    N = wordToIntegerFood();
     listlength = N;
-    ADVWORD();
+    ADVWORDFOOD();
 
     for (i = 1; i <= N; i++)
     {

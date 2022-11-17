@@ -1,16 +1,16 @@
 /* File: charmachine.h */
 /* Definisi Mesin Karakter */
 
-#ifndef __MESIN_KAR_H_
-#define __MESIN_KAR_H_
+#ifndef __MESIN_KAR_H
+#define __MESIN_KAR_H
 
 #include "../boolean/boolean.h"
 
 
-#define MARK '.'
+// #define MARK '.'
 /* State Mesin */
 extern char currentChar;
-extern boolean EOP;
+extern boolean Eop;
 
 void START();
 /* Mesin siap dioperasikan. Pita disiapkan untuk dibaca.

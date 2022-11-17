@@ -11,7 +11,7 @@ void buy(Queue q, Foodlist listshop)
     for (int i = 1; i <= n; i++)
     {
         printf("%d. ", i);
-        displayWord(listshop.F[i].name);
+        displayWordFood(listshop.F[i].name);
         printf("     ");
         displayTime(listshop.F[i].exptime);
         printf("---");

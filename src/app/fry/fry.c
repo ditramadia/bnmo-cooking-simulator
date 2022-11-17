@@ -9,7 +9,7 @@ void fry(Foodlist l,Queue q,int foodListLen,Foodlist listFry){
     int n = listlength(listFry);
     printf("list yang bisa di fry :\n%d",n);
     for(int i=1; i<=n;i++){
-        displayWord(listFry.F[i].name);
+        displayWordFood(listFry.F[i].name);
     }
     // int a = 0;
     int x;

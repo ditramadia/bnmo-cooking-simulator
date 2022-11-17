@@ -9,13 +9,13 @@ void IgnoreBlanksFood()
 {
     while (currentChar == BLANK || currentChar == '\n')
     {
-        ADV();
+        ADVFOOD();
     }
 }
 
 void STARTWORDFOOD()
 {
-    START();
+    STARTFOOD();
     // IgnoreBlanks();
     if (currentChar == '\n')
     {
@@ -24,20 +24,20 @@ void STARTWORDFOOD()
     else
     {
         EndWord = false;
-        CopyWord();
+        CopyWordFood();
     }
 }
 
 void ADVWORDFOOD()
 {
-    IgnoreBlanks();
+    IgnoreBlanksFood();
     if (currentChar == '\n')
     {
         EndWord = true;
     }
     else
     {
-        CopyWord();
+        CopyWordFood();
         //   IgnoreBlanks();
     }
 }
@@ -51,7 +51,7 @@ void CopyWordFood()
         // printf("masuk gk\n");
         Currentword.TabWord[Currentword.Length] = currentChar;
         Currentword.Length++;
-        ADV();
+        ADVFOOD();
     }
 }
 
@@ -82,7 +82,7 @@ int wordToIntegerFood()
     return X;
 }
 
-void wordToStriFood(word w, char *str)
+void wordToStri(word w, char *str)
 {
     int i = 0;
     while (i < w.Length)

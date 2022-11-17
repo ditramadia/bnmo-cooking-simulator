@@ -26,9 +26,9 @@ void DisplayInventory(Queue Q)
     address p = ADDR_HEAD(Q);
     int i=1;
     while (p != NULL) {
-        // displayWord(INFO(p).name);
+        // displayWordFood(INFO(p).name);
         printf("%d. ", i);
-        displayWord(INFO(p).name);
+        displayWordFood(INFO(p).name);
         printf ("         ");
         displayTime(INFO(p).exptime);
         p = NEXT(p);

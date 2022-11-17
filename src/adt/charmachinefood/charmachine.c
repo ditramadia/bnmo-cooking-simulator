@@ -9,7 +9,7 @@ static FILE *pita;
 void STARTFOOD()
 {
     pita = fopen("makanan.txt", "r");
-    ADV();
+    ADVFOOD();
 }
 
 void ADVFOOD()

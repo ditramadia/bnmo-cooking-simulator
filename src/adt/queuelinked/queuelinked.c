@@ -36,9 +36,9 @@ void DisplayQueue(Queue q){
     printf("");
     int i=1;
     while (p != NULL) {
-        // displayWord(INFO(p).name);
+        // displayWordFood(INFO(p).name);
         printf("%d. ", i);
-        displayWord(INFO(p).name);
+        displayWordFood(INFO(p).name);
         printf ("     ");
         displayTime(INFO(p).exptime);
         p = NEXT(p);

@@ -37,7 +37,7 @@ void displayDelivery(Queue Q)
     while (p != NULL) {
         // displayWord(INFO(p).name);
         printf("%d. ", i);
-        displayWord(INFO(p).name);
+        displayWordFood(INFO(p).name);
         printf ("         ");
         displayTime(INFO(p).deltime);
         p = NEXT(p);

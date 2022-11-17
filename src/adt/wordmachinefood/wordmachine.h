@@ -25,26 +25,26 @@ void IgnoreBlanksFood();
    I.S. : currentChar sembarang
    F.S. : currentChar ≠ BLANK atau currentChar = MARK */
 
-void STARTwordFood();
+void STARTWORDFOOD();
 /* I.S. : currentChar sembarang
    F.S. : Endword = true, dan currentChar = MARK;
           atau Endword = false, Currentword adalah kata yang sudah diakuisisi,
           currentChar karakter pertama sesudah karakter terakhir kata */
 
-void ADVword();
+void ADVWORDFOOD();
 /* I.S. : currentChar adalah karakter pertama kata yang akan diakuisisi
    F.S. : Currentword adalah kata terakhir yang sudah diakuisisi,
           currentChar adalah karakter pertama dari kata berikutnya, mungkin MARK
           Jika currentChar = MARK, Endword = true.
    Proses : Akuisisi kata menggunakan procedure Salinword */
 
-void CopyWord();
+void CopyWordFood();
 /* Mengakuisisi kata, menyimpan dalam Currentword
    I.S. : currentChar adalah karakter pertama dari kata
    F.S. : Currentword berisi kata yang sudah diakuisisi;
           currentChar = BLANK atau currentChar = MARK;
           currentChar adalah karakter sesudah karakter terakhir yang diakuisisi.
           Jika panjang kata melebihi NMax, maka sisa kata "dipotong" */
-void displayWord(word W);
+void displayWordFood(word W);
 
 #endif
