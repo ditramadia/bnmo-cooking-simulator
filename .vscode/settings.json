@@ -10,7 +10,8 @@
     "foodlist.h": "c",
     "stdlib.h": "c",
     "config.h": "c",
-    "random": "c"
+    "random": "c",
+    "point.h": "c"
   },
   "C_Cpp.errorSquiggles": "Enabled"
 }

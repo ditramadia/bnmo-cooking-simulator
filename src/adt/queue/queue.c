@@ -1,7 +1,3 @@
-// Nama     : Kenny Benaya Nathan
-// NIM      : 13521023
-// Tanggal  : 5 Oktober 2022
-
 #include "queue.h"
 #include <stdio.h>
 

@@ -11,8 +11,8 @@
 #define ACT(f) (f).act
 #define DURATION(f) (f).duration
 
-void addDelivery(Queue *Q, Food I);
-void delDelivery(Queue *Q, Food *I);
+void addDelivery(Queue *Q, Food x);
+void delDelivery(Queue *Q, Food *x);
 void displayDelivery(Queue Q);
 
 

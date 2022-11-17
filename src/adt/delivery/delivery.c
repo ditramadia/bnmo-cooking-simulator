@@ -31,6 +31,11 @@ void addDelivery(Queue *Q, Food x)
     }
 }
 
+void delDelivery(Queue *Q, Food *x)
+{
+    dequeue(Q, x);
+}
+
 void displayDelivery(Queue Q)
 {
     address p = ADDR_HEAD(Q);
