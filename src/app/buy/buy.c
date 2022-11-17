@@ -46,6 +46,6 @@ void buy(Queue q, Foodlist listshop)
     addDelivery(&q, listshop.F[x]);
     system("cls");
     printf("==============================================================\n");
-    printf("|                 MAKANAN BERHASIL DIPESAN!                  |\n");
+    printf("|                 Makanan berhasil dipesan!                  |\n");
     printf("==============================================================\n");
 }

@@ -118,6 +118,10 @@ void simulatorCommandParser(char query[])
     }
     else if (compareString(simCommand, chopCommand))
     {
+        // Call Delivery App
+    }
+    else if (compareString(simCommand, chopCommand))
+    {
         // Call chop app
         system("cls");
         if (currentGameState.isAbleChop)
@@ -201,6 +205,9 @@ void simulatorCommandParser(char query[])
     else
     {
         system("cls");
+        printf("==============================================================\n");
+        printf("|                   Perintah tidak tersedia                  |\n");
+        printf("==============================================================\n");
         simulator();
     }
 }

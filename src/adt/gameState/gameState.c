@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include "gameState.h"
 
-
 // Sim Name
 char simName[50];
 
@@ -45,7 +44,6 @@ void setGameState(GameState *gs, MatrixChar map)
 // Display
 void renderGameState(GameState gs)
 {
-    printf("BNMO COOKING SIMULATOR\n");
     printf("\n");
 
     printf("Posisi %s: (%d,%d)\n", simName, gs.simPos.X, gs.simPos.Y);
