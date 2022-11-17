@@ -46,7 +46,6 @@ void DisplayInventory(Queue Q)
 
         while (p != NULL)
         {
-            // displayWordFood(INFO(p).name);
             printf("|  %d. ", i);
             displayWordFood(INFO(p).name);
             printf(" ----- ");

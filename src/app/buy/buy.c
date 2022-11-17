@@ -9,7 +9,7 @@ void buy(Queue *q, Foodlist listshop)
     printf("==============================================================\n");
     printf("|                       GRIYA CILEGON                        |\n");
     printf("==============================================================\n");
-    printf("|  No. Nama ----- Waktu Kadaluarsa ----- Waktu Pengantaran\n");
+    printf("|  No. Nama ----- Waktu Kadaluarsa ----- Waktu Delivery\n");
     printf("|\n");
     printf("|  0. Batal\n");
     for (int i = 1; i < n; i++)
@@ -44,7 +44,7 @@ void buy(Queue *q, Foodlist listshop)
         }
     }
     // addDelivery(&q, listshop.F[x]);
-    AddInventory(q, listshop.F[x]);
+    addDelivery(q, listshop.F[x]);
     system("cls");
     printf("==============================================================\n");
     printf("|                 Makanan berhasil dipesan!                  |\n");

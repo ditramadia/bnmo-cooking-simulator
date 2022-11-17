@@ -38,6 +38,7 @@ void simulatorCommandParser(char query[])
     char redoCommand[] = "REDO";
     char waitCommand[] = "WAIT";
     char buyCommand[] = "BUY";
+    char deliveryCommand[] = "DELIVERY";
     char invenCommand[] = "INVENTORY";
     char chopCommand[] = "CHOP";
     char mixCommand[] = "MIX";
@@ -106,7 +107,7 @@ void simulatorCommandParser(char query[])
         if (currentGameState.isAbleBuy)
         {
             // buy(delivery, listShop);
-            buy(&inventory, listShop);
+            buy(&delivery, listShop);
             simulator();
         }
         else
@@ -116,6 +117,13 @@ void simulatorCommandParser(char query[])
             printf("==============================================================\n");
             simulator();
         }
+    }
+    else if (compareString(simCommand, deliveryCommand))
+    {
+        // Call delivery App
+        system(CLEAR);
+        displayDelivery(delivery);
+        simulator();
     }
     else if (compareString(simCommand, invenCommand))
     {
