@@ -9,7 +9,8 @@
     "typeinfo": "c",
     "foodlist.h": "c",
     "stdlib.h": "c",
-    "config.h": "c"
+    "config.h": "c",
+    "random": "c"
   },
   "C_Cpp.errorSquiggles": "Enabled"
 }

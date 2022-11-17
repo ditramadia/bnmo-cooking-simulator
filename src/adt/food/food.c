@@ -136,3 +136,11 @@ void listfry(Foodlist *s,Foodlist f, int listlength){
         }
     }
 }
+
+int listlength(Foodlist f){
+    int i=1;
+    while(f.F[i].id != 0){
+        i++;
+    }
+    return i;
+}

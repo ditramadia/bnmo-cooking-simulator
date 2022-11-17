@@ -5,7 +5,7 @@ void boil(){
     // anggep panjang foodlist n
 
     
-    print("list yang bisa di boil :\n")
+    print("list yang bisa di boil :\n");
     int a = 0;
     char *listfood[696];
 
@@ -13,7 +13,7 @@ void boil(){
         Word w = boil;
         if((f).F[i].act == w){
             displayWord((f).F[i].nama);
-            listfood[a] = wordtostr((f).F[i].nama)
+            listfood[a] = wordtostr((f).F[i].nama);
             a++;
             print("\n");
         }
@@ -25,7 +25,7 @@ void boil(){
         if(listfood[i] == c) cek = 1;
     }
     if(!cek){
-        print("tidak ada jenis makanan yang memenuhi boil, masukan ulang\n")
+        print("tidak ada jenis makanan yang memenuhi boil, masukan ulang\n");
         for(int i=0; i<n; i++){
             if(listfood[i] == c) cek = 1;
         }

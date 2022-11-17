@@ -2,7 +2,7 @@
 
 #include "../boolean/boolean.h"
 #include "../food/food.h"
-#include "../queuelinked/queuelinked.c"
+#include "../queuelinked/queuelinked.h"
 
 #ifndef INVENTORY_H
 #define INVENTORY_H
@@ -32,6 +32,7 @@ void AddInventory(Queue *Q, Food I);
 /* I.S. f terdefinisi */
 /* F.S. food ditambahkan ke inventory */
 
+void delInventory(Queue *Q, Food *I);
 void DisplayInventory();
 
 #endif
