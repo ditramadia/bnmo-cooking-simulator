@@ -1,5 +1,5 @@
 #include<stdio.h>
-#include "../../adt/queuelinked/queuelinked.h"
+// #include "../../adt/queuelinked/queuelinked.c"
 #include "../../adt/tree/tree.c"
 
 void fry(Foodlist l,Queue q,int foodListLen,Foodlist listFry){
