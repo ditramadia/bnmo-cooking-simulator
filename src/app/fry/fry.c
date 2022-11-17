@@ -1,12 +1,17 @@
 #include<stdio.h>
 // #include "../../adt/queuelinked/queuelinked.c"
-// #include "../../adt/tree/tree.c"
+#include "../../adt/tree/tree.h"
 #include "../../adt/food/food.h"
 #include "../../adt/queuelinked/queuelinked.h"
 #include "../../adt/wordmachinefood/wordmachine.h"
-#include "../../adt/tree/tree.h"
 
-void fry(Foodlist l,Queue q,Foodlist listFry,List treeList[100][100]){
+// boolean isThere(int arr[],int val,int lengthArr){
+//     for(int i=0;i<lengthArr;i++){
+//         if(arr[i]==val) return true;
+//     }
+// }
+
+void fry(Foodlist l,Queue *q,Foodlist listFry,List treeList[100][100]){
     int n = listlength(listFry);
     printf("==============================================================\n");
     printf("|                       DAPUR                                |\n");
@@ -75,24 +80,51 @@ void fry(Foodlist l,Queue q,Foodlist listFry,List treeList[100][100]){
             idx=i;
         }
     }
+    // displayWordFood(listFry.F[x].name);
+    boolean lengkap = true;
+    for(int i=0; i<idx;i++){
+        if(!isExist(*q, INFO(FIRST(treeList[idx][i])))){
+            lengkap = false;
+        }
+    }
+
     // dibawah ini yang belom selesai
-    int isTrue=0;
-    for(int i=0;i<length(l[idx]);i++){
-        for(int j=0;j<NBElmt(q);j++){
-            if(INFO(FIRST(l[idx][i]))==Elmt(q,j)){
-                isTrue++;
-            }
+    // int isTrue=0;
+    // int pack[listlength(listFry)];
+    // for(int i=0;i<listlength(listFry);i++){
+    //     for(int j=0;j<length(q);j++){
+    //         if(isExist(q,INFO(FIRST(treeList[idx][i]))) && (!isThere(pack,Elmt(q,j),isTrue))){
+    //             pack[isTrue] = ;
+    //             isTrue++;
+    //         }
+    //     }
+    // }
+
+
+    if(lengkap){
+        printf("Bahan lengkap\n");
+        for(int i=0; i<idx;i++){
+            Food temp;
+            dequeueAt(q,&temp,INFO(FIRST(treeList[idx][i])));
         }
+        AddInventory(q,listFry.F[x]);
+        printf("berhasil ges\n");
     }
-    if(isTrue==length(l[idx])){
-        for(int i=0;i<length(l[idx]);i++){
-            for(int j=0;j<NBElmt(q);j++){
-            if(INFO(FIRST(l[idx][i]))==Elmt(q,j)){
-                    Head(q)=Elmt(q,j);
-                    int val;
-                    dequeue(&q,&val);
-                }
-            }
-        }
+    else{
+        printf("Bahan tidak lengkap\n");
     }
+    // if(isTrue == listlength(listFry)){
+    //     for(int i=0; i < listlength(listFry); i++){
+    //         for(int j=0;j<length(q);j++){
+    //         if(isExist(q, INFO(FIRST(treeList[idx][i])))){
+    //                 // HEAD(q) = Elmt(q,j);
+    //                 Food temp;
+    //                 // dequeue(&q,&val);
+    //                 dequeueAt(&q,&temp, INFO(FIRST(treeList[idx][i])));
+    //             }
+    //         }
+    //     }
+    // }
+    // int temp;
+    // scanf("%d",&temp);
 }

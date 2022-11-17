@@ -194,7 +194,7 @@ void simulatorCommandParser(char query[])
         system(CLEAR);
         if (currentGameState.isAbleFry)
         {
-            fry(listFood, inventory, listFry, treeList);
+            fry(listFood, &inventory, listFry, treeList);
             system(CLEAR);
             simulator();
         }
@@ -231,6 +231,7 @@ int loadSimulator()
     createStackState(&stateHistory);
     insertState(&stateHistory, currentGameState);
     nMove = 0;
+    createTree(treeList);
     makeTree(treeList);
 
     // Load delivery
@@ -240,6 +241,8 @@ int loadSimulator()
     listshop(&listShop, listFood);
     listfry(&listFry, listFood);
 
+    AddInventory(&inventory,listFood.F[4]);
+    AddInventory(&inventory,listFood.F[5]);
 
     // Simulator
     renderGameState(currentGameState);

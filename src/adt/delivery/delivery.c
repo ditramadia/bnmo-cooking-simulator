@@ -14,19 +14,19 @@ void addDelivery(Queue *Q, Food x)
     {
         address p = ADDR_HEAD(*Q);
 
-        if (timeToMinute(INFO(p).deltime) > timeToMinute(INFO(newElmt).deltime))
+        if (timeToMinute(Info(p).deltime) > timeToMinute(Info(newElmt).deltime))
         {
-            NEXT(newElmt) = ADDR_HEAD(*Q);
+            Next(newElmt) = ADDR_HEAD(*Q);
             ADDR_HEAD(*Q) = newElmt;
         }
         else
         {
-            while (NEXT(p) != NULL && timeToMinute(NEXT(p)->info.deltime) < timeToMinute(x.deltime))
+            while (Next(p) != NULL && timeToMinute(Info(Next(p)).deltime) < timeToMinute(x.deltime))
             {
-                p = NEXT(p);
+                p = Next(p);
             }
-            NEXT(newElmt) = NEXT(p);
-            NEXT(p) = newElmt;
+            Next(newElmt) = Next(p);
+            Next(p) = newElmt;
         }
     }
 }
@@ -65,10 +65,10 @@ void displayDelivery(Queue Q)
         while (p != NULL)
         {
             printf("|  %d. ", i);
-            displayWordFood(INFO(p).name);
+            displayWordFood(Info(p).name);
             printf(" ----- ");
-            displayTime(INFO(p).deltime);
-            p = NEXT(p);
+            displayTime(Info(p).deltime);
+            p = Next(p);
             if (p != NULL)
             {
                 printf("\n");
