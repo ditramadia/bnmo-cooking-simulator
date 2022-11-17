@@ -6,6 +6,7 @@
 #include "../../adt/map/map.c"
 #include "../../adt/inventory/inventory.c"
 #include "../chop/chop.c"
+#include "../fry/fry.c"
 #include "../src/adt/food/food.c"
 #include "../src/adt/inventory/inventory.c"
 
@@ -170,7 +171,7 @@ void simulatorCommandParser(char query[])
         system("cls");
         if (currentGameState.isAbleFry)
         {
-            printf("Call Fry Function.\n");
+            fry(,inventory,foodListLen);
             system("cls");
             simulator();
         }

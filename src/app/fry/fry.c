@@ -2,7 +2,7 @@
 #include "../../adt/prioqueuetime/prioqueuetimeinv.c"
 #include "../../adt/tree/tree.c"
 
-void fry(List l[][100],PrioQueueTime q){
+void fry(List l[][100],PrioQueueTime q,int foodListLen){
     int n; //kita perlu bikin panjang l[][100]
     // anggep panjang foodlist n
 
