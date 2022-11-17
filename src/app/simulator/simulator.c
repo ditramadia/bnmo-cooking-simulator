@@ -53,56 +53,56 @@ void simulatorCommandParser(char query[])
     if (compareString(simCommand, moveNCommand))
     {
         // Move north
-        system("cls");
+        system(CLEAR);
         moveNorth(&stateHistory, &currentGameState, &map, &nMove);
         simulator();
     }
     else if (compareString(simCommand, moveECommand))
     {
         // Move east
-        system("cls");
+        system(CLEAR);
         moveEast(&stateHistory, &currentGameState, &map, &nMove);
         simulator();
     }
     else if (compareString(simCommand, moveSCommand))
     {
         // Move south
-        system("cls");
+        system(CLEAR);
         moveSouth(&stateHistory, &currentGameState, &map, &nMove);
         simulator();
     }
     else if (compareString(simCommand, moveWCommand))
     {
         // Move west
-        system("cls");
+        system(CLEAR);
         moveWest(&stateHistory, &currentGameState, &map, &nMove);
         simulator();
     }
     else if (compareString(simCommand, undoCommand))
     {
         // Undo
-        system("cls");
+        system(CLEAR);
         undoState(&stateHistory, &currentGameState, &map);
         simulator();
     }
     else if (compareString(simCommand, redoCommand))
     {
         // Redo
-        system("cls");
+        system(CLEAR);
         redoState(&stateHistory, &currentGameState, &map);
         simulator();
     }
     else if (containFirstWordString(simCommand, waitCommand))
     {
         // Wait
-        system("cls");
+        system(CLEAR);
         waitTime(&stateHistory, &currentGameState, getWaitHour(simCommand), getWaitMinute(simCommand));
         simulator();
     }
     else if (compareString(simCommand, buyCommand))
     {
         // Call buy app
-        system("cls");
+        system(CLEAR);
         if (currentGameState.isAbleBuy)
         {
             buy(delivery, listShop);
@@ -123,11 +123,11 @@ void simulatorCommandParser(char query[])
     else if (compareString(simCommand, chopCommand))
     {
         // Call chop app
-        system("cls");
+        system(CLEAR);
         if (currentGameState.isAbleChop)
         {
             // chop();
-            system("cls");
+            system(CLEAR);
             simulator();
         }
         else
@@ -141,11 +141,11 @@ void simulatorCommandParser(char query[])
     else if (compareString(simCommand, mixCommand))
     {
         // Call mix app
-        system("cls");
+        system(CLEAR);
         if (currentGameState.isAbleMix)
         {
             printf("Call Mix Function.\n");
-            system("cls");
+            system(CLEAR);
             simulator();
         }
         else
@@ -159,11 +159,11 @@ void simulatorCommandParser(char query[])
     else if (compareString(simCommand, boilCommand))
     {
         // Call boil app
-        system("cls");
+        system(CLEAR);
         if (currentGameState.isAbleBoil)
         {
             buy(delivery, listShop);
-            system("cls");
+            system(CLEAR);
             simulator();
         }
         else
@@ -177,11 +177,11 @@ void simulatorCommandParser(char query[])
     else if (compareString(simCommand, fryCommand))
     {
         // Call fry app
-        system("cls");
+        system(CLEAR);
         if (currentGameState.isAbleFry)
         {
             fry(listFood, inventory, foodListLen, listFry);
-            system("cls");
+            system(CLEAR);
             simulator();
         }
         else
@@ -204,7 +204,7 @@ void simulatorCommandParser(char query[])
     // }
     else
     {
-        system("cls");
+        system(CLEAR);
         printf("==============================================================\n");
         printf("|                   Perintah tidak tersedia                  |\n");
         printf("==============================================================\n");

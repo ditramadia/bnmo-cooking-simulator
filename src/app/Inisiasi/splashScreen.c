@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "../../../config/config.h"
-
+#include "../../adt/map/clear.c"
 #include "../simulator/simulator.c"
 
 // Render splash screen
@@ -10,7 +10,7 @@ void display_ascii()
   FILE *fptr;
   fptr = fopen(splashScreenConfig, "r");
 
-  system("cls");
+  system(CLEAR);
   char splash[128];
   while (fgets(splash, sizeof(splash), fptr) != NULL)
   {
@@ -37,11 +37,11 @@ void mainMenuCommandParser(char query[])
     if (compareString(command, startCommand))
     {
       // Call simulator app
-      system("cls");
+      system(CLEAR);
       fflush(stdin);
       printf("Masukkan nama Anda: ");
       scanf("%s", &simName);
-      system("cls");
+      system(CLEAR);
       loadSimulator();
       isMenuCommandValid = 1;
     }
