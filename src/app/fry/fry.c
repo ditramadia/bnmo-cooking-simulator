@@ -3,19 +3,17 @@
 #include "../../adt/tree/tree.c"
 #include "../../adt/food/food.h"
 #include "../../adt/queuelinked/queuelinked.h"
+#include "../../adt/wordmachinefood/wordmachine.h"
 
 void fry(Foodlist l,Queue q,int foodListLen,Foodlist listFry){
-    int n; //kita perlu bikin panjang l[][100]
-    // anggep panjang foodlist n
-    n = listlength(listFry);
-    printf("list yang bisa di fry :\n");
-    for(int i=0; i<1;i++){
-        // char y[50];
-        // wordToStr(listFry.F[i].name,y);
-        // printf("%s\n",y);
+    int n = listlength(listFry);
+    printf("list yang bisa di fry :\n%d",n);
+    for(int i=1; i<=n;i++){
         displayWord(listFry.F[i].name);
     }
     // int a = 0;
+    int x;
+    scanf("%d",&x);
     
 
     // for(int i=0; i<foodListLen;i++){
