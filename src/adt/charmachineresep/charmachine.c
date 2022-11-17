@@ -9,7 +9,7 @@ static FILE *pita;
 static int retval;
 
 void START(){
-    pita = fopen("konfigResep.txt", "r");
+    pita = fopen(resepConfig, "r");
     ADV();
 }
 
