@@ -104,12 +104,13 @@ void addAct(Foodlist *f, int i)
     ADVWORDFOOD();
 }
 
-void addList(Foodlist *f, int listlength)
+void addList(Foodlist *f)
 {
     STARTWORDFOOD();
     int N, i;
     N = wordToIntegerFood();
-    listlength = N;
+    // listlength = N;
+
     ADVWORDFOOD();
 
     for (i = 1; i <= N; i++)
@@ -221,5 +222,5 @@ int listlength(Foodlist f)
     {
         i++;
     }
-    return i;
+    return i-1;
 }

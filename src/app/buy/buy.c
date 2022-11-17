@@ -12,7 +12,7 @@ void buy(Queue *q, Foodlist listshop)
     printf("|  No. Nama ----- Waktu Kadaluarsa ----- Waktu Delivery\n");
     printf("|\n");
     printf("|  0. Batal\n");
-    for (int i = 1; i < n; i++)
+    for (int i = 1; i <= n; i++)
     {
         printf("|  %d. ", i);
         displayWordFood(listshop.F[i].name);

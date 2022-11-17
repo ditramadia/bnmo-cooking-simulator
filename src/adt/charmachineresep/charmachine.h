@@ -5,6 +5,7 @@
 #define __MESIN_KAR_H
 
 #include "../boolean/boolean.h"
+#include "../../../config/config.h"
 
 
 // #define MARK '.'

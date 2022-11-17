@@ -53,14 +53,14 @@ void mix(List l[][100],PrioQueueTime q){
         }
         if(isTrue==length(l[idx])){
             for(int i=0;i<length(l[idx]);i++){
-            for(int j=0;j<NBElmt(q);j++){
-                if(INFO(FIRST(l[idx][i]))==Elmt(q,j)){
-                    Head(q)=Elmt(q,j);
-                    int val;
-                    Dequeue(&q,&val);
+                for(int j=0;j<NBElmt(q);j++){
+                    if(INFO(FIRST(l[idx][i]))==Elmt(q,j)){
+                        Head(q)=Elmt(q,j);
+                        int val;
+                        Dequeue(&q,&val);
+                    }
                 }
             }
-        }
         }
     }
 }

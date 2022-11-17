@@ -2,7 +2,7 @@
 #include "tree.h"
 #include <stdlib.h>
 
-List treeResep[100][100];
+// List treeResep[100][100];
 
 Address newNode(ElType val)
 {
@@ -42,7 +42,7 @@ void tree(int arr[][100],List l[][100],int maxElmt){
     }
 }
 
-void makeTree(){
+void makeTree(List treeResep[100][100]){
     STARTWORD();
     int length;
     length = wordToInteger();

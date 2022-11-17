@@ -15,6 +15,8 @@
 // #include "../chop/chop.c"
 #include "../fry/fry.c"
 #include "../../adt/food/food.c"
+#include "../../adt/tree/tree.c"
+
 
 // Global State
 MatrixChar map;
@@ -23,8 +25,8 @@ StackState stateHistory;
 Foodlist listFood, listShop, listFry;
 Queue inventory;
 Queue delivery;
+List treeList[100][100];
 int nMove;
-int foodListLen;
 
 // Command Parser
 void simulatorCommandParser(char query[])
@@ -192,7 +194,7 @@ void simulatorCommandParser(char query[])
         system(CLEAR);
         if (currentGameState.isAbleFry)
         {
-            fry(listFood, inventory, foodListLen, listFry);
+            fry(listFood, inventory, listFry, treeList);
             system(CLEAR);
             simulator();
         }
@@ -229,13 +231,15 @@ int loadSimulator()
     createStackState(&stateHistory);
     insertState(&stateHistory, currentGameState);
     nMove = 0;
+    makeTree(treeList);
 
     // Load delivery
-    addList(&listFood, foodListLen);
+    addList(&listFood);
     Createinventory(&inventory);
     CreateQueue(&delivery);
     listshop(&listShop, listFood);
-    // listfry(&listFry, listFood);
+    listfry(&listFry, listFood);
+
 
     // Simulator
     renderGameState(currentGameState);
