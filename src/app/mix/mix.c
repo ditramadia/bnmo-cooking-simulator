@@ -85,6 +85,6 @@ void mix(Foodlist l,Queue *q,Foodlist listMix,List treeList[100][100]){
     else{
         printf("Bahan tidak lengkap\n");
     }
-    int xyz;
-    scanf("%d",&xyz);
+    // int xyz;
+    // scanf("%d",&xyz);
 }

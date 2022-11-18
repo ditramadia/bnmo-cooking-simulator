@@ -78,4 +78,17 @@ void boil(Foodlist l,Queue *q,Foodlist listBoil,List treeList[100][100]){
         }
     }
 
+    if(lengkap){
+        printf("Bahan lengkap\n");
+        for(int i=0; i<panjang;i++){
+            Food temp;
+            dequeueAt(q,&temp,INFO(FIRST(treeList[idx][i])));
+        }
+        AddInventory(q,listBoil.F[x]);
+        printf("berhasil ges\n");
+    }
+    else{
+        printf("Bahan tidak lengkap\n");
+    }
+
 }
