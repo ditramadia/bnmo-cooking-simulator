@@ -11,7 +11,7 @@
 //     }
 // }
 
-void fry(Foodlist l,Queue *q,Foodlist listFry,List treeList[100][100]){
+void fry(Foodlist l,Queue *q,Foodlist listFry,List treeList[100][100],int LengthTree){
     int n = listlength(listFry);
     printf("==============================================================\n");
     printf("|                       DAPUR                                |\n");
@@ -75,16 +75,23 @@ void fry(Foodlist l,Queue *q,Foodlist listFry,List treeList[100][100]){
     // }
     
     int idx;
-    for(int i=0;i<n;i++){
+    for(int i=0;i<LengthTree;i++){
         if(listFry.F[x].id==INFO(NEXT(FIRST(treeList[i][0])))){
             idx=i;
         }
     }
+    // printf("%d\n",idx);
     // displayWordFood(listFry.F[x].name);
+    
     boolean lengkap = true;
-    for(int i=0; i<idx;i++){
+    for(int i=0; i<3;i++){
+        // printf("%d\n",i);
+        // printf("%d\n", isExist(*q,INFO(FIRST(treeList[idx][i]))));
         if(!isExist(*q, INFO(FIRST(treeList[idx][i])))){
             lengkap = false;
+        }
+        else{
+            printf("ada\n");
         }
     }
 
@@ -125,6 +132,6 @@ void fry(Foodlist l,Queue *q,Foodlist listFry,List treeList[100][100]){
     //         }
     //     }
     // }
-    // int temp;
-    // scanf("%d",&temp);
+    int temp;
+    scanf("%d",&temp);
 }

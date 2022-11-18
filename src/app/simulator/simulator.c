@@ -27,6 +27,7 @@ Queue inventory;
 Queue delivery;
 List treeList[100][100];
 int nMove;
+int treeLength;
 
 // Command Parser
 void simulatorCommandParser(char query[])
@@ -194,7 +195,7 @@ void simulatorCommandParser(char query[])
         system(CLEAR);
         if (currentGameState.isAbleFry)
         {
-            fry(listFood, &inventory, listFry, treeList);
+            fry(listFood, &inventory, listFry, treeList, treeLength);
             system(CLEAR);
             simulator();
         }
@@ -232,7 +233,7 @@ int loadSimulator()
     insertState(&stateHistory, currentGameState);
     nMove = 0;
     createTree(treeList);
-    makeTree(treeList);
+    makeTree(treeList,treeLength);
 
     // Load delivery
     addList(&listFood);

@@ -42,9 +42,8 @@ void tree(int arr[][100],List l[][100],int maxElmt){
     }
 }
 
-void makeTree(List treeResep[100][100]){
+void makeTree(List treeResep[100][100],int length){
     STARTWORD();
-    int length;
     length = wordToInteger();
     // printf("%d\n",x);
     // ADVWORD();
@@ -86,4 +85,8 @@ void makeTree(List treeResep[100][100]){
     // List treeResep[length][100];
     // createTree(&treeResep);
     tree(arr,treeResep,length);
+}
+
+int lengthCol(List treeRresep[100][100]){
+    
 }
