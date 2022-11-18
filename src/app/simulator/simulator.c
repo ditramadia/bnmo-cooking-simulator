@@ -145,7 +145,6 @@ void simulatorCommandParser(char query[])
         if (currentGameState.isAbleChop)
         {
             chop(listFood, &inventory, listChop, treeList);
-            system(CLEAR);
             simulator();
         }
         else
