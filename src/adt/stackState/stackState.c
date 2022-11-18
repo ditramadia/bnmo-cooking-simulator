@@ -91,10 +91,13 @@ void moveNorth(StackState *stateHistory, GameState *gs, MatrixChar *map, Queue *
         {
             updateTime(gs, 0, 0, 1);
             updateDeliveryTime(delivery, inventory, 0, 0, 1);
+            updateExpirationTime(inventory, 0, 0, 1);
         }
         (*nMove)++;
 
         // Insert new state to history
+        updateDeliveryState(gs, *delivery);
+        updateInventoryState(gs, *inventory);
         insertState(stateHistory, *gs);
     }
 }
@@ -124,12 +127,14 @@ void moveEast(StackState *stateHistory, GameState *gs, MatrixChar *map, Queue *d
         {
             updateTime(gs, 0, 0, 1);
             updateDeliveryTime(delivery, inventory, 0, 0, 1);
+            updateExpirationTime(inventory, 0, 0, 1);
         }
         (*nMove)++;
 
         // Insert new state to history
-        insertState(stateHistory, *gs);
         updateDeliveryState(gs, *delivery);
+        updateInventoryState(gs, *inventory);
+        insertState(stateHistory, *gs);
     }
 }
 
@@ -158,10 +163,13 @@ void moveSouth(StackState *stateHistory, GameState *gs, MatrixChar *map, Queue *
         {
             updateTime(gs, 0, 0, 1);
             updateDeliveryTime(delivery, inventory, 0, 0, 1);
+            updateExpirationTime(inventory, 0, 0, 1);
         }
         (*nMove)++;
 
         // Insert new state to history
+        updateDeliveryState(gs, *delivery);
+        updateInventoryState(gs, *inventory);
         insertState(stateHistory, *gs);
     }
 }
@@ -191,10 +199,13 @@ void moveWest(StackState *stateHistory, GameState *gs, MatrixChar *map, Queue *d
         {
             updateTime(gs, 0, 0, 1);
             updateDeliveryTime(delivery, inventory, 0, 0, 1);
+            updateExpirationTime(inventory, 0, 0, 1);
         }
         (*nMove)++;
 
         // Insert new state to history
+        updateDeliveryState(gs, *delivery);
+        updateInventoryState(gs, *inventory);
         insertState(stateHistory, *gs);
     }
 }
@@ -290,6 +301,7 @@ void waitTime(StackState *stateHistory, GameState *gs, Queue *delivery, Queue *i
 
     // Update delivery
     updateDeliveryTime(delivery, inventory, day, nHour, minute);
+    updateExpirationTime(inventory, day, nHour, minute);
     updateDeliveryState(gs, *delivery);
     updateInventoryState(gs, *inventory);
 

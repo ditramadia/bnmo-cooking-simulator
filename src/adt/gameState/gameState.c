@@ -106,6 +106,34 @@ void updateDeliveryTime(Queue *delivery, Queue *inventory, int day, int hour, in
     }
 }
 
+// Update delivery
+void updateExpirationTime(Queue *inventory, int day, int hour, int minute)
+{
+    address pointer = ADDR_HEAD(*inventory);
+    for (int i = 0; i < length(*inventory); i++)
+    {
+        int subMinutes = (1440 * day) + (60 * hour) + minute;
+        Time subTime = minuteToTime(subMinutes);
+
+        Time oldTime = Info(pointer).exptime;
+        int oldMinutes = timeToMinute(oldTime);
+
+        if (oldMinutes <= subMinutes)
+        {
+            Food food;
+            delInventory(inventory, &food);
+        }
+        else
+        {
+            int newMinutes = oldMinutes - subMinutes;
+            Time newTime = minuteToTime(newMinutes);
+            Info(pointer).exptime = newTime;
+        }
+
+        pointer = Next(pointer);
+    }
+}
+
 // Update time
 void updateTime(GameState *gs, int day, int hour, int minute)
 {

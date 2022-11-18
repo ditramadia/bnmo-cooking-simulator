@@ -247,12 +247,6 @@ int loadSimulator()
     // Load delivery
     CreateQueue(&delivery);
 
-    // Set up gameState
-    setGameState(&currentGameState, map, inventory, delivery);
-    createStackState(&stateHistory);
-    insertState(&stateHistory, currentGameState);
-    nMove = 0;
-
     // Test
     AddInventory(&inventory, listFood.F[4]);
     AddInventory(&inventory, listFood.F[5]);
@@ -260,6 +254,12 @@ int loadSimulator()
     AddInventory(&inventory, listFood.F[2]);
     AddInventory(&inventory, listFood.F[3]);
     AddInventory(&inventory, listFood.F[6]);
+
+    // Set up gameState
+    setGameState(&currentGameState, map, inventory, delivery);
+    createStackState(&stateHistory);
+    insertState(&stateHistory, currentGameState);
+    nMove = 0;
 
     // Simulator
     renderGameState(currentGameState);
