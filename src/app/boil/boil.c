@@ -10,7 +10,7 @@ void boil(Foodlist l,Queue *q,Foodlist listBoil,List treeList[100][100]){
     
     int n = listlength(listBoil);
     printf("==============================================================\n");
-    printf("|                       DAPUR                                |\n");
+    printf("|                             BOIL                           |\n");
     printf("==============================================================\n");
     printf("|  No. Nama\n");
     printf("|\n");
@@ -24,7 +24,7 @@ void boil(Foodlist l,Queue *q,Foodlist listBoil,List treeList[100][100]){
     printf("==============================================================\n");
     // int a = 0;
     int x;
-    printf("Masukkan nomor barang yang ingin dibeli: ");
+    printf("Masukkan nomor barang yang ingin dibuat: ");
     scanf("%d",&x);
     if (x == 0)
     {
@@ -33,7 +33,7 @@ void boil(Foodlist l,Queue *q,Foodlist listBoil,List treeList[100][100]){
     }
     while (x > n || x < 0)
     {
-        printf("Nomor barang tidak valid. Masukkan nomor barang yang ingin dibeli: ");
+        printf("Nomor barang tidak valid. Masukkan nomor barang yang ingin dibuat: ");
         scanf("%d", &x);
         if (x == 0)
         {
@@ -74,21 +74,20 @@ void boil(Foodlist l,Queue *q,Foodlist listBoil,List treeList[100][100]){
             lengkap = false;
         }
         else{
-            printf("ada\n");
+            // printf("ada\n");
         }
     }
 
     if(lengkap){
-        printf("Bahan lengkap\n");
+        // printf("Bahan lengkap\n");
         for(int i=0; i<panjang;i++){
             Food temp;
             dequeueAt(q,&temp,INFO(FIRST(treeList[idx][i])));
         }
         AddInventory(q,listBoil.F[x]);
-        printf("berhasil ges\n");
+        printf("Bahan tersedia, makanan berhasil dibuat\n");
     }
     else{
         printf("Bahan tidak lengkap\n");
     }
-
 }

@@ -61,7 +61,7 @@ void chop(Foodlist l, Queue *q, Foodlist listchop, List treeList[100][100])
     }
     while (x > n || x < 0)
     {
-        printf("Nomor barang tidak valid. Masukkan nomor barang yang ingin dibeli: ");
+        printf("Nomor barang tidak valid. Masukkan nomor barang yang ingin dibuat: ");
         scanf("%d", &x);
         if (x == 0)
         {
@@ -101,14 +101,14 @@ void chop(Foodlist l, Queue *q, Foodlist listchop, List treeList[100][100])
 
     for (int i = 0; i < panjang; i++)
     {
-        printf("%d\n", i);
+        // printf("%d\n", i);
         if (!isExist(*q, INFO(FIRST(treeList[idx][i]))))
         {
             lengkap = false;
         }
         else
         {
-            printf("ada\n");
+            // printf("ada\n");
         }
     }
 
@@ -121,7 +121,7 @@ void chop(Foodlist l, Queue *q, Foodlist listchop, List treeList[100][100])
             dequeueAt(q, &temp, INFO(FIRST(treeList[idx][i])));
         }
         AddInventory(q, listchop.F[x]);
-        printf("berhasil ges\n");
+        printf("Bahan tersedia, makanan berhasil dibuat\n");
     }
     else
     {

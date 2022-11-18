@@ -14,7 +14,7 @@
 void fry(Foodlist l,Queue *q,Foodlist listFry,List treeList[100][100]){
     int n = listlength(listFry);
     printf("==============================================================\n");
-    printf("|                       DAPUR                                |\n");
+    printf("|                           FRY                              |\n");
     printf("==============================================================\n");
     printf("|  No. Nama\n");
     printf("|\n");
@@ -28,7 +28,7 @@ void fry(Foodlist l,Queue *q,Foodlist listFry,List treeList[100][100]){
     printf("==============================================================\n");
     // int a = 0;
     int x;
-    printf("Masukkan nomor barang yang ingin dibeli: ");
+    printf("Masukkan nomor barang yang ingin dibuat: ");
     scanf("%d",&x);
     if (x == 0)
     {
@@ -37,7 +37,7 @@ void fry(Foodlist l,Queue *q,Foodlist listFry,List treeList[100][100]){
     }
     while (x > n || x < 0)
     {
-        printf("Nomor barang tidak valid. Masukkan nomor barang yang ingin dibeli: ");
+        printf("Nomor barang tidak valid. Masukkan nomor barang yang ingin dibuat: ");
         scanf("%d", &x);
         if (x == 0)
         {
@@ -73,12 +73,12 @@ void fry(Foodlist l,Queue *q,Foodlist listFry,List treeList[100][100]){
     
 
     for(int i=0; i<panjang;i++){
-        printf("%d\n",i);
+        // printf("%d\n",i);
         if(!isExist(*q, INFO(FIRST(treeList[idx][i])))){
             lengkap = false;
         }
         else{
-            printf("ada\n");
+            // printf("ada\n");
         }
     }
     // int xyz;
@@ -98,13 +98,13 @@ void fry(Foodlist l,Queue *q,Foodlist listFry,List treeList[100][100]){
 
 
     if(lengkap){
-        printf("Bahan lengkap\n");
+        // printf("Bahan lengkap\n");
         for(int i=0; i<panjang;i++){
             Food temp;
             dequeueAt(q,&temp,INFO(FIRST(treeList[idx][i])));
         }
         AddInventory(q,listFry.F[x]);
-        printf("berhasil ges\n");
+        printf("Bahan tersedia, makanan berhasil dibuat\n");
     }
     else{
         printf("Bahan tidak lengkap\n");
