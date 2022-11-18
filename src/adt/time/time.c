@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include "time.h"
-
+#include "../boolean/boolean.h"
 // Constructor
 void createTime(Time *time, int day, int hour, int minute)
 {
@@ -9,7 +9,7 @@ void createTime(Time *time, int day, int hour, int minute)
     (*time).minute = minute;
 }
 
-// Display
+// Display in digital
 void displayTime(Time time)
 {
     // Display hour
@@ -38,6 +38,31 @@ void displayTime(Time time)
     else
     {
         printf("%d", time.minute);
+    }
+}
+
+// Display in x hari y jam z menit
+void printTime(Time time)
+{
+    if (time.day > 0)
+    {
+        printf("%d hari", time.day);
+        if (time.hour > 0 || time.minute > 0)
+        {
+            printf(" ");
+        }
+    }
+    if (time.hour > 0)
+    {
+        printf("%d jam", time.hour);
+        if (time.minute > 0)
+        {
+            printf(" ");
+        }
+    }
+    if (time.minute > 0)
+    {
+        printf("%d menit", time.minute);
     }
 }
 

@@ -1,6 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "gameState.h"
+#include "../inventory/inventory.h"
+#include "../delivery/delivery.h"
+// add include for mac
 
 // Sim Name
 char simName[50];

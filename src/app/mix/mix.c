@@ -6,6 +6,7 @@
 #include "../../adt/wordmachinefood/wordmachine.h"
 
 void mix(Foodlist l,Queue *q,Foodlist listMix,List treeList[100][100]){
+    int bin;
     int n = listlength(listMix);
     printf("==============================================================\n");
     printf("|                              MIX                           |\n");
@@ -77,14 +78,19 @@ void mix(Foodlist l,Queue *q,Foodlist listMix,List treeList[100][100]){
         for(int i=0; i<panjang;i++){
             Food temp;
             dequeueAt(q,&temp,INFO(FIRST(treeList[idx][i])));
-            printf("%d",temp.id);
+            // printf("%d",temp.id);
         }
         AddInventory(q,listMix.F[x]);
-        printf("Bahan tersedia, makanan berhasil dibuat\n");
+        // printf("Bahan tersedia, ");
+        // displayWordFood(listMix.F[x].name);
+        // printf(" berhasil dibuat dan sudah masuk ke inventory!\n");
     }
     else{
         printf("Bahan tidak lengkap\n");
     }
+    printf("\nTekan enter untuk kembali ke map\n");
+    scanf("%d", &bin);
+    return;
     // int xyz;
     // scanf("%d",&xyz);
 }

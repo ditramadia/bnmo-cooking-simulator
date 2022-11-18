@@ -1,5 +1,5 @@
 #ifndef CHARMACHINE_H
-#define CHARMACHINE
+#define CHARMACHINE_H
 
 // Dictionary
 #define CHARMARK -1

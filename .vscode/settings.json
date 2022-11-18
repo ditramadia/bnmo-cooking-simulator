@@ -21,7 +21,8 @@
     "vector": "c",
     "iterator": "c",
     "string_view": "c",
-    "gamestate.h": "c"
+    "gamestate.h": "c",
+    "delivery.h": "c"
   },
   "C_Cpp.errorSquiggles": "Enabled"
 }

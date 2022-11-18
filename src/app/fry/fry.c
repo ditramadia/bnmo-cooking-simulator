@@ -12,6 +12,7 @@
 // }
 
 void fry(Foodlist l,Queue *q,Foodlist listFry,List treeList[100][100]){
+    int bin;
     int n = listlength(listFry);
     printf("==============================================================\n");
     printf("|                           FRY                              |\n");
@@ -104,11 +105,16 @@ void fry(Foodlist l,Queue *q,Foodlist listFry,List treeList[100][100]){
             dequeueAt(q,&temp,INFO(FIRST(treeList[idx][i])));
         }
         AddInventory(q,listFry.F[x]);
-        printf("Bahan tersedia, makanan berhasil dibuat\n");
+        printf("Bahan tersedia, ");
+        displayWordFood(listFry.F[x].name);
+        printf(" berhasil dibuat dan sudah masuk ke inventory!\n");
     }
     else{
         printf("Bahan tidak lengkap\n");
     }
+    printf("\nTekan enter untuk kembali ke map\n");
+    scanf("%d", &bin);
+    return;
     // // if(isTrue == listlength(listFry)){
     // //     for(int i=0; i < listlength(listFry); i++){
     // //         for(int j=0;j<length(q);j++){

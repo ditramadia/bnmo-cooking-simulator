@@ -12,8 +12,11 @@ typedef struct
 // Constructor
 void createTime(Time *time, int day, int hour, int minute);
 
-// Display
+// Display in digital
 void displayTime(Time time);
+
+// Display in x jam y menit z detik
+void printTime(Time time);
 
 // Convert Time to minute
 int timeToMinute(Time time);

@@ -171,7 +171,7 @@ void dequeueAt(Queue *q, Food *x, int id){
 boolean isExist(Queue q, int id){
     address p = ADDR_HEAD(q);
     while (p != NULL) {
-    printf("cek\n");
+    // printf("cek\n");
         if (Info(p).id == id) {
             return true;
         }

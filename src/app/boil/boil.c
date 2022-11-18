@@ -7,8 +7,9 @@ void boil(Foodlist l,Queue *q,Foodlist listBoil,List treeList[100][100]){
     // anggep foodlist itu f di global
     // anggep panjang foodlist n
 
-    
+    int bin;
     int n = listlength(listBoil);
+    
     printf("==============================================================\n");
     printf("|                             BOIL                           |\n");
     printf("==============================================================\n");
@@ -85,9 +86,14 @@ void boil(Foodlist l,Queue *q,Foodlist listBoil,List treeList[100][100]){
             dequeueAt(q,&temp,INFO(FIRST(treeList[idx][i])));
         }
         AddInventory(q,listBoil.F[x]);
-        printf("Bahan tersedia, makanan berhasil dibuat\n");
+        printf("Bahan tersedia, ");
+        displayWordFood(listBoil.F[x].name);
+        printf(" berhasil dibuat dan sudah masuk ke inventory!\n");
     }
     else{
         printf("Bahan tidak lengkap\n");
     }
+    printf("\nTekan enter untuk kembali ke map\n");
+    scanf("%d", &bin);
+    return;
 }

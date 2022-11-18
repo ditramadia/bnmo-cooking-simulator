@@ -1,8 +1,10 @@
 #include <stdio.h>
 #include "../../adt/delivery/delivery.c"
+#include "../../adt/time/time.h"
 
 void buy(Queue *q, Foodlist listshop)
 {
+    int bin;
     int n;
     n = listlength(listshop);
 
@@ -52,4 +54,16 @@ void buy(Queue *q, Foodlist listshop)
     printf("==============================================================\n");
     printf("|                 Makanan berhasil dipesan!                  |\n");
     printf("==============================================================\n");
+
+    printf("\nBerhasil memesan ");
+    displayWordFood(listshop.F[x].name);
+    printf(". ");
+    displayWordFood(listshop.F[x].name);
+    printf(" akan diantar dalam ");
+    printTime(listshop.F[x].deltime);
+    printf(".");
+
+    printf("\nTekan enter untuk kembali ke map\n");
+    scanf("%d", &bin);
+    return;
 }
