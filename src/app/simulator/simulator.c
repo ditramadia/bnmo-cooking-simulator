@@ -12,7 +12,7 @@
 #include "../../adt/queuelinked/queuelinked.c"
 #include "../../adt/wordmachineresep/wordmachine.c"
 #include "../buy/buy.c"
-// #include "../chop/chop.c"
+#include "../chop/chop.c"
 #include "../fry/fry.c"
 #include "../../adt/food/food.c"
 #include "../../adt/tree/tree.c"
@@ -22,7 +22,7 @@
 MatrixChar map;
 GameState currentGameState;
 StackState stateHistory;
-Foodlist listFood, listShop, listFry;
+Foodlist listFood, listShop, listFry, listChop;
 Queue inventory;
 Queue delivery;
 List treeList[100][100];
@@ -141,7 +141,7 @@ void simulatorCommandParser(char query[])
         system(CLEAR);
         if (currentGameState.isAbleChop)
         {
-            // chop();
+            chop(listFood, &inventory, listChop, treeList, treeLength);
             system(CLEAR);
             simulator();
         }
@@ -241,9 +241,11 @@ int loadSimulator()
     CreateQueue(&delivery);
     listshop(&listShop, listFood);
     listfry(&listFry, listFood);
+    listchop(&listChop, listFood);
 
     AddInventory(&inventory,listFood.F[4]);
     AddInventory(&inventory,listFood.F[5]);
+    AddInventory(&inventory,listFood.F[1]);
 
     // Simulator
     renderGameState(currentGameState);

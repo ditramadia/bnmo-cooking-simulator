@@ -99,7 +99,7 @@ void fry(Foodlist l,Queue *q,Foodlist listFry,List treeList[100][100],int Length
 
     if(lengkap){
         printf("Bahan lengkap\n");
-        for(int i=0; i<idx;i++){
+        for(int i=0; i<panjang;i++){
             Food temp;
             dequeueAt(q,&temp,INFO(FIRST(treeList[idx][i])));
         }
