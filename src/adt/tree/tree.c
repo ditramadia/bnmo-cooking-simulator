@@ -87,6 +87,9 @@ void makeTree(List treeResep[100][100],int length){
     tree(arr,treeResep,length);
 }
 
-int lengthCol(List treeRresep[100][100]){
-    
-}
+// int lengthCol(List treeRresep[100][100], int idx){
+//     int i=0;
+//     while(treeResep[idx][i] != 0){
+//         i++;
+//     }
+//     return i;
