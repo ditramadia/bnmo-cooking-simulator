@@ -1,66 +1,90 @@
 #include<stdio.h>
-#include "../../adt/prioqueuetime/prioqueuetimeinv.c"
-#include "../../adt/tree/tree.c"
 
-void mix(List l[][100],PrioQueueTime q){
-    int n; //kita perlu bikin panjang l[][100]
-    // anggep panjang foodlist n
+#include "../../adt/tree/tree.h"
+#include "../../adt/food/food.h"
+#include "../../adt/queuelinked/queuelinked.h"
+#include "../../adt/wordmachinefood/wordmachine.h"
 
+void mix(Foodlist l,Queue *q,Foodlist listMix,List treeList[100][100]){
+    int n = listlength(listMix);
+    printf("==============================================================\n");
+    printf("|                            DAPUR                           |\n");
+    printf("==============================================================\n");
+    printf("|  No. Nama\n");
+    printf("|\n");
+    printf("|  0. Batal\n");
+    for(int i=1; i<=n;i++){
+        printf("|  %d. ", i);
+        displayWordFood(listMix.F[i].name);
+        printf("\n");
+    }
+    printf("|\n");
+    printf("==============================================================\n");
+    int x;
+    // printf("fjdsklajfkldsajfkl;dsjalfdjsakl;fj;as\n");
+    printf("Masukkan nomor barang yang ingin dibeli: ");
+    scanf("%d",&x);
+    if (x == 0)
+    {
+        system(CLEAR);
+        return;
+    }
+    while (x > n || x < 0)
+    {
+        printf("Nomor barang tidak valid. Masukkan nomor barang yang ingin dibeli: ");
+        scanf("%d", &x);
+        if (x == 0)
+        {
+            system(CLEAR);
+            return;
+        }
+    }
+    int idx;
+    int lengthtree = 0;
+    while((FIRST(treeList[lengthtree][0])) != NULL){
+        lengthtree++;
+    }
     
-    printf("list yang bisa di mix :\n");
-    int a = 0;
-    char *listfood[696];
+    for(int i=0;i<lengthtree;i++){
+        if(listMix.F[x].id == INFO(NEXT(FIRST(treeList[i][0])))){
+            idx=i;
+        }
+    }
 
-    for(int i=0; i<foodListLen;i++){
-        if(compareString(wordToStr((listFood).F[i].act), "Mix")){
-            displayWord((listFood).F[i].name);
-            listfood[a] = wordtostr((listFood).F[i].name);
-            a++;
-            print("\n");
+    int panjang = 0;
+    while(FIRST(treeList[idx][panjang]) != NULL){
+        panjang++;
+    } 
+    
+    printf("idx %d\n", idx);
+    printf("lengtree %d\n", lengthtree);
+    printf("panjang %d\n", panjang);
+    boolean lengkap = true;
+    
+
+    for(int i=0; i<panjang;i++){
+        printf("%d\n",i);
+        if(!isExist(*q, INFO(FIRST(treeList[idx][i])))){
+            lengkap = false;
+        }
+        else{
+            printf("ada\n");
         }
     }
-    char *c;
-    scanf("%s",&c);
-    int cek = 0;
-    int idxFood;
-    for(int i=0; i<foodListLen; i++){
-        if(listfood[i] == c){
-            cek =1;
-            idxFood=i;
-        };
-    }
-    if(!cek){
-        print("tidak ada jenis makanan yang memenuhi mix, masukan ulang\n");
-        scanf("%s",&c);
-        for(int i=0; i<foodListLen; i++){
-            if(listfood[i] == c) cek = 1;
+
+    if(lengkap){
+        printf("Bahan lengkap\n");
+        for(int i=0; i<panjang;i++){
+            Food temp;
+            dequeueAt(q,&temp,INFO(FIRST(treeList[idx][i])));
+            printf("%d",temp.id);
         }
+        AddInventory(q,listMix.F[x]);
+        printf("berhasil ges\n");
     }
     else{
-        int idx;
-        for(int i=0;i<n;i++){
-            if(listfood[idxFood]==INFO(NEXT(FIRST(l[i][0])))){
-                idx=i;
-            }
-        }
-        int isTrue=0;
-        for(int i=0;i<length(l[idx]);i++){
-            for(int j=0;j<NBElmt(q);j++){
-                if(INFO(FIRST(l[idx][i]))==Elmt(q,j)){
-                    isTrue++;
-                }
-            }
-        }
-        if(isTrue==length(l[idx])){
-            for(int i=0;i<length(l[idx]);i++){
-                for(int j=0;j<NBElmt(q);j++){
-                    if(INFO(FIRST(l[idx][i]))==Elmt(q,j)){
-                        Head(q)=Elmt(q,j);
-                        int val;
-                        Dequeue(&q,&val);
-                    }
-                }
-            }
-        }
+        printf("Bahan tidak lengkap\n");
     }
+    int xyz;
+    scanf("%d",&xyz);
 }

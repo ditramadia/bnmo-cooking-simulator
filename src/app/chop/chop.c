@@ -3,7 +3,7 @@
 #include "../../adt/tree/tree.h"
 #include "../../adt/queuelinked/queuelinked.h"
 
-void chop(Foodlist l,Queue *q,Foodlist listchop,List treeList[100][100],int LengthTree){
+void chop(Foodlist l,Queue *q,Foodlist listchop,List treeList[100][100]){
     // anggep panjang foodlist n
 
     

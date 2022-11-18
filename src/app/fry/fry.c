@@ -11,7 +11,7 @@
 //     }
 // }
 
-void fry(Foodlist l,Queue *q,Foodlist listFry,List treeList[100][100],int LengthTree){
+void fry(Foodlist l,Queue *q,Foodlist listFry,List treeList[100][100]){
     int n = listlength(listFry);
     printf("==============================================================\n");
     printf("|                       DAPUR                                |\n");
