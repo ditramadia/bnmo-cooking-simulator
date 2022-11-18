@@ -1,42 +1,81 @@
 #include<stdio.h>
+#include "../../adt/food/food.h"
+#include "../../adt/tree/tree.h"
+#include "../../adt/queuelinked/queuelinked.h"
 
-void boil(){
+void boil(Foodlist l,Queue *q,Foodlist listBoil,List treeList[100][100]){
     // anggep foodlist itu f di global
     // anggep panjang foodlist n
 
     
-    print("list yang bisa di boil :\n");
-    int a = 0;
-    char *listfood[696];
+    int n = listlength(listBoil);
+    printf("==============================================================\n");
+    printf("|                       DAPUR                                |\n");
+    printf("==============================================================\n");
+    printf("|  No. Nama\n");
+    printf("|\n");
+    printf("|  0. Batal\n");
+    for(int i=1; i<=n;i++){
+        printf("|  %d. ", i);
+        displayWordFood(listBoil.F[i].name);
+        printf("\n");
+    }
+    printf("|\n");
+    printf("==============================================================\n");
+    // int a = 0;
+    int x;
+    printf("Masukkan nomor barang yang ingin dibeli: ");
+    scanf("%d",&x);
+    if (x == 0)
+    {
+        system(CLEAR);
+        return;
+    }
+    while (x > n || x < 0)
+    {
+        printf("Nomor barang tidak valid. Masukkan nomor barang yang ingin dibeli: ");
+        scanf("%d", &x);
+        if (x == 0)
+        {
+            system(CLEAR);
+            return;
+        }
+    }
+    int idx;
+    // printf("lengtre %d\n",LengthTree);
+    // printf(("%d",(FIRST(treeList[5][5]))));
+    int lengthtree = 0;
+    while((FIRST(treeList[lengthtree][0])) != NULL){
+        lengthtree++;
+    }
+    //     printf("ADFSAFDSAFDAS");
+    //     printf("lengtree%d\n",lengthtree);
+    
+    for(int i=0;i<lengthtree;i++){
+        if(listBoil.F[x].id == INFO(NEXT(FIRST(treeList[i][0])))){
+            idx=i;
+            // printf("cek cek%d\n",idx);
+        }
+    }
+    // printf("%d\n",idx);
+    int panjang = 0;
+    while(FIRST(treeList[idx][panjang]) != NULL){
+        panjang++;
+    } 
+        // printf("cek\n");
+        // printf("PANJANG %d\n",panjang);
+    
+    boolean lengkap = true;
+    
 
-    for(int i=0; i<n;i++){
-        Word w = boil;
-        if((f).F[i].act == w){
-            displayWord((f).F[i].nama);
-            listfood[a] = wordtostr((f).F[i].nama);
-            a++;
-            print("\n");
+    for(int i=0; i<panjang;i++){
+        // printf("%d\n",i);
+        if(!isExist(*q, INFO(FIRST(treeList[idx][i])))){
+            lengkap = false;
         }
-    }
-    char *c;
-    scanf("%s",&c);
-    int cek = 0;
-    for(int i=0; i<n; i++){
-        if(listfood[i] == c) cek = 1;
-    }
-    if(!cek){
-        print("tidak ada jenis makanan yang memenuhi boil, masukan ulang\n");
-        for(int i=0; i<n; i++){
-            if(listfood[i] == c) cek = 1;
+        else{
+            printf("ada\n");
         }
-    }
-    else{
-    /* cek di inventory apakah ada sesuai dengan c
-        jika ada, maka search loop foodlist apakah ada yg info(next(first)) nya sesuai
-        dengan yang kita cari, jika ada maka dihapus di inventory childnya dan diganti dengan
-        yang baru
-        jika tidak ada, gagal melakukan operasi "boil"
-    */
     }
 
 }
