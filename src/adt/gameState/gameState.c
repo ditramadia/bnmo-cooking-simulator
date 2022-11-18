@@ -31,12 +31,16 @@ Time setTime(int day, int hour, int minute)
 }
 
 // Constructor
-void setGameState(GameState *gs, MatrixChar map)
+void setGameState(GameState *gs, MatrixChar map, Queue inventory, Queue delivery)
 {
     // Set sPos
     (*gs).simPos = setSimPos(map);
     // Set time
     (*gs).time = setTime(0, 5, 0);
+    // Set inventory
+    (*gs).inventory = inventory;
+    // Set delivery
+    (*gs).delivery = delivery;
     // Set action
     updateAvailableAction(gs, map);
 }
@@ -73,11 +77,40 @@ void updateMap(GameState gs, MatrixChar *map)
     (*map).buffer[currentPos.Y + 1][currentPos.X + 1] = 'S';
 }
 
+// Update delivery
+void updateDeliveryTime(Queue *delivery, Queue *inventory, int day, int hour, int minute)
+{
+    address pointer = ADDR_HEAD(*delivery);
+    for (int i = 0; i < length(*delivery); i++)
+    {
+        int subMinutes = (1440 * day) + (60 * hour) + minute;
+        Time subTime = minuteToTime(subMinutes);
+
+        Time oldTime = Info(pointer).deltime;
+        int oldMinutes = timeToMinute(oldTime);
+
+        if (oldMinutes < subMinutes)
+        {
+            Food food;
+            delDelivery(delivery, &food);
+            AddInventory(inventory, food);
+        }
+        else
+        {
+            int newMinutes = oldMinutes - subMinutes;
+            Time newTime = minuteToTime(newMinutes);
+            Info(pointer).deltime = newTime;
+        }
+
+        pointer = Next(pointer);
+    }
+}
+
 // Update time
-void updateTime(GameState *gs, int hour, int minute)
+void updateTime(GameState *gs, int day, int hour, int minute)
 {
     int minutes = timeToMinute((*gs).time);
-    int addedMinutes = (60 * hour) + minute;
+    int addedMinutes = (1440 * day) + (60 * hour) + minute;
     int totalMinute = minutes + addedMinutes;
     (*gs).time = minuteToTime(totalMinute);
 }

@@ -31,7 +31,7 @@ void insertState(StackState *stackState, GameState currentGameState)
 }
 
 // Undo
-void undoState(StackState *stackState, GameState *currentGameState, MatrixChar *map)
+void undoState(StackState *stackState, GameState *currentGameState, MatrixChar *map, Queue *delivery, Queue *inventory)
 {
     if ((*stackState).currentStateId > 0)
     {
@@ -39,13 +39,17 @@ void undoState(StackState *stackState, GameState *currentGameState, MatrixChar *
         (*stackState).currentStateId--;
         *currentGameState = (*stackState).buffer[(*stackState).currentStateId];
 
+        // Update delivery and inventory
+        *delivery = (*currentGameState).delivery;
+        *inventory = (*currentGameState).inventory;
+
         // Update Map
         updateMap(*currentGameState, map);
     }
 }
 
 // Redo
-void redoState(StackState *stackState, GameState *currentGameState, MatrixChar *map)
+void redoState(StackState *stackState, GameState *currentGameState, MatrixChar *map, Queue *delivery, Queue *inventory)
 {
     if ((*stackState).currentStateId != (*stackState).idxEff)
     {
@@ -53,13 +57,17 @@ void redoState(StackState *stackState, GameState *currentGameState, MatrixChar *
         (*stackState).currentStateId++;
         *currentGameState = (*stackState).buffer[(*stackState).currentStateId];
 
+        // Update delivery and inventory
+        *delivery = (*currentGameState).delivery;
+        *inventory = (*currentGameState).inventory;
+
         // Update Map
         updateMap(*currentGameState, map);
     }
 }
 
 // Move North
-void moveNorth(StackState *stateHistory, GameState *gs, MatrixChar *map, int *nMove)
+void moveNorth(StackState *stateHistory, GameState *gs, MatrixChar *map, Queue *delivery, Queue *inventory, int *nMove)
 {
     Point currentPos, nextPos;
     createPoint(&currentPos, (*gs).simPos.X, (*gs).simPos.Y);
@@ -78,10 +86,11 @@ void moveNorth(StackState *stateHistory, GameState *gs, MatrixChar *map, int *nM
         // Update game state action
         updateAvailableAction(gs, *map);
 
-        // Update time
+        // Update time and delivery
         if (*nMove % 3 == 0)
         {
-            updateTime(gs, 0, 1);
+            updateTime(gs, 0, 0, 1);
+            updateDeliveryTime(delivery, inventory, 0, 0, 1);
         }
         (*nMove)++;
 
@@ -91,7 +100,7 @@ void moveNorth(StackState *stateHistory, GameState *gs, MatrixChar *map, int *nM
 }
 
 // Move East
-void moveEast(StackState *stateHistory, GameState *gs, MatrixChar *map, int *nMove)
+void moveEast(StackState *stateHistory, GameState *gs, MatrixChar *map, Queue *delivery, Queue *inventory, int *nMove)
 {
     Point currentPos, nextPos;
     createPoint(&currentPos, (*gs).simPos.X, (*gs).simPos.Y);
@@ -113,17 +122,19 @@ void moveEast(StackState *stateHistory, GameState *gs, MatrixChar *map, int *nMo
         // Update time
         if (*nMove % 3 == 0)
         {
-            updateTime(gs, 0, 1);
+            updateTime(gs, 0, 0, 1);
+            updateDeliveryTime(delivery, inventory, 0, 0, 1);
         }
         (*nMove)++;
 
         // Insert new state to history
         insertState(stateHistory, *gs);
+        updateDeliveryState(gs, *delivery);
     }
 }
 
 // Move South
-void moveSouth(StackState *stateHistory, GameState *gs, MatrixChar *map, int *nMove)
+void moveSouth(StackState *stateHistory, GameState *gs, MatrixChar *map, Queue *delivery, Queue *inventory, int *nMove)
 {
     Point currentPos, nextPos;
     createPoint(&currentPos, (*gs).simPos.X, (*gs).simPos.Y);
@@ -145,7 +156,8 @@ void moveSouth(StackState *stateHistory, GameState *gs, MatrixChar *map, int *nM
         // Update time
         if (*nMove % 3 == 0)
         {
-            updateTime(gs, 0, 1);
+            updateTime(gs, 0, 0, 1);
+            updateDeliveryTime(delivery, inventory, 0, 0, 1);
         }
         (*nMove)++;
 
@@ -155,7 +167,7 @@ void moveSouth(StackState *stateHistory, GameState *gs, MatrixChar *map, int *nM
 }
 
 // Move West
-void moveWest(StackState *stateHistory, GameState *gs, MatrixChar *map, int *nMove)
+void moveWest(StackState *stateHistory, GameState *gs, MatrixChar *map, Queue *delivery, Queue *inventory, int *nMove)
 {
     Point currentPos, nextPos;
     createPoint(&currentPos, (*gs).simPos.X, (*gs).simPos.Y);
@@ -177,13 +189,26 @@ void moveWest(StackState *stateHistory, GameState *gs, MatrixChar *map, int *nMo
         // Update time
         if (*nMove % 3 == 0)
         {
-            updateTime(gs, 0, 1);
+            updateTime(gs, 0, 0, 1);
+            updateDeliveryTime(delivery, inventory, 0, 0, 1);
         }
         (*nMove)++;
 
         // Insert new state to history
         insertState(stateHistory, *gs);
     }
+}
+
+// Update delivery
+void updateDeliveryState(GameState *currentGameState, Queue delivery)
+{
+    (*currentGameState).delivery = delivery;
+}
+
+// Update inventory
+void updateInventoryState(GameState *currentGameState, Queue inventory)
+{
+    (*currentGameState).inventory = inventory;
 }
 
 // Get Wait Hour
@@ -253,12 +278,20 @@ int getWaitMinute(char command[])
 }
 
 // Wait
-void waitTime(StackState *stateHistory, GameState *gs, int hour, int minute)
+void waitTime(StackState *stateHistory, GameState *gs, Queue *delivery, Queue *inventory, int hour, int minute)
 {
+    // Update
+    int day = hour / 24;
+    int nHour = hour % 24;
     int minutes = timeToMinute((*gs).time);
-    int addedMinutes = (60 * hour) + minute;
+    int addedMinutes = (1440 * day) + (60 * nHour) + minute;
     int totalMinute = minutes + addedMinutes;
     (*gs).time = minuteToTime(totalMinute);
+
+    // Update delivery
+    updateDeliveryTime(delivery, inventory, day, nHour, minute);
+    updateDeliveryState(gs, *delivery);
+    updateInventoryState(gs, *inventory);
 
     insertState(stateHistory, *gs);
 }

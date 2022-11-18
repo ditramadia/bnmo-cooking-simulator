@@ -45,7 +45,10 @@ void buy(Queue *q, Foodlist listshop)
     }
     // addDelivery(&q, listshop.F[x]);
     addDelivery(q, listshop.F[x]);
-    system("cls");
+    updateDeliveryState(&currentGameState, *q);
+    insertState(&stateHistory, currentGameState);
+
+    system(CLEAR);
     printf("==============================================================\n");
     printf("|                 Makanan berhasil dipesan!                  |\n");
     printf("==============================================================\n");

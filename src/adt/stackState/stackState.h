@@ -28,22 +28,28 @@ int isStackStateFull(StackState StackState);
 void insertState(StackState *stackState, GameState currentGameState);
 
 // Undo
-void undoState(StackState *stackState, GameState *currentGameState, MatrixChar *map);
+void undoState(StackState *stackState, GameState *currentGameState, MatrixChar *map, Queue *delivery, Queue *inventory);
 
 // Redo
-void redoState(StackState *stackState, GameState *currentGameState, MatrixChar *map);
+void redoState(StackState *stackState, GameState *currentGameState, MatrixChar *map, Queue *delivery, Queue *inventory);
 
 // Move north
-void moveNorth(StackState *stateHistory, GameState *gs, MatrixChar *map, int *nMove);
+void moveNorth(StackState *stateHistory, GameState *gs, MatrixChar *map, Queue *delivery, Queue *inventory, int *nMove);
 
 // Move east
-void moveEast(StackState *stateHistory, GameState *gs, MatrixChar *map, int *nMove);
+void moveEast(StackState *stateHistory, GameState *gs, MatrixChar *map, Queue *delivery, Queue *inventory, int *nMove);
 
 // Move south
-void moveSouth(StackState *stateHistory, GameState *gs, MatrixChar *map, int *nMove);
+void moveSouth(StackState *stateHistory, GameState *gs, MatrixChar *map, Queue *delivery, Queue *inventory, int *nMove);
 
 // Move west
-void moveWest(StackState *stateHistory, GameState *gs, MatrixChar *map, int *nMove);
+void moveWest(StackState *stateHistory, GameState *gs, MatrixChar *map, Queue *delivery, Queue *inventory, int *nMove);
+
+// Update delivery
+void updateDeliveryState(GameState *currentGameState, Queue delivery);
+
+// Update inventory
+void updateInventoryState(GameState *currentGameState, Queue inventory);
 
 // Get Wait Hour
 int getWaitHour(char command[]);
@@ -52,6 +58,6 @@ int getWaitHour(char command[]);
 int getWaitMinute(char command[]);
 
 // Wait
-void waitTime(StackState *stateHistory, GameState *gs, int hour, int minute);
+void waitTime(StackState *stateHistory, GameState *gs, Queue *delivery, Queue *inventory, int hour, int minute);
 
 #endif

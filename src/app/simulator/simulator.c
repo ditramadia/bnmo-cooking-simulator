@@ -17,7 +17,6 @@
 #include "../../adt/food/food.c"
 #include "../../adt/tree/tree.c"
 
-
 // Global State
 MatrixChar map;
 GameState currentGameState;
@@ -57,49 +56,50 @@ void simulatorCommandParser(char query[])
     {
         // Move north
         system(CLEAR);
-        moveNorth(&stateHistory, &currentGameState, &map, &nMove);
+        moveNorth(&stateHistory, &currentGameState, &map, &delivery, &inventory, &nMove);
+
         simulator();
     }
     else if (compareString(simCommand, moveECommand))
     {
         // Move east
         system(CLEAR);
-        moveEast(&stateHistory, &currentGameState, &map, &nMove);
+        moveEast(&stateHistory, &currentGameState, &map, &delivery, &inventory, &nMove);
         simulator();
     }
     else if (compareString(simCommand, moveSCommand))
     {
         // Move south
         system(CLEAR);
-        moveSouth(&stateHistory, &currentGameState, &map, &nMove);
+        moveSouth(&stateHistory, &currentGameState, &map, &delivery, &inventory, &nMove);
         simulator();
     }
     else if (compareString(simCommand, moveWCommand))
     {
         // Move west
         system(CLEAR);
-        moveWest(&stateHistory, &currentGameState, &map, &nMove);
+        moveWest(&stateHistory, &currentGameState, &map, &delivery, &inventory, &nMove);
         simulator();
     }
     else if (compareString(simCommand, undoCommand))
     {
         // Undo
         system(CLEAR);
-        undoState(&stateHistory, &currentGameState, &map);
+        undoState(&stateHistory, &currentGameState, &map, &delivery, &inventory);
         simulator();
     }
     else if (compareString(simCommand, redoCommand))
     {
         // Redo
         system(CLEAR);
-        redoState(&stateHistory, &currentGameState, &map);
+        redoState(&stateHistory, &currentGameState, &map, &delivery, &inventory);
         simulator();
     }
     else if (containFirstWordString(simCommand, waitCommand))
     {
         // Wait
         system(CLEAR);
-        waitTime(&stateHistory, &currentGameState, getWaitHour(simCommand), getWaitMinute(simCommand));
+        waitTime(&stateHistory, &currentGameState, &delivery, &inventory, getWaitHour(simCommand), getWaitMinute(simCommand));
         simulator();
     }
     else if (compareString(simCommand, buyCommand))
@@ -125,6 +125,7 @@ void simulatorCommandParser(char query[])
         // Call delivery App
         system(CLEAR);
         displayDelivery(delivery);
+        system(CLEAR);
         simulator();
     }
     else if (compareString(simCommand, invenCommand))
@@ -132,6 +133,7 @@ void simulatorCommandParser(char query[])
         // Call Inventory App
         system(CLEAR);
         DisplayInventory(inventory);
+        system(CLEAR);
         simulator();
     }
     else if (compareString(simCommand, chopCommand))
@@ -226,25 +228,30 @@ int loadSimulator()
     // Load Map
     setMap(&map);
 
-    // Set up gameState
-    setGameState(&currentGameState, map);
-    createStackState(&stateHistory);
-    insertState(&stateHistory, currentGameState);
-    nMove = 0;
-    createTree(treeList);
-    makeTree(treeList);
-
-    // Load delivery
+    // Load Foods
     addList(&listFood);
-    Createinventory(&inventory);
-    CreateQueue(&delivery);
     listshop(&listShop, listFood);
     listfry(&listFry, listFood);
     listchop(&listChop, listFood);
+    createTree(treeList);
+    makeTree(treeList);
 
-    AddInventory(&inventory,listFood.F[4]);
-    AddInventory(&inventory,listFood.F[5]);
-    AddInventory(&inventory,listFood.F[1]);
+    // Load inventory
+    Createinventory(&inventory);
+
+    // Load delivery
+    CreateQueue(&delivery);
+
+    // Set up gameState
+    setGameState(&currentGameState, map, inventory, delivery);
+    createStackState(&stateHistory);
+    insertState(&stateHistory, currentGameState);
+    nMove = 0;
+
+    // Test
+    AddInventory(&inventory, listFood.F[4]);
+    AddInventory(&inventory, listFood.F[5]);
+    AddInventory(&inventory, listFood.F[1]);
 
     // Simulator
     renderGameState(currentGameState);

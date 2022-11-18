@@ -57,7 +57,7 @@ void displayDelivery(Queue Q)
         int i = 1;
 
         printf("==============================================================\n");
-        printf("|                         INVENTORY                          |\n");
+        printf("|                          DELIVERY                          |\n");
         printf("==============================================================\n");
         printf("|  No. Nama ----- Waktu Delivery\n");
         printf("|\n");

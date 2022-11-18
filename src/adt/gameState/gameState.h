@@ -1,6 +1,7 @@
 #include "../point/point.h"
 #include "../matrixChar/matrixChar.h"
 #include "../time/time.h"
+#include "../queuelinked/queuelinked.h"
 
 #ifndef GAMESTATE_H
 #define GAMESTATE_H
@@ -10,6 +11,8 @@ typedef struct
 {
     Point simPos;
     Time time;
+    Queue inventory;
+    Queue delivery;
     int isAbleBuy;
     int isAbleMix;
     int isAbleChop;
@@ -27,7 +30,7 @@ Point setSimPos(MatrixChar map);
 Time setTime(int day, int hour, int minute);
 
 // Constructor
-void setGameState(GameState *gs, MatrixChar map);
+void setGameState(GameState *gs, MatrixChar map, Queue inventory, Queue delivery);
 
 // Display
 void renderGameState(GameState gs);
@@ -35,8 +38,11 @@ void renderGameState(GameState gs);
 // Update map
 void updateMap(GameState gs, MatrixChar *map);
 
+// Update delivery
+void updateDeliveryTime(Queue *delivery, Queue *inventory, int day, int hour, int minute);
+
 // Update time
-void updateTime(GameState *gs, int hour, int minute);
+void updateTime(GameState *gs, int day, int hour, int minute);
 
 // Update available action
 void updateAvailableAction(GameState *gs, MatrixChar map);

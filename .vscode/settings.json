@@ -11,7 +11,17 @@
     "stdlib.h": "c",
     "config.h": "c",
     "random": "c",
-    "point.h": "c"
+    "point.h": "c",
+    "queuelinked.h": "c",
+    "stackstate.h": "c",
+    "array": "c",
+    "deque": "c",
+    "string": "c",
+    "unordered_map": "c",
+    "vector": "c",
+    "iterator": "c",
+    "string_view": "c",
+    "gamestate.h": "c"
   },
   "C_Cpp.errorSquiggles": "Enabled"
 }
