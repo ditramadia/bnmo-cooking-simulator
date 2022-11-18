@@ -14,6 +14,8 @@
 #include "../buy/buy.c"
 #include "../chop/chop.c"
 #include "../fry/fry.c"
+#include "../boil/boil.c"
+#include "../mix/mix.c"
 #include "../../adt/food/food.c"
 #include "../../adt/tree/tree.c"
 
@@ -21,7 +23,7 @@
 MatrixChar map;
 GameState currentGameState;
 StackState stateHistory;
-Foodlist listFood, listShop, listFry, listChop;
+Foodlist listFood, listShop, listFry, listChop, listBoil, listMix;
 Queue inventory;
 Queue delivery;
 List treeList[100][100];
@@ -160,7 +162,8 @@ void simulatorCommandParser(char query[])
         system(CLEAR);
         if (currentGameState.isAbleMix)
         {
-            printf("Call Mix Function.\n");
+            // printf("Call Mix Function.\n");
+            mix(listFood, &inventory, listMix, treeList);
             system(CLEAR);
             simulator();
         }
@@ -178,7 +181,7 @@ void simulatorCommandParser(char query[])
         system(CLEAR);
         if (currentGameState.isAbleBoil)
         {
-            // buy(delivery, listShop);
+            boil(listFood, &inventory, listBoil, treeList);
             system(CLEAR);
             simulator();
         }
@@ -233,6 +236,8 @@ int loadSimulator()
     listshop(&listShop, listFood);
     listfry(&listFry, listFood);
     listchop(&listChop, listFood);
+    listboil(&listBoil, listFood);
+    listmix(&listMix, listFood);
     createTree(treeList);
     makeTree(treeList);
 
@@ -252,6 +257,9 @@ int loadSimulator()
     AddInventory(&inventory, listFood.F[4]);
     AddInventory(&inventory, listFood.F[5]);
     AddInventory(&inventory, listFood.F[1]);
+    AddInventory(&inventory, listFood.F[2]);
+    AddInventory(&inventory, listFood.F[3]);
+    AddInventory(&inventory, listFood.F[6]);
 
     // Simulator
     renderGameState(currentGameState);

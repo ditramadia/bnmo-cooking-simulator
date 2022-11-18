@@ -1,4 +1,4 @@
-6
+10
 1
 Ayam Mentah
 1 0 0
@@ -29,3 +29,23 @@ Ayam Goreng
 0 0 15
 0 0 0
 Fry
+7
+Air
+5 0 0
+0 0 30
+Buy
+8
+Air Panas
+0 5 0
+0 0 0
+Boil
+9
+Kapal Api
+25 0 0
+0 0 10
+Buy
+10
+Kopi Hitam
+0 1 45
+0 0 0
+Mix

@@ -56,14 +56,14 @@ void mix(Foodlist l,Queue *q,Foodlist listMix,List treeList[100][100]){
         panjang++;
     } 
     
-    printf("idx %d\n", idx);
-    printf("lengtree %d\n", lengthtree);
-    printf("panjang %d\n", panjang);
+    // // printf("idx %d\n", idx);
+    // printf("lengtree %d\n", lengthtree);
+    // printf("panjang %d\n", panjang);
     boolean lengkap = true;
     
 
     for(int i=0; i<panjang;i++){
-        printf("%d\n",i);
+        // printf("%d\n",i);
         if(!isExist(*q, INFO(FIRST(treeList[idx][i])))){
             lengkap = false;
         }
@@ -85,6 +85,6 @@ void mix(Foodlist l,Queue *q,Foodlist listMix,List treeList[100][100]){
     else{
         printf("Bahan tidak lengkap\n");
     }
-    int xyz;
-    scanf("%d",&xyz);
+    // int xyz;
+    // scanf("%d",&xyz);
 }
