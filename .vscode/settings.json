@@ -23,7 +23,8 @@
     "string_view": "c",
     "gamestate.h": "c",
     "delivery.h": "c",
-    "charmachinemap.h": "c"
+    "charmachinemap.h": "c",
+    "matrixchar.h": "c"
   },
   "C_Cpp.errorSquiggles": "Enabled"
 }

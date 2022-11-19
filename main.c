@@ -9,8 +9,12 @@
 #include "src/adt/wordMachineMap/wordMachineMap.c"
 #include "src/adt/matrixChar/matrixChar.c"
 #include "src/adt/string/string.c"
+#include "src/adt/point/point.c"
+#include "src/adt/simPos/simPos.c"
 #include "src/adt/map/map.c"
 #include "src/adt/time/time.c"
+#include "src/adt/gameState/gameState.c"
+#include "src/adt/stackState/stackState.c"
 
 // Import App
 #include "src/app/simulator/simulator.c"
