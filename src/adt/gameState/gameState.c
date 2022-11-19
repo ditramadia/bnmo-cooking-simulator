@@ -4,7 +4,7 @@
 #include "gameState.h"
 
 // Update delivery state
-Queue updateDeliveryTime(Queue *delivery, int day, int hour, int minute)
+Queue updateDeliveryTime(Queue *delivery, Queue *inventory, int day, int hour, int minute)
 {
     Queue newDelivery;
     newDelivery = *delivery;
@@ -17,10 +17,11 @@ Queue updateDeliveryTime(Queue *delivery, int day, int hour, int minute)
         Time oldTime = Info(pointer).deltime;
         int oldMinutes = timeToMinute(oldTime);
 
-        if (oldMinutes < subMinutes)
+        if (oldMinutes <= subMinutes)
         {
             Food food;
             delDelivery(&newDelivery, &food);
+            AddInventory(inventory, food);
         }
         else
         {
@@ -53,9 +54,11 @@ void addTime(GameState *gs, int day, int hour, int minute)
     (*gs).time = minuteToTime(totalMinute);
 
     // Update delivery state
-    Queue newDeliveryState;
+    Queue newDeliveryState, newinventoryState;
     newDeliveryState = (*gs).delivery;
-    (*gs).delivery = updateDeliveryTime(&newDeliveryState, day, hour, minute);
+    newinventoryState = (*gs).inventory;
+    (*gs).delivery = updateDeliveryTime(&newDeliveryState, &newinventoryState, day, hour, minute);
+    (*gs).inventory = newinventoryState;
 }
 
 // Update map
@@ -178,5 +181,54 @@ void displayDelivery(GameState gs)
     }
 
     printf("Tekan enter menutup delivery\n");
+    getchar();
+}
+
+// Display Inventory
+void displayInventory(GameState gs)
+{
+    Queue Q = gs.inventory;
+    address p = ADDR_HEAD(Q);
+    char bin;
+    int i = 1;
+
+    if (length(Q) == 0)
+    {
+        printf("==============================================================\n");
+        printf("|                         INVENTORY                          |\n");
+        printf("==============================================================\n");
+        printf("|  Inventory-mu masih kosong\n");
+        printf("|\n");
+        printf("==============================================================\n");
+        printf("\n");
+    }
+    else
+    {
+        printf("==============================================================\n");
+        printf("|                         INVENTORY                          |\n");
+        printf("==============================================================\n");
+        printf("|  No. Nama ----- Waktu Kadaluarsa\n");
+        printf("|\n");
+
+        while (p != NULL)
+        {
+            printf("|  %d. ", i);
+            displayWordFood(Info(p).name);
+            printf(" ----- ");
+            displayTime(Info(p).exptime);
+            p = Next(p);
+            if (p != NULL)
+            {
+                printf("\n");
+            }
+            i++;
+        }
+        printf("\n");
+        printf("|\n");
+        printf("==============================================================\n");
+        printf("\n");
+    }
+
+    printf("Tekan enter menutup inventory\n");
     getchar();
 }

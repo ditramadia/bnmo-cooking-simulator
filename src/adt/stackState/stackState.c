@@ -28,7 +28,6 @@ void insertState(StackState *stackState, GameState currentGameState)
         }
         (*stackState).buffer[CAPACITY - 1] = currentGameState;
     }
-    printf("newstate\n");
 }
 
 // Move North
@@ -183,4 +182,83 @@ void redoState(StackState *stackState, GameState *currentGameState, MatrixChar *
         (*stackState).currentStateId++;
         *currentGameState = (*stackState).buffer[(*stackState).currentStateId];
     }
+}
+
+// Wait
+// Get Wait Hour
+int getWaitHour(char command[])
+{
+    // WAIT 2 5
+    ArrayChar waitHourArr;
+    createArrayChar(&waitHourArr);
+
+    int i = 0;
+    while (i < 50 && command[i] != '\0' && command[i] != '\n')
+    {
+        if (command[i] == ' ')
+        {
+            i++;
+
+            int j = 0;
+            while (command[i] != ' ')
+            {
+                (waitHourArr).buffer[j] = command[i];
+                (waitHourArr).idxEff++;
+                j++;
+                i++;
+            }
+
+            return ArrayCharToInt(waitHourArr);
+        }
+        i++;
+    }
+}
+
+// Get Wait Minute
+int getWaitMinute(char command[])
+{
+    // WAIT 2 5
+    ArrayChar watMinuteArr;
+    createArrayChar(&watMinuteArr);
+
+    int i = 0;
+    while (i < 50 && command[i] != '\0' && command[i] != '\n')
+    {
+        if (command[i] == ' ')
+        {
+            i++;
+            while (i < 50 && command[i] != '\0' && command[i] != '\n')
+            {
+                if (command[i] == ' ')
+                {
+                    i++;
+
+                    int j = 0;
+                    while (command[i] != '\0' && command[i] != '\n')
+                    {
+                        (watMinuteArr).buffer[j] = command[i];
+                        (watMinuteArr).idxEff++;
+                        j++;
+                        i++;
+                    }
+
+                    return ArrayCharToInt(watMinuteArr);
+                }
+                i++;
+            }
+        }
+        i++;
+    }
+}
+
+void waitTime(StackState *stateHistory, GameState *currentGameState, int hour, int minute)
+{
+    int minutes = (60 * hour) + minute;
+
+    for (int i = 0; i < minutes; i++)
+    {
+        addTime(currentGameState, 0, 0, 1);
+    }
+
+    insertState(stateHistory, *currentGameState);
 }

@@ -44,4 +44,11 @@ void undoState(StackState *stackState, GameState *currentGameState, MatrixChar *
 // Redo
 void redoState(StackState *stackState, GameState *currentGameState, MatrixChar *map);
 
+// Wait
+int getWaitHour(char command[]);
+
+int getWaitHour(char command[]);
+
+void waitTime(StackState *stateHistory, GameState *currentGameState, int hour, int minute);
+
 #endif

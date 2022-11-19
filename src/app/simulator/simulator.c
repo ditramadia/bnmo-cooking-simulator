@@ -12,6 +12,7 @@ Time cgsTime;
 Point cgsSimPos;
 int nMove;
 Queue cgsDelivery;
+Queue cgsInventory;
 
 // Command Parser
 void simulatorCommandParser(char query[])
@@ -26,6 +27,10 @@ void simulatorCommandParser(char query[])
     char buyCommand[] = "BUY";
     // 3. Delivery
     char deliveryCommand[] = "DELIVERY";
+    // 4. Inventory
+    char inventoryCommand[] = "INVENTORY";
+    // 5. Inventory
+    char waitCommand[] = "WAIT";
     // N-2. Redo
     char undoCommand[] = "UNDO";
     // N-1. Redo
@@ -90,6 +95,21 @@ void simulatorCommandParser(char query[])
         system(CLEAR);
         displayDelivery(currentGameState);
         system(CLEAR);
+        simulator();
+    }
+    // INVENTORY
+    else if (compareString(simCommand, inventoryCommand))
+    {
+        system(CLEAR);
+        displayInventory(currentGameState);
+        system(CLEAR);
+        simulator();
+    }
+    // WAIT
+    else if (containFirstWordString(simCommand, waitCommand))
+    {
+        system(CLEAR);
+        waitTime(&stateHistory, &currentGameState, getWaitHour(simCommand), getWaitMinute(simCommand));
         simulator();
     }
     // UNDO
@@ -169,6 +189,9 @@ int loadSimulator()
     // Load delivery
     CreateQueue(&cgsDelivery);
 
+    // Load Inventory
+    CreateQueue(&cgsInventory);
+
     // Load Current Game State (cgs)
     createTime(&cgsTime, 0, 5, 0);
 
@@ -176,6 +199,7 @@ int loadSimulator()
     currentGameState.simPos = cgsSimPos;
     currentGameState.time = cgsTime;
     currentGameState.delivery = cgsDelivery;
+    currentGameState.inventory = cgsInventory;
     updateAvailableAction(&currentGameState, map);
 
     // Load State History
