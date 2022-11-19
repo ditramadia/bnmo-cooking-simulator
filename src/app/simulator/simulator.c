@@ -22,8 +22,14 @@ void simulatorCommandParser(char query[])
     char moveECommand[] = "MOVE EAST";
     char moveSCommand[] = "MOVE SOUTH";
     char moveWCommand[] = "MOVE WEST";
+    // 2. Buy
     char buyCommand[] = "BUY";
+    // 3. Delivery
     char deliveryCommand[] = "DELIVERY";
+    // N-2. Redo
+    char undoCommand[] = "UNDO";
+    // N-1. Redo
+    char redoCommand[] = "REDO";
     // N. Exit
     char exitCommand[] = "EXIT";
 
@@ -68,7 +74,6 @@ void simulatorCommandParser(char query[])
         if (currentGameState.isAbleBuy)
         {
             buy(&stateHistory, &currentGameState, listShop);
-            system(CLEAR);
             simulator();
         }
         else
@@ -88,6 +93,27 @@ void simulatorCommandParser(char query[])
         system(CLEAR);
         simulator();
     }
+    // UNDO
+    else if (compareString(simCommand, undoCommand))
+    {
+        system(CLEAR);
+        undoState(&stateHistory, &currentGameState, &map);
+        simulator();
+    }
+    // REDO
+    else if (compareString(simCommand, redoCommand))
+    {
+        system(CLEAR);
+        redoState(&stateHistory, &currentGameState, &map);
+        simulator();
+    }
+    // EXIT
+    else if (compareString(simCommand, exitCommand))
+    {
+        // Call exit app
+        exit(0);
+    }
+    // COMMAND UNVAILABLE
     else
     {
         system(CLEAR);

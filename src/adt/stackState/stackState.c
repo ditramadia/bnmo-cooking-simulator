@@ -170,9 +170,6 @@ void undoState(StackState *stackState, GameState *currentGameState, MatrixChar *
         // Undo Game State
         (*stackState).currentStateId--;
         *currentGameState = (*stackState).buffer[(*stackState).currentStateId];
-
-        // Update Map
-        updateMap(*currentGameState, map);
     }
 }
 
@@ -184,8 +181,5 @@ void redoState(StackState *stackState, GameState *currentGameState, MatrixChar *
         // Redo Game State
         (*stackState).currentStateId++;
         *currentGameState = (*stackState).buffer[(*stackState).currentStateId];
-
-        // Update Map
-        updateMap(*currentGameState, map);
     }
 }
