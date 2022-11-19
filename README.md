@@ -128,9 +128,6 @@ Tubes 1 of Algorithm and Data Structure (IF2110). A cooking simulator CLI based 
 │   │   │   ├── point.c
 │   │   │   └── point.h
 │   │   ├── queuelinked -------------------------- Queue Linked
-│   │   │   ├── prioqueuetime.c
-│   │   │   └── prioqueuetime.h
-│   │   ├── queue -------------------------------- Queue
 │   │   │   ├── queuelinked.c
 │   │   │   └── queuelinked.h
 │   │   ├── stack -------------------------------- Stack
@@ -140,7 +137,8 @@ Tubes 1 of Algorithm and Data Structure (IF2110). A cooking simulator CLI based 
 │   │   │   ├── stackState.c
 │   │   │   └── stackState.h
 │   │   ├── string ------------------------------- String
-│   │   │   └── string.c
+│   │   │   ├── string.c
+│   │   │   └── string.h
 │   │   ├── time --------------------------------- Time
 │   │   │   ├── time.c
 │   │   │   └── time.h
@@ -173,7 +171,7 @@ Tubes 1 of Algorithm and Data Structure (IF2110). A cooking simulator CLI based 
 │       │   └── mix.c
 │       ├── notifikasi --------------------------- Notifikasi App
 │       │   └── notifikasi.c
-│       └──  ----------------------------- Simulator App
+│       └── simulator ---------------------------- Simulator App
 │           └── simulator.c
 ├── BNMO Cooking Simulator.exe ------------------- Main Program
 └── README.md
