@@ -1,10 +1,9 @@
 #include <stdio.h>
 
-void buy(Foodlist listshop)
+void buy(StackState *stateHistory, GameState *currentGameState, Foodlist listshop)
 {
     // Display buy menu
     int n = listlength(listshop);
-    printf("%d\n", n);
     printf("==============================================================\n");
     printf("|                       GRIYA CILEGON                        |\n");
     printf("==============================================================\n");
@@ -23,4 +22,40 @@ void buy(Foodlist listshop)
     }
     printf("|\n");
     printf("==============================================================\n");
+
+    // Choose Menu
+    int selected;
+    printf("\n");
+    printf("Masukkan nomor makanan yang ingin dibeli: ");
+    scanf("%d", &selected);
+    if (selected == 0)
+    {
+        system(CLEAR);
+        return;
+    }
+    while (selected > n || selected < 0)
+    {
+        printf("Nomor barang tidak valid. Masukkan nomor barang yang ingin dibeli: ");
+        scanf("%d", &selected);
+        if (selected == 0)
+        {
+            system(CLEAR);
+            return;
+        }
+    }
+
+    // Add to Delivery
+    Queue newDeliveryState;
+    CreateQueue(&newDeliveryState);
+    addDelivery(&newDeliveryState, listshop.F[selected]);
+
+    // Update state
+    (*currentGameState).delivery = newDeliveryState;
+    insertState(stateHistory, *currentGameState);
+
+    system(CLEAR);
+    printf("==============================================================\n");
+    printf("|                 Makanan berhasil dipesan!                  |\n");
+    printf("==============================================================\n");
+    printf("\n");
 }

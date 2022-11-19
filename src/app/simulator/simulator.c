@@ -11,6 +11,7 @@ GameState currentGameState;
 Time cgsTime;
 Point cgsSimPos;
 int nMove;
+Queue cgsDelivery;
 
 // Command Parser
 void simulatorCommandParser(char query[])
@@ -22,6 +23,7 @@ void simulatorCommandParser(char query[])
     char moveSCommand[] = "MOVE SOUTH";
     char moveWCommand[] = "MOVE WEST";
     char buyCommand[] = "BUY";
+    char deliveryCommand[] = "DELIVERY";
     // N. Exit
     char exitCommand[] = "EXIT";
 
@@ -63,7 +65,27 @@ void simulatorCommandParser(char query[])
     else if (compareString(simCommand, buyCommand))
     {
         system(CLEAR);
-        buy(listShop);
+        if (currentGameState.isAbleBuy)
+        {
+            buy(&stateHistory, &currentGameState, listShop);
+            system(CLEAR);
+            simulator();
+        }
+        else
+        {
+            printf("==============================================================\n");
+            printf("|    Anda harus berada di lokasi 'T' untuk melakukan BUY.    |\n");
+            printf("==============================================================\n");
+            printf("\n");
+            simulator();
+        }
+    }
+    // DELIVERY
+    else if (compareString(simCommand, deliveryCommand))
+    {
+        system(CLEAR);
+        displayDelivery(currentGameState);
+        system(CLEAR);
         simulator();
     }
     else
@@ -72,6 +94,7 @@ void simulatorCommandParser(char query[])
         printf("==============================================================\n");
         printf("|                   Perintah tidak tersedia                  |\n");
         printf("==============================================================\n");
+        printf("\n");
         simulator();
     }
 }
@@ -118,12 +141,16 @@ int loadSimulator()
     addList(&listFood);
     listshop(&listShop, listFood);
 
+    // Load delivery
+    CreateQueue(&cgsDelivery);
+
     // Load Current Game State (cgs)
     createTime(&cgsTime, 0, 5, 0);
 
     // Load Game State
     currentGameState.simPos = cgsSimPos;
     currentGameState.time = cgsTime;
+    currentGameState.delivery = cgsDelivery;
     updateAvailableAction(&currentGameState, map);
 
     // Load State History

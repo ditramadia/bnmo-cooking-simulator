@@ -2,6 +2,7 @@
 #include "../simPos/simPos.h"
 #include "../matrixChar/matrixChar.h"
 #include "../time/time.h"
+#include "../queuelinked/queuelinked.h"
 
 #ifndef GAMESTATE_H
 #define GAMESTATE_H
@@ -11,6 +12,7 @@ typedef struct
 {
     Point simPos;
     Time time;
+    Queue delivery;
     int isAbleBuy;
     int isAbleMix;
     int isAbleChop;
@@ -29,5 +31,8 @@ void updateMap(GameState gs, MatrixChar *map);
 
 // Update available action
 void updateAvailableAction(GameState *gs, MatrixChar map);
+
+// Display
+void displayDelivery(GameState gs);
 
 #endif

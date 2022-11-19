@@ -18,6 +18,8 @@
 #include "src/adt/charMachineFood/charMachineFood.c"
 #include "src/adt/wordMachineFood/wordMachineFood.c"
 #include "src/adt/food/food.c"
+#include "src/adt/queuelinked/queuelinked.c"
+#include "src/adt/delivery/delivery.c"
 
 // Import App
 #include "src/app/buy/buy.c"
