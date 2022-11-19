@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+
 #include "map.h"
 
 void setMapRow(MatrixChar *map, char rowContent[], int row)
@@ -20,12 +21,12 @@ void setMapRow(MatrixChar *map, char rowContent[], int row)
 void setMapDimension(int *mapRow, int *mapCol)
 {
     // char directory[] = "../../../config/map.txt";
-    char rowStr[NMAX], colStr[NMAX];
+    char rowStr[MAP_NMAX], colStr[MAP_NMAX];
 
-    startWord(mapConfig);
-    wordToStr(currentWord, rowStr);
-    advWord();
-    wordToStr(currentWord, colStr);
+    startWordMap(mapConfig);
+    wordToStr(map_currentWord, rowStr);
+    advWordMap();
+    wordToStr(map_currentWord, colStr);
 
     *mapRow = atoi(rowStr) + 2;
     *mapCol = atoi(colStr) + 2;
@@ -34,8 +35,8 @@ void setMapDimension(int *mapRow, int *mapCol)
 void setMapMatrix(MatrixChar *map)
 {
     // char directory[] = "../../../config/map.txt";
-    startWord(mapConfig);
-    advWord();
+    startWordMap(mapConfig);
+    advWordMap();
 
     // Set top border
     for (int j = 0; j < (*map).colEff; j++)
@@ -52,9 +53,9 @@ void setMapMatrix(MatrixChar *map)
     // Set map content
     for (int i = 1; i < (*map).rowEff - 1; i++)
     {
-        advWord();
-        char temp[NMAX];
-        wordToStr(currentWord, temp);
+        advWordMap();
+        char temp[MAP_NMAX];
+        wordToStr(map_currentWord, temp);
         setMapRow(map, temp, i);
     }
 }

@@ -1,8 +1,6 @@
 #ifndef MAP_H
 #define MAP_H
 
-#include "../../../config/config.h"
-#include "../wordmachine/wordmachine.c"
 #include "../matrixChar/matrixChar.h"
 
 void setMapRow(MatrixChar *map, char rowContent[], int row);

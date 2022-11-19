@@ -11,7 +11,7 @@ void createMatrix(MatrixChar *m, int nRows, int nCols)
     {
         for (int j = 0; j < nCols; j++)
         {
-            (*m).buffer[i][j] = MATRIXMARK;
+            (*m).buffer[i][j] = MATRIX_MARK;
         }
     }
 }

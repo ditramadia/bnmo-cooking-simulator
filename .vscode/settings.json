@@ -22,7 +22,8 @@
     "iterator": "c",
     "string_view": "c",
     "gamestate.h": "c",
-    "delivery.h": "c"
+    "delivery.h": "c",
+    "charmachinemap.h": "c"
   },
   "C_Cpp.errorSquiggles": "Enabled"
 }

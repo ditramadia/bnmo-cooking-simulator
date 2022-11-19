@@ -1,7 +1,19 @@
 #include <stdio.h>
 
-#include "./src/app/Inisiasi/splashScreen.c"
-#include "./src/adt/map/clear.c"
+// Import configuration
+#include "config/config.h"
+#include "config/os.h"
+
+// Import ADT
+#include "src/adt/charMachineMap/charMachineMap.c"
+#include "src/adt/wordMachineMap/wordMachineMap.c"
+#include "src/adt/matrixChar/matrixChar.c"
+#include "src/adt/string/string.c"
+#include "src/adt/map/map.c"
+
+// Import App
+#include "src/app/simulator/simulator.c"
+#include "src/app/mainMenu/mainMenu.c"
 
 int main()
 {
