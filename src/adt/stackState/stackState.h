@@ -26,6 +26,18 @@ int isStackStateFull(StackState StackState);
 // Insert
 void insertState(StackState *stackState, GameState currentGameState);
 
+// Move north
+void moveNorth(StackState *stateHistory, GameState *gs, MatrixChar *map, int *nMove);
+
+// Move east
+void moveEast(StackState *stateHistory, GameState *gs, MatrixChar *map, int *nMove);
+
+// Move south
+void moveSouth(StackState *stateHistory, GameState *gs, MatrixChar *map, int *nMove);
+
+// Move west
+void moveWest(StackState *stateHistory, GameState *gs, MatrixChar *map, int *nMove);
+
 // Undo
 void undoState(StackState *stackState, GameState *currentGameState, MatrixChar *map);
 

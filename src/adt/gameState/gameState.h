@@ -21,6 +21,9 @@ typedef struct
 // State
 extern GameState currentGameState;
 
+// Add time
+void addTime(GameState *gs, int day, int hour, int minute);
+
 // Update map
 void updateMap(GameState gs, MatrixChar *map);
 

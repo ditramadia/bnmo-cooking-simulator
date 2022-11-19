@@ -3,6 +3,15 @@
 
 #include "gameState.h"
 
+// Add time
+void addTime(GameState *gs, int day, int hour, int minute)
+{
+    int minutes = timeToMinute((*gs).time);
+    int addedMinutes = (1440 * day) + (60 * hour) + minute;
+    int totalMinute = minutes + addedMinutes;
+    (*gs).time = minuteToTime(totalMinute);
+}
+
 // Update map
 void updateMap(GameState gs, MatrixChar *map)
 {

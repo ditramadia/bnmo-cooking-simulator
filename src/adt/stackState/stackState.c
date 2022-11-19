@@ -30,6 +30,138 @@ void insertState(StackState *stackState, GameState currentGameState)
     }
 }
 
+// Move North
+void moveNorth(StackState *stateHistory, GameState *gs, MatrixChar *map, int *nMove)
+{
+    Point currentPos, nextPos;
+    createPoint(&currentPos, (*gs).simPos.X, (*gs).simPos.Y);
+    createPoint(&nextPos, (*gs).simPos.X, (*gs).simPos.Y - 1);
+
+    if ((*map).buffer[nextPos.Y + 1][nextPos.X + 1] == '#')
+    {
+        // Update map
+        (*map).buffer[nextPos.Y + 1][nextPos.X + 1] = 'S';
+        (*map).buffer[currentPos.Y + 1][currentPos.X + 1] = '#';
+
+        // Update game state SimPos
+        (*gs).simPos.X = nextPos.X;
+        (*gs).simPos.Y = nextPos.Y;
+
+        // Update game state action
+        updateAvailableAction(gs, *map);
+
+        // Update time
+        if (*nMove % 3 == 0)
+        {
+            // Update time
+            addTime(gs, 0, 0, 1);
+        }
+        (*nMove)++;
+
+        // Insert new state to history
+        insertState(stateHistory, *gs);
+    }
+}
+
+// Move East
+void moveEast(StackState *stateHistory, GameState *gs, MatrixChar *map, int *nMove)
+{
+    Point currentPos, nextPos;
+    createPoint(&currentPos, (*gs).simPos.X, (*gs).simPos.Y);
+    createPoint(&nextPos, (*gs).simPos.X + 1, (*gs).simPos.Y);
+
+    if ((*map).buffer[nextPos.Y + 1][nextPos.X + 1] == '#')
+    {
+        // Update map
+        (*map).buffer[nextPos.Y + 1][nextPos.X + 1] = 'S';
+        (*map).buffer[currentPos.Y + 1][currentPos.X + 1] = '#';
+
+        // Update game state SimPos
+        (*gs).simPos.X = nextPos.X;
+        (*gs).simPos.Y = nextPos.Y;
+
+        // Update game state action
+        updateAvailableAction(gs, *map);
+
+        // Update time
+        if (*nMove % 3 == 0)
+        {
+            // Update time
+            addTime(gs, 0, 0, 1);
+        }
+        (*nMove)++;
+
+        // Insert new state to history
+        insertState(stateHistory, *gs);
+    }
+}
+
+// Move South
+void moveSouth(StackState *stateHistory, GameState *gs, MatrixChar *map, int *nMove)
+{
+    Point currentPos, nextPos;
+    createPoint(&currentPos, (*gs).simPos.X, (*gs).simPos.Y);
+    createPoint(&nextPos, (*gs).simPos.X, (*gs).simPos.Y + 1);
+
+    if ((*map).buffer[nextPos.Y + 1][nextPos.X + 1] == '#')
+    {
+        // Update map
+        (*map).buffer[nextPos.Y + 1][nextPos.X + 1] = 'S';
+        (*map).buffer[currentPos.Y + 1][currentPos.X + 1] = '#';
+
+        // Update game state SimPos
+        (*gs).simPos.X = nextPos.X;
+        (*gs).simPos.Y = nextPos.Y;
+
+        // Update game state action
+        updateAvailableAction(gs, *map);
+
+        // Update time
+        if (*nMove % 3 == 0)
+        {
+            // Update time
+            addTime(gs, 0, 0, 1);
+        }
+        (*nMove)++;
+
+        // Insert new state to history
+        insertState(stateHistory, *gs);
+    }
+}
+
+// Move West
+void moveWest(StackState *stateHistory, GameState *gs, MatrixChar *map, int *nMove)
+{
+    Point currentPos, nextPos;
+    createPoint(&currentPos, (*gs).simPos.X, (*gs).simPos.Y);
+    createPoint(&nextPos, (*gs).simPos.X - 1, (*gs).simPos.Y);
+
+    if ((*map).buffer[nextPos.Y + 1][nextPos.X + 1] == '#')
+    {
+        // Update map
+        (*map).buffer[nextPos.Y + 1][nextPos.X + 1] = 'S';
+        (*map).buffer[currentPos.Y + 1][currentPos.X + 1] = '#';
+
+        // Update game state SimPos
+        (*gs).simPos.X = nextPos.X;
+        (*gs).simPos.Y = nextPos.Y;
+
+        // Update game state action
+        updateAvailableAction(gs, *map);
+
+        // Update time
+        if (*nMove % 3 == 0)
+        {
+            // Update time
+            addTime(gs, 0, 0, 1);
+        }
+        (*nMove)++;
+
+        // Insert new state to history
+        insertState(stateHistory, *gs);
+    }
+}
+
 // Undo
 void undoState(StackState *stackState, GameState *currentGameState, MatrixChar *map)
 {

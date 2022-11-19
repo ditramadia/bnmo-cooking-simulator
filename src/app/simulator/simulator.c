@@ -7,22 +7,83 @@ StackState stateHistory;
 GameState currentGameState;
 Time cgsTime;
 Point cgsSimPos;
+int nMove;
+
+// Command Parser
+void simulatorCommandParser(char query[])
+{
+    // Available commands
+    // 1. Movement
+    char moveNCommand[] = "MOVE NORTH";
+    char moveECommand[] = "MOVE EAST";
+    char moveSCommand[] = "MOVE SOUTH";
+    char moveWCommand[] = "MOVE WEST";
+    // N. Exit
+    char exitCommand[] = "EXIT";
+
+    char simCommand[50];
+    printf("%s: ", query);
+    fflush(stdin);
+    fgets(simCommand, 50, stdin);
+
+    if (compareString(simCommand, moveNCommand))
+    {
+        // Move north
+        system(CLEAR);
+        moveNorth(&stateHistory, &currentGameState, &map, &nMove);
+
+        simulator();
+    }
+    else if (compareString(simCommand, moveECommand))
+    {
+        // Move east
+        system(CLEAR);
+        moveEast(&stateHistory, &currentGameState, &map, &nMove);
+        simulator();
+    }
+    else if (compareString(simCommand, moveSCommand))
+    {
+        // Move south
+        system(CLEAR);
+        moveSouth(&stateHistory, &currentGameState, &map, &nMove);
+        simulator();
+    }
+    else if (compareString(simCommand, moveWCommand))
+    {
+        // Move west
+        system(CLEAR);
+        moveWest(&stateHistory, &currentGameState, &map, &nMove);
+        simulator();
+    }
+    else
+    {
+        system(CLEAR);
+        printf("==============================================================\n");
+        printf("|                   Perintah tidak tersedia                  |\n");
+        printf("==============================================================\n");
+        simulator();
+    }
+}
 
 int simulator()
 {
     // Update Current Game State
     currentGameState = stateHistory.buffer[stateHistory.currentStateId];
 
+    // Display SimPos
+    printf("Posisi %s: (%d, %d)\n", simName, currentGameState.simPos.X, currentGameState.simPos.Y);
+
     // Display CGS Time
     printf("Waktu: ");
     displayTime(currentGameState.time);
     printf("\n");
 
-    // Display SimPos
-    printf("Posisi %s: (%d, %d)\n", simName, currentGameState.simPos.X, currentGameState.simPos.Y);
-
     // Display Map
+    updateMap(currentGameState, &map);
     renderMap(map);
+
+    // Ask for input
+    simulatorCommandParser("Masukkan perintah");
 }
 
 int loadSimulator()
@@ -38,6 +99,9 @@ int loadSimulator()
 
     // Load Simulator Position
     cgsSimPos = loadSimPos(map);
+
+    // Load nMove
+    nMove = 0;
 
     // Load Current Game State (cgs)
     createTime(&cgsTime, 0, 5, 0);
