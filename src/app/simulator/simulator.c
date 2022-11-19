@@ -12,7 +12,7 @@
 #include "../../adt/queuelinked/queuelinked.c"
 #include "../../adt/wordmachineresep/wordmachine.c"
 #include "../catalog/catalog.c"
-// #include "../cookbook/cookbook.c"
+#include "../cookbook/cookbook.c"
 #include "../buy/buy.c"
 #include "../chop/chop.c"
 #include "../fry/fry.c"
@@ -44,7 +44,7 @@ void simulatorCommandParser(char query[])
     char waitCommand[] = "WAIT";
     char buyCommand[] = "BUY";
     char catalogCommand[] = "CATALOG";
-    // char cookbookCommand[] = "COOKBOOK";
+    char cookbookCommand[] = "COOKBOOK";
     char deliveryCommand[] = "DELIVERY";
     char invenCommand[] = "INVENTORY";
     char chopCommand[] = "CHOP";
@@ -134,14 +134,14 @@ void simulatorCommandParser(char query[])
         system(CLEAR);
         simulator();
     }
-    // else if (compareString(simCommand, cookbookCommand))
-    // {
-    //     // Call Cookbook App
-    //     system(CLEAR);
-    //     cookbook(listFood);
-    //     system(CLEAR);
-    //     simulator();
-    // }
+    else if (compareString(simCommand, cookbookCommand))
+    {
+        // Call Cookbook App
+        system(CLEAR);
+        cookbook(listFood);
+        system(CLEAR);
+        simulator();
+    }
     else if (compareString(simCommand, deliveryCommand))
     {
         // Call delivery App
