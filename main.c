@@ -10,6 +10,7 @@
 #include "src/adt/matrixChar/matrixChar.c"
 #include "src/adt/string/string.c"
 #include "src/adt/map/map.c"
+#include "src/adt/time/time.c"
 
 // Import App
 #include "src/app/simulator/simulator.c"
