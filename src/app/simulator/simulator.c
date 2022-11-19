@@ -4,6 +4,11 @@
 char simName[20];
 MatrixChar map;
 
+int simulator()
+{
+    renderMap(map);
+}
+
 int loadSimulator()
 {
     // Load simName
@@ -13,5 +18,8 @@ int loadSimulator()
     system(CLEAR);
 
     // Load Map
-    // loadMap(&map);
+    loadMap(&map);
+
+    // Proceed to simulator
+    simulator();
 }

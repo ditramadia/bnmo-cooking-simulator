@@ -60,7 +60,7 @@ void setMapMatrix(MatrixChar *map)
     }
 }
 
-void setMap(MatrixChar *map)
+void loadMap(MatrixChar *map)
 {
     int mapRow, mapCol;
     setMapDimension(&mapRow, &mapCol);
