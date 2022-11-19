@@ -138,7 +138,7 @@ void simulatorCommandParser(char query[])
     {
         // Call Cookbook App
         system(CLEAR);
-        cookbook(listFood);
+        cookbook(treeList, listFood);
         system(CLEAR);
         simulator();
     }

@@ -1,1 +1,0 @@
-insertprio(&q, f.F[3]);
