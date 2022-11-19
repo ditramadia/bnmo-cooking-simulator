@@ -82,7 +82,7 @@ void displayDelivery(Queue Q)
         printf("\n");
     }
 
-    printf("Tekan enter menutup inventory\n");
+    printf("Tekan enter menutup delivery\n");
     scanf("%c", &bin);
     return;
 }

@@ -113,7 +113,7 @@ void fry(Foodlist l,Queue *q,Foodlist listFry,List treeList[100][100]){
         printf("Bahan tidak lengkap\n");
     }
     printf("\nTekan enter untuk kembali ke map\n");
-    scanf("%d", &bin);
+    scanf("%c", &bin);
     return;
     // // if(isTrue == listlength(listFry)){
     // //     for(int i=0; i < listlength(listFry); i++){

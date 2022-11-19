@@ -29,7 +29,7 @@ void catalog(Foodlist l)
     printf("==============================================================\n");
     printf("\n");
 
-    printf("Tekan enter menutup inventory\n");
+    printf("Tekan enter menutup catalog\n");
     scanf("%c", &bin);
     return;
 }
