@@ -78,6 +78,8 @@ Tubes 1 of Algorithm and Data Structure (IF2110). A cooking simulator CLI based 
 .
 ├── config --------------------------------------- Configuration folder
 │   ├── config.h
+│   ├── konfigResep.txt
+│   ├── makanan.txt
 │   ├── map.txt
 │   └── welcome.txt
 ├── src ------------------------------------------ Folder containing source files
@@ -90,12 +92,24 @@ Tubes 1 of Algorithm and Data Structure (IF2110). A cooking simulator CLI based 
 │   │   ├── charmachine -------------------------- Character Machine
 │   │   │   ├── charMachine.c
 │   │   │   └── charMachine.h
+│   │   ├── charmachinefood ---------------------- Char Machine of Food 
+│   │   │   ├── charMachine.c
+│   │   │   └── charMachine.h
+│   │   ├── charmachineresep --------------------- Char Machine of Recipe
+│   │   │   ├── charMachine.c
+│   │   │   └── charMachine.h
+│   │   ├── delivery ----------------------------- Delivery
+│   │   │   ├── delivery.c
+│   │   │   └── delivery.c
 │   │   ├── food --------------------------------- Character Machine
 │   │   │   ├── food.c
 │   │   │   └── food.h
 │   │   ├── gameState ---------------------------- Game State
 │   │   │   ├── gameState.c
 │   │   │   └── gameState.h
+│   │   ├── inventory --------------------------- Inventory
+│   │   │   ├── inventory.c
+│   │   │   │── inventory.h
 │   │   ├── listdin ------------------------------ Dynamic List
 │   │   │   ├── listdin.c
 │   │   │   └── listdin.h
@@ -113,12 +127,12 @@ Tubes 1 of Algorithm and Data Structure (IF2110). A cooking simulator CLI based 
 │   │   ├── point -------------------------------- Point
 │   │   │   ├── point.c
 │   │   │   └── point.h
-│   │   ├── prioqueuetime ------------------------ Priority Queue
+│   │   ├── queuelinked -------------------------- Queue Linked
 │   │   │   ├── prioqueuetime.c
 │   │   │   └── prioqueuetime.h
 │   │   ├── queue -------------------------------- Queue
-│   │   │   ├── queue.c
-│   │   │   └── queue.h
+│   │   │   ├── queuelinked.c
+│   │   │   └── queuelinked.h
 │   │   ├── stack -------------------------------- Stack
 │   │   │   ├── stack.c
 │   │   │   └── stack.h
@@ -133,13 +147,33 @@ Tubes 1 of Algorithm and Data Structure (IF2110). A cooking simulator CLI based 
 │   │   ├── tree --------------------------------- Tree
 │   │   │   ├── tree.c
 │   │   │   └── tree.h
-│   │   └── wordmachine -------------------------- Word Machine
+│   │   ├── wordmachine -------------------------- Word Machine
+│   │   │   ├── wordmachine.c
+│   │   │   └── wordmachine.h
+│   │   ├── wordmachinefood ---------------------- Word Machine of Food
+│   │   │   ├── wordmachine.c
+│   │   │   └── wordmachine.h
+│   │   └── wordmachineresep --------------------- Word Machine of Recipe
 │   │       ├── wordmachine.c
 │   │       └── wordmachine.h
 │   └── app -------------------------------------- Applications
 │       ├── Inisiasi ----------------------------- Main Menu App
 │       │   └── splashScreen.c
-│       └── Inisiasi ----------------------------- Simulator App
+│       ├── boil --------------------------------- Boil App
+│       │   └── boil.c
+│       ├── buy ---------------------------------- Buy App
+│       │   └── buy.c
+│       ├── catalog ------------------------------ Catalog App
+│       │   └── catalog.c
+│       ├── chop --------------------------------- Chop App
+│       │   └── chop.c
+│       ├── fry ---------------------------------- Fry App
+│       │   └── fry.c
+│       ├── mix ---------------------------------- Mix App
+│       │   └── mix.c
+│       ├── notifikasi --------------------------- Notifikasi App
+│       │   └── notifikasi.c
+│       └──  ----------------------------- Simulator App
 │           └── simulator.c
 ├── BNMO Cooking Simulator.exe ------------------- Main Program
 └── README.md
