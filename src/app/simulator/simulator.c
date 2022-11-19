@@ -11,6 +11,7 @@
 #include "../../adt/matrixChar/matrixChar.c"
 #include "../../adt/queuelinked/queuelinked.c"
 #include "../../adt/wordmachineresep/wordmachine.c"
+#include "../../adt/notifikasi/notifikasi.c"
 #include "../catalog/catalog.c"
 // #include "../cookbook/cookbook.c"
 #include "../buy/buy.c"
@@ -29,6 +30,7 @@ Foodlist listFood, listShop, listFry, listChop, listBoil, listMix;
 Queue inventory;
 Queue delivery;
 List treeList[100][100];
+Notiflist Nl;
 int nMove;
 
 // Command Parser
@@ -62,7 +64,7 @@ void simulatorCommandParser(char query[])
     {
         // Move north
         system(CLEAR);
-        moveNorth(&stateHistory, &currentGameState, &map, &delivery, &inventory, &nMove);
+        moveNorth(&stateHistory, &currentGameState, &map, &delivery, &inventory, &nMove, &Nl);
 
         simulator();
     }
@@ -70,21 +72,21 @@ void simulatorCommandParser(char query[])
     {
         // Move east
         system(CLEAR);
-        moveEast(&stateHistory, &currentGameState, &map, &delivery, &inventory, &nMove);
+        moveEast(&stateHistory, &currentGameState, &map, &delivery, &inventory, &nMove, &Nl);
         simulator();
     }
     else if (compareString(simCommand, moveSCommand))
     {
         // Move south
         system(CLEAR);
-        moveSouth(&stateHistory, &currentGameState, &map, &delivery, &inventory, &nMove);
+        moveSouth(&stateHistory, &currentGameState, &map, &delivery, &inventory, &nMove, &Nl);
         simulator();
     }
     else if (compareString(simCommand, moveWCommand))
     {
         // Move west
         system(CLEAR);
-        moveWest(&stateHistory, &currentGameState, &map, &delivery, &inventory, &nMove);
+        moveWest(&stateHistory, &currentGameState, &map, &delivery, &inventory, &nMove, &Nl);
         simulator();
     }
     else if (compareString(simCommand, undoCommand))
@@ -105,7 +107,7 @@ void simulatorCommandParser(char query[])
     {
         // Wait
         system(CLEAR);
-        waitTime(&stateHistory, &currentGameState, &delivery, &inventory, getWaitHour(simCommand), getWaitMinute(simCommand));
+        waitTime(&stateHistory, &currentGameState, &delivery, &inventory, getWaitHour(simCommand), getWaitMinute(simCommand), &Nl);
         simulator();
     }
     else if (compareString(simCommand, buyCommand))
@@ -116,6 +118,7 @@ void simulatorCommandParser(char query[])
         {
             // buy(delivery, listShop);
             buy(&delivery, listShop);
+            system(CLEAR);
             simulator();
         }
         else
@@ -165,6 +168,7 @@ void simulatorCommandParser(char query[])
         if (currentGameState.isAbleChop)
         {
             chop(listFood, &inventory, listChop, treeList);
+            system(CLEAR);
             simulator();
         }
         else
@@ -281,7 +285,7 @@ int loadSimulator()
     nMove = 0;
 
     // Simulator
-    renderGameState(currentGameState);
+    renderGameState(currentGameState, Nl);
     renderMap(map);
     simulatorCommandParser("Masukkan perintah");
 
@@ -290,7 +294,7 @@ int loadSimulator()
 
 int simulator()
 {
-    renderGameState(currentGameState);
+    renderGameState(currentGameState, Nl);
     renderMap(map);
 
     simulatorCommandParser("Masukkan perintah");

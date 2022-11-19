@@ -41,7 +41,7 @@ Air Panas
 Boil
 9
 Kapal Api
-25 0 0
+5 0 0
 0 0 10
 Buy
 10

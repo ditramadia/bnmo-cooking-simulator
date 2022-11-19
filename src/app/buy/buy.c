@@ -64,6 +64,6 @@ void buy(Queue *q, Foodlist listshop)
     printf(".");
 
     printf("\nTekan enter untuk kembali ke map\n");
-    scanf("%d", &bin);
+    scanf("%D", &bin);
     return;
 }

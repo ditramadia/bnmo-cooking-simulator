@@ -49,7 +49,7 @@ void setGameState(GameState *gs, MatrixChar map, Queue inventory, Queue delivery
 }
 
 // Display
-void renderGameState(GameState gs)
+void renderGameState(GameState gs, Notiflist Nl)
 {
     printf("\n");
 
@@ -58,9 +58,8 @@ void renderGameState(GameState gs)
     printf("Waktu: ");
     displayTime(gs.time);
     printf("\n");
+    displayNotif(Nl);
 
-    printf("Notifikasi: -\n");
-    printf("\n");
 }
 
 // Update map
@@ -81,7 +80,7 @@ void updateMap(GameState gs, MatrixChar *map)
 }
 
 // Update delivery
-void updateDeliveryTime(Queue *delivery, Queue *inventory, int day, int hour, int minute)
+void updateDeliveryTime(Queue *delivery, Queue *inventory, int day, int hour, int minute, Notiflist *Nl)
 {
     address pointer = ADDR_HEAD(*delivery);
     for (int i = 0; i < length(*delivery); i++)
@@ -97,6 +96,7 @@ void updateDeliveryTime(Queue *delivery, Queue *inventory, int day, int hour, in
             Food food;
             delDelivery(delivery, &food);
             AddInventory(inventory, food);
+            addNotif(Nl, 1, food);
         }
         else
         {
@@ -110,7 +110,7 @@ void updateDeliveryTime(Queue *delivery, Queue *inventory, int day, int hour, in
 }
 
 // Update delivery
-void updateExpirationTime(Queue *inventory, int day, int hour, int minute)
+void updateExpirationTime(Queue *inventory, int day, int hour, int minute, Notiflist *Nl)
 {
     address pointer = ADDR_HEAD(*inventory);
     for (int i = 0; i < length(*inventory); i++)
@@ -125,6 +125,7 @@ void updateExpirationTime(Queue *inventory, int day, int hour, int minute)
         {
             Food food;
             delInventory(inventory, &food);
+            addNotif(Nl, 2, food);
         }
         else
         {

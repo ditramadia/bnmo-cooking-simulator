@@ -35,7 +35,7 @@ void chop(Foodlist l, Queue *q, Foodlist listchop, List treeList[100][100])
     // else{
 
     // }
-    int bin;
+    char bin;
     int n = listlength(listchop);
     printf("==============================================================\n");
     printf("|                            CHOP                            |\n");
@@ -125,12 +125,33 @@ void chop(Foodlist l, Queue *q, Foodlist listchop, List treeList[100][100])
         printf("Bahan tersedia, ");
         displayWordFood(listchop.F[x].name);
         printf(" berhasil dibuat dan sudah masuk ke inventory!\n");
+        // printf("Tekan enter menutup delivery\n");
+        // scanf("%c", &bin);
+        // return;
     }
     else
     {
         printf("Bahan tidak lengkap\n");
     }
-    printf("\nTekan enter untuk kembali ke map\n");
-    scanf("%d", &bin);
-    return;
+    system(CLEAR);
+    printf("==============================================================\n");
+    printf("|                 Makanan berhasil dipesan!                  |\n");
+    printf("==============================================================\n");
+
+    printf("\nBerhasil memesan ");
+    displayWordFood(listchop.F[x].name);
+    printf(". ");
+    displayWordFood(listchop.F[x].name);
+    printf(" akan diantar dalam ");
+    printTime(listchop.F[x].deltime);
+    printf(".");
+
+    printf("Tekan enter menutup delivery\n");
+    // scanf(" %C", &bin);
+
+    if(getchar() == '\n'){
+        // system(CLEAR);
+        return;
+    }
+    // return;
 }
