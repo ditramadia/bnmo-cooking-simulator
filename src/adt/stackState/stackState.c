@@ -28,6 +28,7 @@ void insertState(StackState *stackState, GameState currentGameState)
         }
         (*stackState).buffer[CAPACITY - 1] = currentGameState;
     }
+    printf("newstate\n");
 }
 
 // Move North

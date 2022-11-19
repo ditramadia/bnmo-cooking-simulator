@@ -43,7 +43,6 @@ void simulatorCommandParser(char query[])
     {
         system(CLEAR);
         moveNorth(&stateHistory, &currentGameState, &map, &nMove);
-
         simulator();
     }
     // MOVE EAST

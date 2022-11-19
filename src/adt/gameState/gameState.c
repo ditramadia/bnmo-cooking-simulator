@@ -3,13 +3,59 @@
 
 #include "gameState.h"
 
+// Update delivery state
+Queue updateDeliveryTime(Queue *delivery, int day, int hour, int minute)
+{
+    Queue newDelivery;
+    newDelivery = *delivery;
+    address pointer = ADDR_HEAD(*delivery);
+    for (int i = 0; i < length(*delivery); i++)
+    {
+        int subMinutes = (1440 * day) + (60 * hour) + minute;
+        Time subTime = minuteToTime(subMinutes);
+
+        Time oldTime = Info(pointer).deltime;
+        int oldMinutes = timeToMinute(oldTime);
+
+        if (oldMinutes < subMinutes)
+        {
+            Food food;
+            delDelivery(&newDelivery, &food);
+        }
+        else
+        {
+            // int newMinutes = oldMinutes - subMinutes;
+            // Time newTime = minuteToTime(newMinutes);
+            // Info(pointer).deltime = newTime;
+
+            Food bin;
+            address newFood = newnode(Info(pointer));
+            dequeueAt(&newDelivery, &bin, Info(pointer).id);
+            int newMinutes = oldMinutes - subMinutes;
+            Time newTime = minuteToTime(newMinutes);
+            Info(newFood).deltime = newTime;
+            addDelivery(&newDelivery, Info(newFood));
+        }
+
+        pointer = Next(pointer);
+    }
+
+    return newDelivery;
+}
+
 // Add time
 void addTime(GameState *gs, int day, int hour, int minute)
 {
+    // Update time state
     int minutes = timeToMinute((*gs).time);
     int addedMinutes = (1440 * day) + (60 * hour) + minute;
     int totalMinute = minutes + addedMinutes;
     (*gs).time = minuteToTime(totalMinute);
+
+    // Update delivery state
+    Queue newDeliveryState;
+    newDeliveryState = (*gs).delivery;
+    (*gs).delivery = updateDeliveryTime(&newDeliveryState, day, hour, minute);
 }
 
 // Update map

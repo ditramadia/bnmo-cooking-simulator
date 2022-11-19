@@ -23,6 +23,8 @@ typedef struct
 // State
 extern GameState currentGameState;
 
+Queue updateDeliveryTime(Queue *delivery, int day, int hour, int minute);
+
 // Add time
 void addTime(GameState *gs, int day, int hour, int minute);
 

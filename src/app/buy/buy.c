@@ -46,7 +46,7 @@ void buy(StackState *stateHistory, GameState *currentGameState, Foodlist listsho
 
     // Add to Delivery
     Queue newDeliveryState;
-    CreateQueue(&newDeliveryState);
+    newDeliveryState = (*currentGameState).delivery;
     addDelivery(&newDeliveryState, listshop.F[selected]);
 
     // Update state
