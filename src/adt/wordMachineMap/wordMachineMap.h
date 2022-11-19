@@ -1,5 +1,5 @@
-#ifndef WORD_MACHINE_H
-#define WORD_MACHINE_H
+#ifndef WORDMACHINEMAP_H
+#define WORDMACHINEMAP_H
 
 #include "../charMachineMap/charMachineMap.h"
 
@@ -12,11 +12,11 @@ typedef struct
 {
     char buffer[MAP_NMAX];
     int length;
-} Word;
+} MapWord;
 
 // State
 extern int map_endWord;
-extern Word map_currentWord;
+extern MapWord map_currentWord;
 
 // Ignore Blanks
 void ignoreBlanksMap();
@@ -34,6 +34,6 @@ void setWordMap();
 int isEndWordMap();
 
 // Convert Word to String
-void wordToStr(Word w, char *str);
+void wordToStr(MapWord w, char *str);
 
 #endif

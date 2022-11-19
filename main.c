@@ -15,8 +15,12 @@
 #include "src/adt/time/time.c"
 #include "src/adt/gameState/gameState.c"
 #include "src/adt/stackState/stackState.c"
+#include "src/adt/charMachineFood/charMachineFood.c"
+#include "src/adt/wordMachineFood/wordMachineFood.c"
+#include "src/adt/food/food.c"
 
 // Import App
+#include "src/app/buy/buy.c"
 #include "src/app/simulator/simulator.c"
 #include "src/app/mainMenu/mainMenu.c"
 

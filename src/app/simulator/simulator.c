@@ -3,6 +3,9 @@
 // Global State
 char simName[20];
 MatrixChar map;
+Foodlist listFood, listShop, listFry, listChop, listBoil, listMix;
+
+// Game State
 StackState stateHistory;
 GameState currentGameState;
 Time cgsTime;
@@ -18,6 +21,7 @@ void simulatorCommandParser(char query[])
     char moveECommand[] = "MOVE EAST";
     char moveSCommand[] = "MOVE SOUTH";
     char moveWCommand[] = "MOVE WEST";
+    char buyCommand[] = "BUY";
     // N. Exit
     char exitCommand[] = "EXIT";
 
@@ -26,33 +30,40 @@ void simulatorCommandParser(char query[])
     fflush(stdin);
     fgets(simCommand, 50, stdin);
 
+    // MOVE NORTH
     if (compareString(simCommand, moveNCommand))
     {
-        // Move north
         system(CLEAR);
         moveNorth(&stateHistory, &currentGameState, &map, &nMove);
 
         simulator();
     }
+    // MOVE EAST
     else if (compareString(simCommand, moveECommand))
     {
-        // Move east
         system(CLEAR);
         moveEast(&stateHistory, &currentGameState, &map, &nMove);
         simulator();
     }
+    // MOVE SOUTH
     else if (compareString(simCommand, moveSCommand))
     {
-        // Move south
         system(CLEAR);
         moveSouth(&stateHistory, &currentGameState, &map, &nMove);
         simulator();
     }
+    // MOVE WEST
     else if (compareString(simCommand, moveWCommand))
     {
-        // Move west
         system(CLEAR);
         moveWest(&stateHistory, &currentGameState, &map, &nMove);
+        simulator();
+    }
+    // BUY
+    else if (compareString(simCommand, buyCommand))
+    {
+        system(CLEAR);
+        buy(listShop);
         simulator();
     }
     else
@@ -102,6 +113,10 @@ int loadSimulator()
 
     // Load nMove
     nMove = 0;
+
+    // Load Foods
+    addList(&listFood);
+    listshop(&listShop, listFood);
 
     // Load Current Game State (cgs)
     createTime(&cgsTime, 0, 5, 0);

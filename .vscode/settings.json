@@ -24,7 +24,9 @@
     "gamestate.h": "c",
     "delivery.h": "c",
     "charmachinemap.h": "c",
-    "matrixchar.h": "c"
+    "matrixchar.h": "c",
+    "string.h": "c",
+    "wordmachinefood.h": "c"
   },
   "C_Cpp.errorSquiggles": "Enabled"
 }

@@ -2,7 +2,7 @@
 #include "wordMachineMap.h"
 
 int map_endWord;
-Word map_currentWord;
+MapWord map_currentWord;
 
 void ignoreBlanksMap()
 {
@@ -58,7 +58,7 @@ int isEndWordMap()
     return map_endWord;
 }
 
-void wordToStr(Word w, char *str)
+void wordToStr(MapWord w, char *str)
 {
     int i = 0;
     while (i < w.length)
