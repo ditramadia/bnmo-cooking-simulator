@@ -8,6 +8,48 @@ Tubes 1 of Algorithm and Data Structure (IF2110). A cooking simulator CLI based 
 - 13521019 Ditra Rizqa Amadia <br/>
 - 13521023 Kenny Benaya Nathan <br/>
 - 13521031 Fahrian Afdholi <br/>
+## Division of Tasks
+<table>
+    <tr>
+        <td colspan=3 align="center">Contributors :</td>
+    </tr>
+    <tr>
+        <td>No.</td>
+        <td>Student ID</td>
+        <td>Tasks</td>
+    </tr>
+    <tr>
+        <td>1.</td>
+        <td>13521001</td>
+        <td>Features : Foods, Recipe, and Food Processing</td>
+    </tr>
+    <tr>
+        <td>2.</td>
+        <td>13521005</td>
+        <td>Features : Inventory, Buy Foods, and Delivery</td>
+    </tr>
+    <tr>
+        <td>3.</td>
+        <td>13521010</td>
+        <td>Inititation, Report, README.md</td>
+    </tr>
+    <tr>
+        <td>4.</td>
+        <td>13521019</td>
+        <td>Map, Simulator, Main program, Report, and README.md</td>
+    </tr>
+    <tr>
+        <td>5.</td>
+        <td>13521023</td>
+        <td>Features : Inventory, Buy Foods, and Delivery</td>
+    </tr>
+    <tr>
+        <td>6.</td>
+        <td>13521031</td>
+        <td>Features : Foods, Recipe, and Food Processing</td>
+    </tr>
+
+</table>
 ## Game Features
 - Configuration
   - Custom configuration file for splash screen, map, foods, and recipe.
