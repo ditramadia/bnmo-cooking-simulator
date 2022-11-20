@@ -7,6 +7,8 @@
 // Import ADT
 #include "src/adt/charMachineMap/charMachineMap.c"
 #include "src/adt/wordMachineMap/wordMachineMap.c"
+#include "src/adt/charMachineResep/charMachineResep.c"
+#include "src/adt/wordMachineResep/wordMachineResep.c"
 #include "src/adt/matrixChar/matrixChar.c"
 #include "src/adt/arrayChar/arrayChar.c"
 #include "src/adt/string/string.c"
@@ -25,6 +27,7 @@
 
 // Import App
 #include "src/app/buy/buy.c"
+#include "src/app/catalog/catalog.c"
 #include "src/app/simulator/simulator.c"
 #include "src/app/mainMenu/mainMenu.c"
 

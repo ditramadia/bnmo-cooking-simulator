@@ -23,14 +23,18 @@ void simulatorCommandParser(char query[])
     char moveECommand[] = "MOVE EAST";
     char moveSCommand[] = "MOVE SOUTH";
     char moveWCommand[] = "MOVE WEST";
-    // 2. Buy
+    // 2. Catalog
+    char catalogCommand[] = "CATALOG";
+    // 3. Buy
     char buyCommand[] = "BUY";
-    // 3. Delivery
+    // 4. Delivery
     char deliveryCommand[] = "DELIVERY";
-    // 4. Inventory
-    char inventoryCommand[] = "INVENTORY";
     // 5. Inventory
+    char inventoryCommand[] = "INVENTORY";
+    // 6. Wait
     char waitCommand[] = "WAIT";
+    // 7. Chop
+    char chopCommand[] = "CHOP";
     // N-2. Redo
     char undoCommand[] = "UNDO";
     // N-1. Redo
@@ -69,6 +73,14 @@ void simulatorCommandParser(char query[])
     {
         system(CLEAR);
         moveWest(&stateHistory, &currentGameState, &map, &nMove);
+        simulator();
+    }
+    // CATALOG
+    else if (compareString(simCommand, catalogCommand))
+    {
+        system(CLEAR);
+        catalog(listFood);
+        system(CLEAR);
         simulator();
     }
     // BUY

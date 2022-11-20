@@ -26,7 +26,10 @@
     "charmachinemap.h": "c",
     "matrixchar.h": "c",
     "string.h": "c",
-    "wordmachinefood.h": "c"
+    "wordmachinefood.h": "c",
+    "wordmachineresep.h": "c",
+    "charmachineresep.h": "c"
   },
-  "C_Cpp.errorSquiggles": "Enabled"
+  "C_Cpp.errorSquiggles": "Enabled",
+  "C_Cpp.dimInactiveRegions": false
 }
