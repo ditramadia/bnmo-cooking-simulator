@@ -81,9 +81,9 @@ void mix(Foodlist l,Queue *q,Foodlist listMix,List treeList[100][100]){
             // printf("%d",temp.id);
         }
         AddInventory(q,listMix.F[x]);
-        // printf("Bahan tersedia, ");
-        // displayWordFood(listMix.F[x].name);
-        // printf(" berhasil dibuat dan sudah masuk ke inventory!\n");
+        printf("Bahan tersedia, ");
+        displayWordFood(listMix.F[x].name);
+        printf(" berhasil dibuat dan sudah masuk ke inventory!\n");
     }
     else{
         printf("Bahan tidak lengkap\n");
