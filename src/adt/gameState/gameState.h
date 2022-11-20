@@ -14,6 +14,7 @@ typedef struct
     Time time;
     Queue delivery;
     Queue inventory;
+    ArrayChar notification;
     int isAbleBuy;
     int isAbleMix;
     int isAbleChop;
@@ -24,7 +25,7 @@ typedef struct
 // State
 extern GameState currentGameState;
 
-Queue updateDeliveryTime(Queue *delivery, Queue *inventory, int day, int hour, int minute);
+Queue updateDeliveryTime(Queue *delivery, Queue *inventory, ArrayChar *notification, int day, int hour, int minute);
 
 // Add time
 void addTime(GameState *gs, int day, int hour, int minute);

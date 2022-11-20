@@ -29,6 +29,7 @@ void mainMenuCommandParser(char query[])
     {
         char command[10];
         printf("%s: ", query);
+        fflush(stdin);
         scanf("%s", &command);
 
         if (compareString(command, startCommand))

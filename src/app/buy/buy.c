@@ -27,7 +27,9 @@ void buy(StackState *stateHistory, GameState *currentGameState, Foodlist listsho
     int selected;
     printf("\n");
     printf("Masukkan nomor makanan yang ingin dibeli: ");
+
     scanf("%d", &selected);
+    fflush(stdin);
     if (selected == 0)
     {
         system(CLEAR);

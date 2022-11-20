@@ -14,6 +14,21 @@ void createArrayChar(ArrayChar *arrayChar)
     }
 }
 
+void insertChar(ArrayChar *arrayChar, char str[50])
+{
+    (*arrayChar).idxEff++;
+    (*arrayChar).buffer[(*arrayChar).idxEff] = str;
+}
+
+void resetArr(ArrayChar *arrayChar)
+{
+    (*arrayChar).idxEff = IDX_UNDEF;
+    for (int i = 0; i < ARRAYCHARCAPACITY; i++)
+    {
+        (*arrayChar).buffer[i] = MARK;
+    }
+}
+
 // Convert ArrayChar to int
 int ArrayCharToInt(ArrayChar arrayChar)
 {
@@ -26,4 +41,13 @@ int ArrayCharToInt(ArrayChar arrayChar)
         j++;
     }
     return value;
+}
+
+// Display Notif
+void displayNotif(ArrayChar arrayChar)
+{
+    for (int i = 0; i <= arrayChar.idxEff; i++)
+    {
+        printf("     %d. %s\n", i + 1, arrayChar.buffer[i]);
+    }
 }

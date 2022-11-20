@@ -14,6 +14,7 @@ Point cgsSimPos;
 int nMove;
 Queue cgsDelivery;
 Queue cgsInventory;
+ArrayChar cgsNotifArr;
 
 // Command Parser
 void simulatorCommandParser(char query[])
@@ -26,7 +27,7 @@ void simulatorCommandParser(char query[])
     char moveWCommand[] = "MOVE WEST";
     // 2. Catalog
     char catalogCommand[] = "CATALOG";
-    // 3. Catalog
+    // 3. Cook Book
     char cookBookCommand[] = "COOKBOOK";
     // 4. Buy
     char buyCommand[] = "BUY";
@@ -40,21 +41,22 @@ void simulatorCommandParser(char query[])
     char chopCommand[] = "CHOP";
     // 9 Boil
     char boilCommand[] = "BOIL";
-    // 10
+    // 10 Fry
     char fryCommand[] = "FRY";
-    // 11
+    // 11 Mix
     char mixCommand[] = "MIX";
-    // N-2. Redo
+    // 12. Undo
     char undoCommand[] = "UNDO";
-    // N-1. Redo
+    // 13. Redo
     char redoCommand[] = "REDO";
-    // N. Exit
+    // 14. Exit
     char exitCommand[] = "EXIT";
 
     char simCommand[50];
     printf("%s: ", query);
     fflush(stdin);
     fgets(simCommand, 50, stdin);
+    fflush(stdin);
 
     // MOVE NORTH
     if (compareString(simCommand, moveNCommand))
@@ -214,6 +216,11 @@ int simulator()
     displayTime(currentGameState.time);
     printf("\n");
 
+    // Display notif
+    printf("Notifikasi: \n");
+    // displayNotif(currentGameState.notification); // ERROR
+    // printf("\n");
+
     // Display Map
     updateMap(currentGameState, &map);
     renderMap(map);
@@ -255,6 +262,9 @@ int loadSimulator()
     // Load Inventory
     CreateQueue(&cgsInventory);
 
+    // Load Notif
+    createArrayChar(&cgsNotifArr);
+
     // Load Current Game State (cgs)
     createTime(&cgsTime, 0, 5, 0);
 
@@ -263,6 +273,7 @@ int loadSimulator()
     currentGameState.time = cgsTime;
     currentGameState.delivery = cgsDelivery;
     currentGameState.inventory = cgsInventory;
+    currentGameState.notification = cgsNotifArr;
     updateAvailableAction(&currentGameState, map);
 
     // Load State History

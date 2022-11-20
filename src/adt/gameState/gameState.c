@@ -4,7 +4,7 @@
 #include "gameState.h"
 
 // Update delivery state
-Queue updateDeliveryTime(Queue *delivery, Queue *inventory, int day, int hour, int minute)
+Queue updateDeliveryTime(Queue *delivery, Queue *inventory, ArrayChar *notification, int day, int hour, int minute)
 {
     Queue newDelivery;
     newDelivery = *delivery;
@@ -21,14 +21,13 @@ Queue updateDeliveryTime(Queue *delivery, Queue *inventory, int day, int hour, i
         {
             Food food;
             delDelivery(&newDelivery, &food);
+
+            insertChar(notification, "Pesanan telah sampai");
+
             AddInventory(inventory, food);
         }
         else
         {
-            // int newMinutes = oldMinutes - subMinutes;
-            // Time newTime = minuteToTime(newMinutes);
-            // Info(pointer).deltime = newTime;
-
             Food bin;
             address newFood = newnode(Info(pointer));
             dequeueAt(&newDelivery, &bin, Info(pointer).id);
@@ -57,8 +56,11 @@ void addTime(GameState *gs, int day, int hour, int minute)
     Queue newDeliveryState, newinventoryState;
     newDeliveryState = (*gs).delivery;
     newinventoryState = (*gs).inventory;
-    (*gs).delivery = updateDeliveryTime(&newDeliveryState, &newinventoryState, day, hour, minute);
+    ArrayChar newNotifList;
+    newNotifList = (*gs).notification;
+    (*gs).delivery = updateDeliveryTime(&newDeliveryState, &newinventoryState, &newNotifList, day, hour, minute);
     (*gs).inventory = newinventoryState;
+    (*gs).notification = newNotifList;
 }
 
 // Update map

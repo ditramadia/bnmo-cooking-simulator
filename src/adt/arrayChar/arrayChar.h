@@ -16,7 +16,16 @@ typedef struct
 // Constructor
 void createArrayChar(ArrayChar *arrayChar);
 
+// Insert
+void insertChar(ArrayChar *arrayChar, char str[50]);
+
+// Reset
+void resetArr(ArrayChar *arrayChar);
+
 // Convert ArrayChar to int
 int ArrayCharToInt(ArrayChar arrayChar);
+
+// Display Notif
+void displayNotif(ArrayChar arrayChar);
 
 #endif
