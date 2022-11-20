@@ -41,7 +41,7 @@ Tubes 1 of Algorithm and Data Structure (IF2110). A cooking simulator CLI based 
     <tr>
         <td>5.</td>
         <td>13521023</td>
-        <td>Features : Inventory, Buy Foods, and Delivery</td>
+        <td>Features : Foods, Recipe, and Food Processing</td>
     </tr>
     <tr>
         <td>6.</td>
@@ -50,6 +50,7 @@ Tubes 1 of Algorithm and Data Structure (IF2110). A cooking simulator CLI based 
     </tr>
 
 </table>
+
 ## Game Features
 - Configuration
   - Custom configuration file for splash screen, map, foods, and recipe.
