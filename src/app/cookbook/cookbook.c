@@ -12,12 +12,12 @@ void cookbook(List l[100][100], Foodlist fl, Foodlist listBuy)
     printf("====================================================================================\n");
     printf("|                                     COOKBOOK                                     |\n");
     printf("====================================================================================\n");
-    printf("(Aksi yang diperlukan - bahan...)\n");
+    printf("|  (Aksi yang diperlukan - bahan...)\n");
     printf("\n");
     for (int i = 0; i < n; i++)
     {
         int x = INFO(NEXT(FIRST(l[i][0])));
-        printf("%d. ", i + 1);
+        printf("|  %d. ", i + 1);
         displayWordFood(fl.F[x].name);
         printf("\n");
         displayWordFood(fl.F[x].act);
@@ -34,7 +34,7 @@ void cookbook(List l[100][100], Foodlist fl, Foodlist listBuy)
         printf("\n");
     }
 
-    printf("|\n");
+    printf("|  \n");
     printf("====================================================================================\n");
     printf("\n");
 

@@ -1,4 +1,4 @@
-10
+24
 1
 Ayam Mentah
 1 0 0
@@ -49,3 +49,73 @@ Kopi Hitam
 0 1 45
 0 0 0
 Mix
+11
+Cabai
+0 5 30
+0 0 20
+Buy
+12
+Bawang
+0 3 0
+0 0 25
+Buy
+13
+Sambal
+0 2 30
+0 0 0
+Mix
+14
+Sambal Goreng
+0 1 45
+0 0 0
+Fry
+15
+Ayam Goreng extra Sambal
+0 1 0
+0 0 0
+Mix
+16
+Lalapan
+0 3 20
+0 0 30
+Buy
+17
+Nasi Uduk
+0 2 30
+0 0 23
+Buy
+18
+Pecel Ayam Warung Suroboyo
+0 1 45
+0 0 0
+Mix
+19
+Air Dingin
+0 0 45
+0 0 0
+Mix
+20
+Es Batu
+0 0 30
+0 0 5
+Buy
+21
+Extrajoss Bubuk
+1 30 0
+0 0 3
+Buy
+22
+Extrajoss
+0 5 0
+0 0 0
+Mix
+23
+Jossu
+0 3 30
+0 0 0
+Mix
+24
+Susu Kental Manis
+0 9 0
+0 0 10
+Buy
