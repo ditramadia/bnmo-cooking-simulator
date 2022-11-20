@@ -111,7 +111,7 @@ Tubes 1 of Algorithm and Data Structure (IF2110). A cooking simulator CLI based 
   Boil foods from inventory. Only available if player's position is adjacent to boiling area `B`.
   - `UNDO` <br/>
   Undo
-  - `Redo` <br/>
+  - `REDO` <br/>
   Redo
   - `EXIT` <br/>
   Exit game
