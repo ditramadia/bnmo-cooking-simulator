@@ -4,6 +4,7 @@
 char simName[20];
 MatrixChar map;
 Foodlist listFood, listShop, listFry, listChop, listBoil, listMix;
+List treeList[100][100];
 
 // Game State
 StackState stateHistory;
@@ -25,16 +26,24 @@ void simulatorCommandParser(char query[])
     char moveWCommand[] = "MOVE WEST";
     // 2. Catalog
     char catalogCommand[] = "CATALOG";
-    // 3. Buy
+    // 3. Catalog
+    char cookBookCommand[] = "COOKBOOK";
+    // 4. Buy
     char buyCommand[] = "BUY";
-    // 4. Delivery
+    // 5. Delivery
     char deliveryCommand[] = "DELIVERY";
-    // 5. Inventory
+    // 6. Inventory
     char inventoryCommand[] = "INVENTORY";
-    // 6. Wait
+    // 7. Wait
     char waitCommand[] = "WAIT";
-    // 7. Chop
+    // 8. Chop
     char chopCommand[] = "CHOP";
+    // 9 Boil
+    char boilCommand[] = "BOIL";
+    // 10
+    char fryCommand[] = "FRY";
+    // 11
+    char mixCommand[] = "MIX";
     // N-2. Redo
     char undoCommand[] = "UNDO";
     // N-1. Redo
@@ -83,6 +92,14 @@ void simulatorCommandParser(char query[])
         system(CLEAR);
         simulator();
     }
+    // COOKBOOK
+    else if (compareString(simCommand, cookBookCommand))
+    {
+        system(CLEAR);
+        cookbook(treeList, listFood, listShop);
+        system(CLEAR);
+        simulator();
+    }
     // BUY
     else if (compareString(simCommand, buyCommand))
     {
@@ -122,6 +139,34 @@ void simulatorCommandParser(char query[])
     {
         system(CLEAR);
         waitTime(&stateHistory, &currentGameState, getWaitHour(simCommand), getWaitMinute(simCommand));
+        simulator();
+    }
+    // CHOP
+    else if (compareString(simCommand, chopCommand))
+    {
+        system(CLEAR);
+        chop(&stateHistory, &currentGameState, listFood, listChop, treeList);
+        simulator();
+    }
+    // BOIL
+    else if (compareString(simCommand, boilCommand))
+    {
+        system(CLEAR);
+        boil(&stateHistory, &currentGameState, listFood, listBoil, treeList);
+        simulator();
+    }
+    // FRY
+    else if (compareString(simCommand, fryCommand))
+    {
+        system(CLEAR);
+        fry(&stateHistory, &currentGameState, listFood, listFry, treeList);
+        simulator();
+    }
+    // MIX
+    else if (compareString(simCommand, mixCommand))
+    {
+        system(CLEAR);
+        mix(&stateHistory, &currentGameState, listFood, listMix, treeList);
         simulator();
     }
     // UNDO
@@ -197,6 +242,12 @@ int loadSimulator()
     // Load Foods
     addList(&listFood);
     listshop(&listShop, listFood);
+    listchop(&listChop, listFood);
+    listboil(&listBoil, listFood);
+    listmix(&listMix, listFood);
+    listfry(&listFry, listFood);
+    createTree(treeList);
+    makeTree(treeList);
 
     // Load delivery
     CreateQueue(&cgsDelivery);

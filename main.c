@@ -20,14 +20,20 @@
 #include "src/adt/wordMachineFood/wordMachineFood.c"
 #include "src/adt/food/food.c"
 #include "src/adt/queuelinked/queuelinked.c"
+#include "src/adt/tree/tree.c"
 #include "src/adt/delivery/delivery.c"
 #include "src/adt/inventory/inventory.c"
 #include "src/adt/gameState/gameState.c"
 #include "src/adt/stackState/stackState.c"
 
 // Import App
+#include "src/app/boil/boil.c"
 #include "src/app/buy/buy.c"
 #include "src/app/catalog/catalog.c"
+#include "src/app/chop/chop.c"
+#include "src/app/cookbook/cookbook.c"
+#include "src/app/fry/fry.c"
+#include "src/app/mix/mix.c"
 #include "src/app/simulator/simulator.c"
 #include "src/app/mainMenu/mainMenu.c"
 
