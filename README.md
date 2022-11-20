@@ -206,6 +206,8 @@ Tubes 1 of Algorithm and Data Structure (IF2110). A cooking simulator CLI based 
 │       │   └── buy.c
 │       ├── catalog ------------------------------ Catalog App
 │       │   └── catalog.c
+│       ├── cookbook ----------------------------- Cookbook App
+│       │   └── cookbook.c
 │       ├── chop --------------------------------- Chop App
 │       │   └── chop.c
 │       ├── fry ---------------------------------- Fry App
